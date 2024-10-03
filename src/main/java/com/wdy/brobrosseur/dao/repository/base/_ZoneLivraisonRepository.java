@@ -2,6 +2,7 @@
 package com.wdy.brobrosseur.dao.repository.base;
 
 import java.util.Date;
+import java.util.List;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
@@ -144,27 +145,6 @@ public interface _ZoneLivraisonRepository {
     @Query("select e from ZoneLivraison e where e.createdAt = :createdAt and e.isDeleted = :isDeleted")
     List<ZoneLivraison> findByCreatedAt(@Param("createdAt")Date createdAt, @Param("isDeleted")Boolean isDeleted);
 
-    /**
-     * Finds ZoneLivraison by using coursierId as a search criteria.
-     *
-     * @param coursierId
-     * @return An Object ZoneLivraison whose coursierId is equals to the given coursierId. If
-     *         no ZoneLivraison is found, this method returns null.
-     */
-    @Query("select e from ZoneLivraison e where e.coursier.id = :coursierId and e.isDeleted = :isDeleted")
-    List<ZoneLivraison> findByCoursierId(@Param("coursierId")Integer coursierId, @Param("isDeleted")Boolean isDeleted);
-
-  /**
-   * Finds one ZoneLivraison by using coursierId as a search criteria.
-   *
-   * @param coursierId
-   * @return An Object ZoneLivraison whose coursierId is equals to the given coursierId. If
-   *         no ZoneLivraison is found, this method returns null.
-   */
-  @Query("select e from ZoneLivraison e where e.coursier.id = :coursierId and e.isDeleted = :isDeleted")
-  ZoneLivraison findZoneLivraisonByCoursierId(@Param("coursierId")Integer coursierId, @Param("isDeleted")Boolean isDeleted);
-
-
 
 
     /**
@@ -299,9 +279,6 @@ public interface _ZoneLivraisonRepository {
             }
             if (Utilities.isNotBlank(dto.getCreatedAt()) || Utilities.searchParamIsNotEmpty(dto.getCreatedAtParam())) {
                 listOfQuery.add(CriteriaUtils.generateCriteria("createdAt", dto.getCreatedAt(), "e.createdAt", "Date", dto.getCreatedAtParam(), param, index, locale));
-            }
-                        if (dto.getCoursierId() != null || Utilities.searchParamIsNotEmpty(dto.getCoursierIdParam())) {
-                listOfQuery.add(CriteriaUtils.generateCriteria("coursierId", dto.getCoursierId(), "e.coursier.id", "Integer", dto.getCoursierIdParam(), param, index, locale));
             }
 
             /*List<String> listOfCustomQuery = _generateCriteria(dto, param, index, locale);

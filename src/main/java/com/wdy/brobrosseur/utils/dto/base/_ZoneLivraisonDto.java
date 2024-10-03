@@ -1,7 +1,7 @@
 
 /*
  * Java dto for entity table zone_livraison 
- * Created on 2024-09-29 ( Time 22:05:55 )
+ * Created on 2024-10-03 ( Time 13:00:22 )
  * Generator tool : Telosys Tools Generator ( version 3.3.0 )
  * Copyright 2018 Geo. All Rights Reserved.
  */
@@ -9,6 +9,7 @@
 package com.wdy.brobrosseur.utils.dto.base;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -33,7 +34,6 @@ public class _ZoneLivraisonDto implements Cloneable {
 
     protected Integer    id                   ; // Primary Key
 
-    protected Integer    coursierId           ;
     protected String     latitudeDepart       ;
     protected String     longitudeDepart      ;
     protected String     latitudeArrivee      ;
@@ -49,11 +49,9 @@ public class _ZoneLivraisonDto implements Cloneable {
     //----------------------------------------------------------------------
     // ENTITY LINKS FIELD ( RELATIONSHIP )
     //----------------------------------------------------------------------
-	//protected Integer    coursier;
 
 	// Search param
 	protected SearchParam<Integer>  idParam               ;                     
-	protected SearchParam<Integer>  coursierIdParam       ;                     
 	protected SearchParam<String>   latitudeDepartParam   ;                     
 	protected SearchParam<String>   longitudeDepartParam  ;                     
 	protected SearchParam<String>   latitudeArriveeParam  ;                     
@@ -65,7 +63,6 @@ public class _ZoneLivraisonDto implements Cloneable {
 	protected SearchParam<String>   deletedAtParam        ;                     
 	protected SearchParam<String>   updatedAtParam        ;                     
 	protected SearchParam<String>   createdAtParam        ;                     
-	protected SearchParam<Integer>  coursierParam         ;                     
 
 	// order param
 	protected String orderField;

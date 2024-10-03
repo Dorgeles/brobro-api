@@ -1,7 +1,7 @@
-                                                            														
+                                                        													
 /*
  * Java business for entity table zone_livraison 
- * Created on 2024-09-29 ( Time 22:05:55 )
+ * Created on 2024-10-03 ( Time 13:00:22 )
  * Generator tool : Telosys Tools Generator ( version 3.3.0 )
  * Copyright 2018 Geo. All Rights Reserved.
  */
@@ -28,7 +28,6 @@ import com.wdy.brobrosseur.utils.contract.Request;
 import com.wdy.brobrosseur.utils.contract.Response;
 import com.wdy.brobrosseur.utils.dto.transformer.*;
 import com.wdy.brobrosseur.dao.entity.ZoneLivraison;
-import com.wdy.brobrosseur.dao.entity.Coursier;
 import com.wdy.brobrosseur.dao.entity.*;
 import com.wdy.brobrosseur.dao.repository.*;
 
@@ -46,7 +45,7 @@ public class ZoneLivraisonBusiness implements IBasicBusiness<Request<ZoneLivrais
 	@Autowired
 	private ZoneLivraisonRepository zoneLivraisonRepository;
 	@Autowired
-	private CoursierRepository coursierRepository;
+	private PrestataireZoneLivraisonRepository prestataireZoneLivraisonRepository;
 	@Autowired
 	private FunctionalError functionalError;
 	@Autowired
@@ -81,7 +80,6 @@ public class ZoneLivraisonBusiness implements IBasicBusiness<Request<ZoneLivrais
 		for (ZoneLivraisonDto dto : request.getDatas()) {
 			// Definir les parametres obligatoires
 			Map<String, java.lang.Object> fieldsToVerify = new HashMap<String, java.lang.Object>();
-			fieldsToVerify.put("coursierId", dto.getCoursierId());
 			fieldsToVerify.put("latitudeDepart", dto.getLatitudeDepart());
 			fieldsToVerify.put("longitudeDepart", dto.getLongitudeDepart());
 			fieldsToVerify.put("latitudeArrivee", dto.getLatitudeArrivee());
@@ -105,18 +103,8 @@ public class ZoneLivraisonBusiness implements IBasicBusiness<Request<ZoneLivrais
 			}
 
 */
-			// Verify if coursier exist
-			Coursier existingCoursier = null;
-			if (dto.getCoursierId() != null && dto.getCoursierId() > 0){
-				existingCoursier = coursierRepository.findOne(dto.getCoursierId(), false);
-				if (existingCoursier == null) {
-					response.setStatus(functionalError.DATA_NOT_EXIST("coursier coursierId -> " + dto.getCoursierId(), locale));
-					response.setHasError(true);
-					return response;
-				}
-			}
 				ZoneLivraison entityToSave = null;
-			entityToSave = ZoneLivraisonTransformer.INSTANCE.toEntity(dto, existingCoursier);
+			entityToSave = ZoneLivraisonTransformer.INSTANCE.toEntity(dto);
 			entityToSave.setIsDeleted(false);
 			entityToSave.setCreatedBy(request.getUser());
 			entityToSave.setCreatedAt(Utilities.getCurrentDate());
@@ -190,16 +178,6 @@ public class ZoneLivraisonBusiness implements IBasicBusiness<Request<ZoneLivrais
 				return response;
 			}
 
-			// Verify if coursier exist
-			if (dto.getCoursierId() != null && dto.getCoursierId() > 0){
-				Coursier existingCoursier = coursierRepository.findOne(dto.getCoursierId(), false);
-				if (existingCoursier == null) {
-					response.setStatus(functionalError.DATA_NOT_EXIST("coursier coursierId -> " + dto.getCoursierId(), locale));
-					response.setHasError(true);
-					return response;
-				}
-				entityToSave.setCoursier(existingCoursier);
-			}
 			if (Utilities.notBlank(dto.getLatitudeDepart())) {
 				entityToSave.setLatitudeDepart(dto.getLatitudeDepart());
 			}
@@ -300,6 +278,13 @@ public class ZoneLivraisonBusiness implements IBasicBusiness<Request<ZoneLivrais
 			// ----------- CHECK IF DATA IS USED
 			// -----------------------------------------------------------------------
 
+			// prestataireZoneLivraison
+			List<PrestataireZoneLivraison> listOfPrestataireZoneLivraison = prestataireZoneLivraisonRepository.findByZoneLivraisonId(existingEntity.getId(), false);
+			if (listOfPrestataireZoneLivraison != null && !listOfPrestataireZoneLivraison.isEmpty()){
+				response.setStatus(functionalError.DATA_NOT_DELETABLE("(" + listOfPrestataireZoneLivraison.size() + ")", locale));
+				response.setHasError(true);
+				return response;
+			}
 
 
 			existingEntity.setIsDeleted(true);

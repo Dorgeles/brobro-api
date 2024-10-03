@@ -2,6 +2,54 @@
 	"user": 1,
 	"datas": [
 		{
+			"code": "ACTIVITE",
+			"name": "ACTIVITE"
+		},
+		{
+			"code": "VIEW_ACTIVITE",
+			"parentCode": "ACTIVITE",
+			"name": "VIEW ACTIVITE"
+		},
+		{
+			"code": "CREATE_ACTIVITE",
+			"parentCode": "ACTIVITE",
+			"name": "CREATE ACTIVITE"
+		},
+		{
+			"code": "UPDATE_ACTIVITE",
+			"parentCode": "ACTIVITE",
+			"name": "UPDATE ACTIVITE"
+		},
+		{
+			"code": "DELETE_ACTIVITE",
+			"parentCode": "ACTIVITE",
+			"name": "DELETE ACTIVITE"
+		},
+		{
+			"code": "ACTIVITE_PRESTATION",
+			"name": "ACTIVITE_PRESTATION"
+		},
+		{
+			"code": "VIEW_ACTIVITE_PRESTATION",
+			"parentCode": "ACTIVITE_PRESTATION",
+			"name": "VIEW ACTIVITE_PRESTATION"
+		},
+		{
+			"code": "CREATE_ACTIVITE_PRESTATION",
+			"parentCode": "ACTIVITE_PRESTATION",
+			"name": "CREATE ACTIVITE_PRESTATION"
+		},
+		{
+			"code": "UPDATE_ACTIVITE_PRESTATION",
+			"parentCode": "ACTIVITE_PRESTATION",
+			"name": "UPDATE ACTIVITE_PRESTATION"
+		},
+		{
+			"code": "DELETE_ACTIVITE_PRESTATION",
+			"parentCode": "ACTIVITE_PRESTATION",
+			"name": "DELETE ACTIVITE_PRESTATION"
+		},
+		{
 			"code": "COMMAND",
 			"name": "COMMAND"
 		},
@@ -26,78 +74,6 @@
 			"name": "DELETE COMMAND"
 		},
 		{
-			"code": "COURSIER",
-			"name": "COURSIER"
-		},
-		{
-			"code": "VIEW_COURSIER",
-			"parentCode": "COURSIER",
-			"name": "VIEW COURSIER"
-		},
-		{
-			"code": "CREATE_COURSIER",
-			"parentCode": "COURSIER",
-			"name": "CREATE COURSIER"
-		},
-		{
-			"code": "UPDATE_COURSIER",
-			"parentCode": "COURSIER",
-			"name": "UPDATE COURSIER"
-		},
-		{
-			"code": "DELETE_COURSIER",
-			"parentCode": "COURSIER",
-			"name": "DELETE COURSIER"
-		},
-		{
-			"code": "COURSIER_MOYEN_DEPLACEMENT",
-			"name": "COURSIER_MOYEN_DEPLACEMENT"
-		},
-		{
-			"code": "VIEW_COURSIER_MOYEN_DEPLACEMENT",
-			"parentCode": "COURSIER_MOYEN_DEPLACEMENT",
-			"name": "VIEW COURSIER_MOYEN_DEPLACEMENT"
-		},
-		{
-			"code": "CREATE_COURSIER_MOYEN_DEPLACEMENT",
-			"parentCode": "COURSIER_MOYEN_DEPLACEMENT",
-			"name": "CREATE COURSIER_MOYEN_DEPLACEMENT"
-		},
-		{
-			"code": "UPDATE_COURSIER_MOYEN_DEPLACEMENT",
-			"parentCode": "COURSIER_MOYEN_DEPLACEMENT",
-			"name": "UPDATE COURSIER_MOYEN_DEPLACEMENT"
-		},
-		{
-			"code": "DELETE_COURSIER_MOYEN_DEPLACEMENT",
-			"parentCode": "COURSIER_MOYEN_DEPLACEMENT",
-			"name": "DELETE COURSIER_MOYEN_DEPLACEMENT"
-		},
-		{
-			"code": "CUSTOMER",
-			"name": "CUSTOMER"
-		},
-		{
-			"code": "VIEW_CUSTOMER",
-			"parentCode": "CUSTOMER",
-			"name": "VIEW CUSTOMER"
-		},
-		{
-			"code": "CREATE_CUSTOMER",
-			"parentCode": "CUSTOMER",
-			"name": "CREATE CUSTOMER"
-		},
-		{
-			"code": "UPDATE_CUSTOMER",
-			"parentCode": "CUSTOMER",
-			"name": "UPDATE CUSTOMER"
-		},
-		{
-			"code": "DELETE_CUSTOMER",
-			"parentCode": "CUSTOMER",
-			"name": "DELETE CUSTOMER"
-		},
-		{
 			"code": "EVALUATION_COMMAND",
 			"name": "EVALUATION_COMMAND"
 		},
@@ -120,54 +96,6 @@
 			"code": "DELETE_EVALUATION_COMMAND",
 			"parentCode": "EVALUATION_COMMAND",
 			"name": "DELETE EVALUATION_COMMAND"
-		},
-		{
-			"code": "EVALUATION_PRESTATION",
-			"name": "EVALUATION_PRESTATION"
-		},
-		{
-			"code": "VIEW_EVALUATION_PRESTATION",
-			"parentCode": "EVALUATION_PRESTATION",
-			"name": "VIEW EVALUATION_PRESTATION"
-		},
-		{
-			"code": "CREATE_EVALUATION_PRESTATION",
-			"parentCode": "EVALUATION_PRESTATION",
-			"name": "CREATE EVALUATION_PRESTATION"
-		},
-		{
-			"code": "UPDATE_EVALUATION_PRESTATION",
-			"parentCode": "EVALUATION_PRESTATION",
-			"name": "UPDATE EVALUATION_PRESTATION"
-		},
-		{
-			"code": "DELETE_EVALUATION_PRESTATION",
-			"parentCode": "EVALUATION_PRESTATION",
-			"name": "DELETE EVALUATION_PRESTATION"
-		},
-		{
-			"code": "EVALUTATION_PROJET",
-			"name": "EVALUTATION_PROJET"
-		},
-		{
-			"code": "VIEW_EVALUTATION_PROJET",
-			"parentCode": "EVALUTATION_PROJET",
-			"name": "VIEW EVALUTATION_PROJET"
-		},
-		{
-			"code": "CREATE_EVALUTATION_PROJET",
-			"parentCode": "EVALUTATION_PROJET",
-			"name": "CREATE EVALUTATION_PROJET"
-		},
-		{
-			"code": "UPDATE_EVALUTATION_PROJET",
-			"parentCode": "EVALUTATION_PROJET",
-			"name": "UPDATE EVALUTATION_PROJET"
-		},
-		{
-			"code": "DELETE_EVALUTATION_PROJET",
-			"parentCode": "EVALUTATION_PROJET",
-			"name": "DELETE EVALUTATION_PROJET"
 		},
 		{
 			"code": "IMAGES_PRESTATION",
@@ -218,6 +146,30 @@
 			"name": "DELETE MOYEN_DEPLACEMENT"
 		},
 		{
+			"code": "PRESTATAIRE_ZONE_LIVRAISON",
+			"name": "PRESTATAIRE_ZONE_LIVRAISON"
+		},
+		{
+			"code": "VIEW_PRESTATAIRE_ZONE_LIVRAISON",
+			"parentCode": "PRESTATAIRE_ZONE_LIVRAISON",
+			"name": "VIEW PRESTATAIRE_ZONE_LIVRAISON"
+		},
+		{
+			"code": "CREATE_PRESTATAIRE_ZONE_LIVRAISON",
+			"parentCode": "PRESTATAIRE_ZONE_LIVRAISON",
+			"name": "CREATE PRESTATAIRE_ZONE_LIVRAISON"
+		},
+		{
+			"code": "UPDATE_PRESTATAIRE_ZONE_LIVRAISON",
+			"parentCode": "PRESTATAIRE_ZONE_LIVRAISON",
+			"name": "UPDATE PRESTATAIRE_ZONE_LIVRAISON"
+		},
+		{
+			"code": "DELETE_PRESTATAIRE_ZONE_LIVRAISON",
+			"parentCode": "PRESTATAIRE_ZONE_LIVRAISON",
+			"name": "DELETE PRESTATAIRE_ZONE_LIVRAISON"
+		},
+		{
 			"code": "PRESTATION",
 			"name": "PRESTATION"
 		},
@@ -242,28 +194,28 @@
 			"name": "DELETE PRESTATION"
 		},
 		{
-			"code": "PROJET",
-			"name": "PROJET"
+			"code": "PRESTATION_MOYEN_DEPLACEMENT",
+			"name": "PRESTATION_MOYEN_DEPLACEMENT"
 		},
 		{
-			"code": "VIEW_PROJET",
-			"parentCode": "PROJET",
-			"name": "VIEW PROJET"
+			"code": "VIEW_PRESTATION_MOYEN_DEPLACEMENT",
+			"parentCode": "PRESTATION_MOYEN_DEPLACEMENT",
+			"name": "VIEW PRESTATION_MOYEN_DEPLACEMENT"
 		},
 		{
-			"code": "CREATE_PROJET",
-			"parentCode": "PROJET",
-			"name": "CREATE PROJET"
+			"code": "CREATE_PRESTATION_MOYEN_DEPLACEMENT",
+			"parentCode": "PRESTATION_MOYEN_DEPLACEMENT",
+			"name": "CREATE PRESTATION_MOYEN_DEPLACEMENT"
 		},
 		{
-			"code": "UPDATE_PROJET",
-			"parentCode": "PROJET",
-			"name": "UPDATE PROJET"
+			"code": "UPDATE_PRESTATION_MOYEN_DEPLACEMENT",
+			"parentCode": "PRESTATION_MOYEN_DEPLACEMENT",
+			"name": "UPDATE PRESTATION_MOYEN_DEPLACEMENT"
 		},
 		{
-			"code": "DELETE_PROJET",
-			"parentCode": "PROJET",
-			"name": "DELETE PROJET"
+			"code": "DELETE_PRESTATION_MOYEN_DEPLACEMENT",
+			"parentCode": "PRESTATION_MOYEN_DEPLACEMENT",
+			"name": "DELETE PRESTATION_MOYEN_DEPLACEMENT"
 		},
 		{
 			"code": "RECORD_IMAGE",
@@ -290,6 +242,54 @@
 			"name": "DELETE RECORD_IMAGE"
 		},
 		{
+			"code": "ROLE",
+			"name": "ROLE"
+		},
+		{
+			"code": "VIEW_ROLE",
+			"parentCode": "ROLE",
+			"name": "VIEW ROLE"
+		},
+		{
+			"code": "CREATE_ROLE",
+			"parentCode": "ROLE",
+			"name": "CREATE ROLE"
+		},
+		{
+			"code": "UPDATE_ROLE",
+			"parentCode": "ROLE",
+			"name": "UPDATE ROLE"
+		},
+		{
+			"code": "DELETE_ROLE",
+			"parentCode": "ROLE",
+			"name": "DELETE ROLE"
+		},
+		{
+			"code": "TYPE_CLIENT",
+			"name": "TYPE_CLIENT"
+		},
+		{
+			"code": "VIEW_TYPE_CLIENT",
+			"parentCode": "TYPE_CLIENT",
+			"name": "VIEW TYPE_CLIENT"
+		},
+		{
+			"code": "CREATE_TYPE_CLIENT",
+			"parentCode": "TYPE_CLIENT",
+			"name": "CREATE TYPE_CLIENT"
+		},
+		{
+			"code": "UPDATE_TYPE_CLIENT",
+			"parentCode": "TYPE_CLIENT",
+			"name": "UPDATE TYPE_CLIENT"
+		},
+		{
+			"code": "DELETE_TYPE_CLIENT",
+			"parentCode": "TYPE_CLIENT",
+			"name": "DELETE TYPE_CLIENT"
+		},
+		{
 			"code": "UTILISATEUR",
 			"name": "UTILISATEUR"
 		},
@@ -314,28 +314,52 @@
 			"name": "DELETE UTILISATEUR"
 		},
 		{
-			"code": "VENDEUR",
-			"name": "VENDEUR"
+			"code": "UTILISATEUR_ACTIVITE",
+			"name": "UTILISATEUR_ACTIVITE"
 		},
 		{
-			"code": "VIEW_VENDEUR",
-			"parentCode": "VENDEUR",
-			"name": "VIEW VENDEUR"
+			"code": "VIEW_UTILISATEUR_ACTIVITE",
+			"parentCode": "UTILISATEUR_ACTIVITE",
+			"name": "VIEW UTILISATEUR_ACTIVITE"
 		},
 		{
-			"code": "CREATE_VENDEUR",
-			"parentCode": "VENDEUR",
-			"name": "CREATE VENDEUR"
+			"code": "CREATE_UTILISATEUR_ACTIVITE",
+			"parentCode": "UTILISATEUR_ACTIVITE",
+			"name": "CREATE UTILISATEUR_ACTIVITE"
 		},
 		{
-			"code": "UPDATE_VENDEUR",
-			"parentCode": "VENDEUR",
-			"name": "UPDATE VENDEUR"
+			"code": "UPDATE_UTILISATEUR_ACTIVITE",
+			"parentCode": "UTILISATEUR_ACTIVITE",
+			"name": "UPDATE UTILISATEUR_ACTIVITE"
 		},
 		{
-			"code": "DELETE_VENDEUR",
-			"parentCode": "VENDEUR",
-			"name": "DELETE VENDEUR"
+			"code": "DELETE_UTILISATEUR_ACTIVITE",
+			"parentCode": "UTILISATEUR_ACTIVITE",
+			"name": "DELETE UTILISATEUR_ACTIVITE"
+		},
+		{
+			"code": "UTILISATEUR_ROLE",
+			"name": "UTILISATEUR_ROLE"
+		},
+		{
+			"code": "VIEW_UTILISATEUR_ROLE",
+			"parentCode": "UTILISATEUR_ROLE",
+			"name": "VIEW UTILISATEUR_ROLE"
+		},
+		{
+			"code": "CREATE_UTILISATEUR_ROLE",
+			"parentCode": "UTILISATEUR_ROLE",
+			"name": "CREATE UTILISATEUR_ROLE"
+		},
+		{
+			"code": "UPDATE_UTILISATEUR_ROLE",
+			"parentCode": "UTILISATEUR_ROLE",
+			"name": "UPDATE UTILISATEUR_ROLE"
+		},
+		{
+			"code": "DELETE_UTILISATEUR_ROLE",
+			"parentCode": "UTILISATEUR_ROLE",
+			"name": "DELETE UTILISATEUR_ROLE"
 		},
 		{
 			"code": "ZONE_LIVRAISON",

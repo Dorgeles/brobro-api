@@ -1,0 +1,84 @@
+Update date : Thu Oct 03 12:59:47 GMT 2024
+ 
+ Table 'activite' not found in repository
+ (+) table 'activite' added
+ 
+ Table 'activite_prestation' not found in repository
+ (+) table 'activite_prestation' added
+ 
+ Table 'command' found in repository
+ . Column 'consommateur_id' deleted
+ . Column 'coursier_id' deleted
+ . Foreign key 'command_ibfk_2' deleted
+ . Column 'utilisateur_id' added
+ . Column 'note' added
+ . Foreign key 'command_ibfk_1' updated
+ (*) table 'command' updated : 6 change(s)
+ 
+ Table 'evaluation_command' found in repository
+ (=) table 'evaluation_command' unchanged
+ 
+ Table 'images_prestation' found in repository
+ (=) table 'images_prestation' unchanged
+ 
+ Table 'moyen_deplacement' found in repository
+ (=) table 'moyen_deplacement' unchanged
+ 
+ Table 'prestataire_zone_livraison' not found in repository
+ (+) table 'prestataire_zone_livraison' added
+ 
+ Table 'prestation' found in repository
+ (=) table 'prestation' unchanged
+ 
+ Table 'prestation_moyen_deplacement' not found in repository
+ (+) table 'prestation_moyen_deplacement' added
+ 
+ Table 'record_image' found in repository
+ . Column 'projet_id' deleted
+ . Column 'activite_id' added
+ . Foreign key 'record_image_ibfk_1' updated
+ (*) table 'record_image' updated : 3 change(s)
+ 
+ Table 'role' not found in repository
+ (+) table 'role' added
+ 
+ Table 'type_client' not found in repository
+ (+) table 'type_client' added
+ 
+ Table 'utilisateur' found in repository
+ . Column 'type_client' deleted
+ . Column 'type_client_id' added
+ . Foreign key 'utilisateur_ibfk_1' added
+ (*) table 'utilisateur' updated : 3 change(s)
+ 
+ Table 'utilisateur_activite' not found in repository
+ (+) table 'utilisateur_activite' added
+ 
+ Table 'utilisateur_role' not found in repository
+ (+) table 'utilisateur_role' added
+ 
+ Table 'zone_livraison' found in repository
+ . Column 'coursier_id' deleted
+ . Foreign key 'zone_livraison_ibfk_1' deleted
+ (*) table 'zone_livraison' updated : 2 change(s)
+ 
+ Table 'coursier' no longer exists in database
+ (-) table 'coursier' removed
+ 
+ Table 'coursier_moyen_deplacement' no longer exists in database
+ (-) table 'coursier_moyen_deplacement' removed
+ 
+ Table 'customer' no longer exists in database
+ (-) table 'customer' removed
+ 
+ Table 'evaluation_prestation' no longer exists in database
+ (-) table 'evaluation_prestation' removed
+ 
+ Table 'evalutation_projet' no longer exists in database
+ (-) table 'evalutation_projet' removed
+ 
+ Table 'projet' no longer exists in database
+ (-) table 'projet' removed
+ 
+ Table 'vendeur' no longer exists in database
+ (-) table 'vendeur' removed

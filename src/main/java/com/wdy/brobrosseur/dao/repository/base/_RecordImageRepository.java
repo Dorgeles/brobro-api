@@ -118,24 +118,24 @@ public interface _RecordImageRepository {
     List<RecordImage> findByCreatedAt(@Param("createdAt")Date createdAt, @Param("isDeleted")Boolean isDeleted);
 
     /**
-     * Finds RecordImage by using projetId as a search criteria.
+     * Finds RecordImage by using activiteId as a search criteria.
      *
-     * @param projetId
-     * @return An Object RecordImage whose projetId is equals to the given projetId. If
+     * @param activiteId
+     * @return An Object RecordImage whose activiteId is equals to the given activiteId. If
      *         no RecordImage is found, this method returns null.
      */
-    @Query("select e from RecordImage e where e.projet.id = :projetId and e.isDeleted = :isDeleted")
-    List<RecordImage> findByProjetId(@Param("projetId")Integer projetId, @Param("isDeleted")Boolean isDeleted);
+    @Query("select e from RecordImage e where e.activite.id = :activiteId and e.isDeleted = :isDeleted")
+    List<RecordImage> findByActiviteId(@Param("activiteId")Integer activiteId, @Param("isDeleted")Boolean isDeleted);
 
   /**
-   * Finds one RecordImage by using projetId as a search criteria.
+   * Finds one RecordImage by using activiteId as a search criteria.
    *
-   * @param projetId
-   * @return An Object RecordImage whose projetId is equals to the given projetId. If
+   * @param activiteId
+   * @return An Object RecordImage whose activiteId is equals to the given activiteId. If
    *         no RecordImage is found, this method returns null.
    */
-  @Query("select e from RecordImage e where e.projet.id = :projetId and e.isDeleted = :isDeleted")
-  RecordImage findRecordImageByProjetId(@Param("projetId")Integer projetId, @Param("isDeleted")Boolean isDeleted);
+  @Query("select e from RecordImage e where e.activite.id = :activiteId and e.isDeleted = :isDeleted")
+  RecordImage findRecordImageByActiviteId(@Param("activiteId")Integer activiteId, @Param("isDeleted")Boolean isDeleted);
 
 
 
@@ -264,11 +264,11 @@ public interface _RecordImageRepository {
             if (Utilities.isNotBlank(dto.getCreatedAt()) || Utilities.searchParamIsNotEmpty(dto.getCreatedAtParam())) {
                 listOfQuery.add(CriteriaUtils.generateCriteria("createdAt", dto.getCreatedAt(), "e.createdAt", "Date", dto.getCreatedAtParam(), param, index, locale));
             }
-                        if (dto.getProjetId() != null || Utilities.searchParamIsNotEmpty(dto.getProjetIdParam())) {
-                listOfQuery.add(CriteriaUtils.generateCriteria("projetId", dto.getProjetId(), "e.projet.id", "Integer", dto.getProjetIdParam(), param, index, locale));
+                        if (dto.getActiviteId() != null || Utilities.searchParamIsNotEmpty(dto.getActiviteIdParam())) {
+                listOfQuery.add(CriteriaUtils.generateCriteria("activiteId", dto.getActiviteId(), "e.activite.id", "Integer", dto.getActiviteIdParam(), param, index, locale));
             }
-            if (Utilities.isNotBlank(dto.getProjetNom()) || Utilities.searchParamIsNotEmpty(dto.getProjetNomParam())) {
-                listOfQuery.add(CriteriaUtils.generateCriteria("projetNom", dto.getProjetNom(), "e.projet.nom", "String", dto.getProjetNomParam(), param, index, locale));
+            if (Utilities.isNotBlank(dto.getActiviteLibelle()) || Utilities.searchParamIsNotEmpty(dto.getActiviteLibelleParam())) {
+                listOfQuery.add(CriteriaUtils.generateCriteria("activiteLibelle", dto.getActiviteLibelle(), "e.activite.libelle", "String", dto.getActiviteLibelleParam(), param, index, locale));
             }
 
             /*List<String> listOfCustomQuery = _generateCriteria(dto, param, index, locale);

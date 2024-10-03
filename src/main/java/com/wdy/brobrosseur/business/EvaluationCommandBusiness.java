@@ -1,7 +1,7 @@
                                                                 															
 /*
  * Java business for entity table evaluation_command 
- * Created on 2024-09-29 ( Time 22:05:54 )
+ * Created on 2024-10-03 ( Time 13:00:22 )
  * Generator tool : Telosys Tools Generator ( version 3.3.0 )
  * Copyright 2018 Geo. All Rights Reserved.
  */

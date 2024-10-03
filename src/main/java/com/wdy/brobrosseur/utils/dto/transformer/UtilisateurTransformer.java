@@ -2,7 +2,7 @@
 
 /*
  * Java transformer for entity table utilisateur 
- * Created on 2024-09-29 ( Time 22:52:48 )
+ * Created on 2024-10-03 ( Time 13:19:22 )
  * Generator tool : Telosys Tools Generator ( version 3.3.0 )
  * Copyright 2018 Geo. All Rights Reserved.
  */
@@ -40,6 +40,8 @@ public interface UtilisateurTransformer {
 		@Mapping(source="entity.deletedAt", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="deletedAt"),
 		@Mapping(source="entity.updatedAt", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="updatedAt"),
 		@Mapping(source="entity.createdAt", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="createdAt"),
+		@Mapping(source="entity.typeClient.id", target="typeClientId"),
+		@Mapping(source="entity.typeClient.libelle", target="typeClientLibelle"),
 	})
 	UtilisateurDto toDto(Utilisateur entity) throws ParseException;
 
@@ -85,9 +87,9 @@ public interface UtilisateurTransformer {
 		@Mapping(source="dto.isLocked", target="isLocked"),
 		@Mapping(source="dto.updatedAt", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="updatedAt"),
 		@Mapping(source="dto.createdAt", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="createdAt"),
-		@Mapping(source="dto.typeClient", target="typeClient"),
+		@Mapping(source="typeClient", target="typeClient"),
 	})
-    Utilisateur toEntity(UtilisateurDto dto) throws ParseException;
+    Utilisateur toEntity(UtilisateurDto dto, TypeClient typeClient) throws ParseException;
 
     //List<Utilisateur> toEntities(List<UtilisateurDto> dtos) throws ParseException;
 

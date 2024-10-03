@@ -2,7 +2,7 @@
 
 /*
  * Java transformer for entity table command 
- * Created on 2024-09-29 ( Time 22:05:54 )
+ * Created on 2024-10-03 ( Time 13:19:22 )
  * Generator tool : Telosys Tools Generator ( version 3.3.0 )
  * Copyright 2018 Geo. All Rights Reserved.
  */
@@ -40,10 +40,11 @@ public interface CommandTransformer {
 		@Mapping(source="entity.deletedAt", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="deletedAt"),
 		@Mapping(source="entity.updatedAt", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="updatedAt"),
 		@Mapping(source="entity.createdAt", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="createdAt"),
-		@Mapping(source="entity.customer.id", target="consommateurId"),
+		@Mapping(source="entity.utilisateur.id", target="utilisateurId"),
+		@Mapping(source="entity.utilisateur.nom", target="utilisateurNom"),
+		@Mapping(source="entity.utilisateur.prenom", target="utilisateurPrenom"),
 		@Mapping(source="entity.prestation.id", target="prestationId"),
 		@Mapping(source="entity.prestation.libelle", target="prestationLibelle"),
-		@Mapping(source="entity.coursier.id", target="coursierId"),
 	})
 	CommandDto toDto(Command entity) throws ParseException;
 
@@ -74,6 +75,7 @@ public interface CommandTransformer {
 		@Mapping(source="dto.id", target="id"),
 		@Mapping(source="dto.typeCommand", target="typeCommand"),
 		@Mapping(source="dto.latitudeLivraison", target="latitudeLivraison"),
+		@Mapping(source="dto.note", target="note"),
 		@Mapping(source="dto.longitudeLivraison", target="longitudeLivraison"),
 		@Mapping(source="dto.statusId", target="statusId"),
 		@Mapping(source="dto.updatedBy", target="updatedBy"),
@@ -82,11 +84,10 @@ public interface CommandTransformer {
 		@Mapping(source="dto.deletedAt", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="deletedAt"),
 		@Mapping(source="dto.updatedAt", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="updatedAt"),
 		@Mapping(source="dto.createdAt", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="createdAt"),
-		@Mapping(source="customer", target="customer"),
+		@Mapping(source="utilisateur", target="utilisateur"),
 		@Mapping(source="prestation", target="prestation"),
-		@Mapping(source="coursier", target="coursier"),
 	})
-    Command toEntity(CommandDto dto, Customer customer, Prestation prestation, Coursier coursier) throws ParseException;
+    Command toEntity(CommandDto dto, Utilisateur utilisateur, Prestation prestation) throws ParseException;
 
     //List<Command> toEntities(List<CommandDto> dtos) throws ParseException;
 

@@ -1,7 +1,7 @@
                                             										
 /*
  * Java business for entity table moyen_deplacement 
- * Created on 2024-09-29 ( Time 22:05:55 )
+ * Created on 2024-10-03 ( Time 13:00:22 )
  * Generator tool : Telosys Tools Generator ( version 3.3.0 )
  * Copyright 2018 Geo. All Rights Reserved.
  */
@@ -45,7 +45,7 @@ public class MoyenDeplacementBusiness implements IBasicBusiness<Request<MoyenDep
 	@Autowired
 	private MoyenDeplacementRepository moyenDeplacementRepository;
 	@Autowired
-	private CoursierMoyenDeplacementRepository coursierMoyenDeplacementRepository;
+	private PrestationMoyenDeplacementRepository prestationMoyenDeplacementRepository;
 	@Autowired
 	private FunctionalError functionalError;
 	@Autowired
@@ -280,10 +280,10 @@ public class MoyenDeplacementBusiness implements IBasicBusiness<Request<MoyenDep
 			// ----------- CHECK IF DATA IS USED
 			// -----------------------------------------------------------------------
 
-			// coursierMoyenDeplacement
-			List<CoursierMoyenDeplacement> listOfCoursierMoyenDeplacement = coursierMoyenDeplacementRepository.findByMoyenDeplacementId(existingEntity.getId(), false);
-			if (listOfCoursierMoyenDeplacement != null && !listOfCoursierMoyenDeplacement.isEmpty()){
-				response.setStatus(functionalError.DATA_NOT_DELETABLE("(" + listOfCoursierMoyenDeplacement.size() + ")", locale));
+			// prestationMoyenDeplacement
+			List<PrestationMoyenDeplacement> listOfPrestationMoyenDeplacement = prestationMoyenDeplacementRepository.findByMoyenDeplacementId(existingEntity.getId(), false);
+			if (listOfPrestationMoyenDeplacement != null && !listOfPrestationMoyenDeplacement.isEmpty()){
+				response.setStatus(functionalError.DATA_NOT_DELETABLE("(" + listOfPrestationMoyenDeplacement.size() + ")", locale));
 				response.setHasError(true);
 				return response;
 			}

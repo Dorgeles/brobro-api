@@ -2,7 +2,7 @@
 
 /*
  * Java transformer for entity table zone_livraison 
- * Created on 2024-09-29 ( Time 22:05:55 )
+ * Created on 2024-10-03 ( Time 13:19:22 )
  * Generator tool : Telosys Tools Generator ( version 3.3.0 )
  * Copyright 2018 Geo. All Rights Reserved.
  */
@@ -40,7 +40,6 @@ public interface ZoneLivraisonTransformer {
 		@Mapping(source="entity.deletedAt", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="deletedAt"),
 		@Mapping(source="entity.updatedAt", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="updatedAt"),
 		@Mapping(source="entity.createdAt", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="createdAt"),
-		@Mapping(source="entity.coursier.id", target="coursierId"),
 	})
 	ZoneLivraisonDto toDto(ZoneLivraison entity) throws ParseException;
 
@@ -80,9 +79,8 @@ public interface ZoneLivraisonTransformer {
 		@Mapping(source="dto.deletedAt", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="deletedAt"),
 		@Mapping(source="dto.updatedAt", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="updatedAt"),
 		@Mapping(source="dto.createdAt", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="createdAt"),
-		@Mapping(source="coursier", target="coursier"),
 	})
-    ZoneLivraison toEntity(ZoneLivraisonDto dto, Coursier coursier) throws ParseException;
+    ZoneLivraison toEntity(ZoneLivraisonDto dto) throws ParseException;
 
     //List<ZoneLivraison> toEntities(List<ZoneLivraisonDto> dtos) throws ParseException;
 

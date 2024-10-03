@@ -1,7 +1,7 @@
                                                             														
 /*
  * Java business for entity table prestation 
- * Created on 2024-09-29 ( Time 23:04:15 )
+ * Created on 2024-10-03 ( Time 13:00:22 )
  * Generator tool : Telosys Tools Generator ( version 3.3.0 )
  * Copyright 2018 Geo. All Rights Reserved.
  */
@@ -45,11 +45,15 @@ public class PrestationBusiness implements IBasicBusiness<Request<PrestationDto>
 	@Autowired
 	private PrestationRepository prestationRepository;
 	@Autowired
-	private EvaluationPrestationRepository evaluationPrestationRepository;
+	private PrestationMoyenDeplacementRepository prestationMoyenDeplacementRepository;
 	@Autowired
 	private CommandRepository commandRepository;
 	@Autowired
 	private ImagesPrestationRepository imagesPrestationRepository;
+	@Autowired
+	private PrestataireZoneLivraisonRepository prestataireZoneLivraisonRepository;
+	@Autowired
+	private ActivitePrestationRepository activitePrestationRepository;
 	@Autowired
 	private FunctionalError functionalError;
 	@Autowired
@@ -300,10 +304,10 @@ public class PrestationBusiness implements IBasicBusiness<Request<PrestationDto>
 			// ----------- CHECK IF DATA IS USED
 			// -----------------------------------------------------------------------
 
-			// evaluationPrestation
-			List<EvaluationPrestation> listOfEvaluationPrestation = evaluationPrestationRepository.findByPrestationId(existingEntity.getId(), false);
-			if (listOfEvaluationPrestation != null && !listOfEvaluationPrestation.isEmpty()){
-				response.setStatus(functionalError.DATA_NOT_DELETABLE("(" + listOfEvaluationPrestation.size() + ")", locale));
+			// prestationMoyenDeplacement
+			List<PrestationMoyenDeplacement> listOfPrestationMoyenDeplacement = prestationMoyenDeplacementRepository.findByPresatationId(existingEntity.getId(), false);
+			if (listOfPrestationMoyenDeplacement != null && !listOfPrestationMoyenDeplacement.isEmpty()){
+				response.setStatus(functionalError.DATA_NOT_DELETABLE("(" + listOfPrestationMoyenDeplacement.size() + ")", locale));
 				response.setHasError(true);
 				return response;
 			}
@@ -318,6 +322,20 @@ public class PrestationBusiness implements IBasicBusiness<Request<PrestationDto>
 			List<ImagesPrestation> listOfImagesPrestation = imagesPrestationRepository.findByPrestationId(existingEntity.getId(), false);
 			if (listOfImagesPrestation != null && !listOfImagesPrestation.isEmpty()){
 				response.setStatus(functionalError.DATA_NOT_DELETABLE("(" + listOfImagesPrestation.size() + ")", locale));
+				response.setHasError(true);
+				return response;
+			}
+			// prestataireZoneLivraison
+			List<PrestataireZoneLivraison> listOfPrestataireZoneLivraison = prestataireZoneLivraisonRepository.findByPrestataireId(existingEntity.getId(), false);
+			if (listOfPrestataireZoneLivraison != null && !listOfPrestataireZoneLivraison.isEmpty()){
+				response.setStatus(functionalError.DATA_NOT_DELETABLE("(" + listOfPrestataireZoneLivraison.size() + ")", locale));
+				response.setHasError(true);
+				return response;
+			}
+			// activitePrestation
+			List<ActivitePrestation> listOfActivitePrestation = activitePrestationRepository.findByPrestationId(existingEntity.getId(), false);
+			if (listOfActivitePrestation != null && !listOfActivitePrestation.isEmpty()){
+				response.setStatus(functionalError.DATA_NOT_DELETABLE("(" + listOfActivitePrestation.size() + ")", locale));
 				response.setHasError(true);
 				return response;
 			}

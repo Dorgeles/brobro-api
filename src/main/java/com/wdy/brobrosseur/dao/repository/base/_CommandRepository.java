@@ -64,6 +64,15 @@ public interface _CommandRepository {
     @Query("select e from Command e where e.latitudeLivraison = :latitudeLivraison and e.isDeleted = :isDeleted")
     List<Command> findByLatitudeLivraison(@Param("latitudeLivraison")String latitudeLivraison, @Param("isDeleted")Boolean isDeleted);
     /**
+     * Finds Command by using note as a search criteria.
+     *
+     * @param note
+     * @return An Object Command whose note is equals to the given note. If
+     *         no Command is found, this method returns null.
+     */
+    @Query("select e from Command e where e.note = :note and e.isDeleted = :isDeleted")
+    List<Command> findByNote(@Param("note")Integer note, @Param("isDeleted")Boolean isDeleted);
+    /**
      * Finds Command by using longitudeLivraison as a search criteria.
      *
      * @param longitudeLivraison
@@ -137,24 +146,24 @@ public interface _CommandRepository {
     List<Command> findByCreatedAt(@Param("createdAt")Date createdAt, @Param("isDeleted")Boolean isDeleted);
 
     /**
-     * Finds Command by using consommateurId as a search criteria.
+     * Finds Command by using utilisateurId as a search criteria.
      *
-     * @param consommateurId
-     * @return An Object Command whose consommateurId is equals to the given consommateurId. If
+     * @param utilisateurId
+     * @return An Object Command whose utilisateurId is equals to the given utilisateurId. If
      *         no Command is found, this method returns null.
      */
-    @Query("select e from Command e where e.customer.id = :consommateurId and e.isDeleted = :isDeleted")
-    List<Command> findByConsommateurId(@Param("consommateurId")Integer consommateurId, @Param("isDeleted")Boolean isDeleted);
+    @Query("select e from Command e where e.utilisateur.id = :utilisateurId and e.isDeleted = :isDeleted")
+    List<Command> findByUtilisateurId(@Param("utilisateurId")Integer utilisateurId, @Param("isDeleted")Boolean isDeleted);
 
   /**
-   * Finds one Command by using consommateurId as a search criteria.
+   * Finds one Command by using utilisateurId as a search criteria.
    *
-   * @param consommateurId
-   * @return An Object Command whose consommateurId is equals to the given consommateurId. If
+   * @param utilisateurId
+   * @return An Object Command whose utilisateurId is equals to the given utilisateurId. If
    *         no Command is found, this method returns null.
    */
-  @Query("select e from Command e where e.customer.id = :consommateurId and e.isDeleted = :isDeleted")
-  Command findCommandByConsommateurId(@Param("consommateurId")Integer consommateurId, @Param("isDeleted")Boolean isDeleted);
+  @Query("select e from Command e where e.utilisateur.id = :utilisateurId and e.isDeleted = :isDeleted")
+  Command findCommandByUtilisateurId(@Param("utilisateurId")Integer utilisateurId, @Param("isDeleted")Boolean isDeleted);
 
 
     /**
@@ -176,27 +185,6 @@ public interface _CommandRepository {
    */
   @Query("select e from Command e where e.prestation.id = :prestationId and e.isDeleted = :isDeleted")
   Command findCommandByPrestationId(@Param("prestationId")Integer prestationId, @Param("isDeleted")Boolean isDeleted);
-
-
-    /**
-     * Finds Command by using coursierId as a search criteria.
-     *
-     * @param coursierId
-     * @return An Object Command whose coursierId is equals to the given coursierId. If
-     *         no Command is found, this method returns null.
-     */
-    @Query("select e from Command e where e.coursier.id = :coursierId and e.isDeleted = :isDeleted")
-    List<Command> findByCoursierId(@Param("coursierId")Integer coursierId, @Param("isDeleted")Boolean isDeleted);
-
-  /**
-   * Finds one Command by using coursierId as a search criteria.
-   *
-   * @param coursierId
-   * @return An Object Command whose coursierId is equals to the given coursierId. If
-   *         no Command is found, this method returns null.
-   */
-  @Query("select e from Command e where e.coursier.id = :coursierId and e.isDeleted = :isDeleted")
-  Command findCommandByCoursierId(@Param("coursierId")Integer coursierId, @Param("isDeleted")Boolean isDeleted);
 
 
 
@@ -307,6 +295,9 @@ public interface _CommandRepository {
             if (Utilities.isNotBlank(dto.getLatitudeLivraison()) || Utilities.searchParamIsNotEmpty(dto.getLatitudeLivraisonParam())) {
                 listOfQuery.add(CriteriaUtils.generateCriteria("latitudeLivraison", dto.getLatitudeLivraison(), "e.latitudeLivraison", "String", dto.getLatitudeLivraisonParam(), param, index, locale));
             }
+            if (dto.getNote() != null || Utilities.searchParamIsNotEmpty(dto.getNoteParam())) {
+                listOfQuery.add(CriteriaUtils.generateCriteria("note", dto.getNote(), "e.note", "Integer", dto.getNoteParam(), param, index, locale));
+            }
             if (Utilities.isNotBlank(dto.getLongitudeLivraison()) || Utilities.searchParamIsNotEmpty(dto.getLongitudeLivraisonParam())) {
                 listOfQuery.add(CriteriaUtils.generateCriteria("longitudeLivraison", dto.getLongitudeLivraison(), "e.longitudeLivraison", "String", dto.getLongitudeLivraisonParam(), param, index, locale));
             }
@@ -331,14 +322,17 @@ public interface _CommandRepository {
             if (Utilities.isNotBlank(dto.getCreatedAt()) || Utilities.searchParamIsNotEmpty(dto.getCreatedAtParam())) {
                 listOfQuery.add(CriteriaUtils.generateCriteria("createdAt", dto.getCreatedAt(), "e.createdAt", "Date", dto.getCreatedAtParam(), param, index, locale));
             }
-                        if (dto.getConsommateurId() != null || Utilities.searchParamIsNotEmpty(dto.getConsommateurIdParam())) {
-                listOfQuery.add(CriteriaUtils.generateCriteria("consommateurId", dto.getConsommateurId(), "e.customer.id", "Integer", dto.getConsommateurIdParam(), param, index, locale));
+                        if (dto.getUtilisateurId() != null || Utilities.searchParamIsNotEmpty(dto.getUtilisateurIdParam())) {
+                listOfQuery.add(CriteriaUtils.generateCriteria("utilisateurId", dto.getUtilisateurId(), "e.utilisateur.id", "Integer", dto.getUtilisateurIdParam(), param, index, locale));
             }
                         if (dto.getPrestationId() != null || Utilities.searchParamIsNotEmpty(dto.getPrestationIdParam())) {
                 listOfQuery.add(CriteriaUtils.generateCriteria("prestationId", dto.getPrestationId(), "e.prestation.id", "Integer", dto.getPrestationIdParam(), param, index, locale));
             }
-                        if (dto.getCoursierId() != null || Utilities.searchParamIsNotEmpty(dto.getCoursierIdParam())) {
-                listOfQuery.add(CriteriaUtils.generateCriteria("coursierId", dto.getCoursierId(), "e.coursier.id", "Integer", dto.getCoursierIdParam(), param, index, locale));
+            if (Utilities.isNotBlank(dto.getUtilisateurNom()) || Utilities.searchParamIsNotEmpty(dto.getUtilisateurNomParam())) {
+                listOfQuery.add(CriteriaUtils.generateCriteria("utilisateurNom", dto.getUtilisateurNom(), "e.utilisateur.nom", "String", dto.getUtilisateurNomParam(), param, index, locale));
+            }
+            if (Utilities.isNotBlank(dto.getUtilisateurPrenom()) || Utilities.searchParamIsNotEmpty(dto.getUtilisateurPrenomParam())) {
+                listOfQuery.add(CriteriaUtils.generateCriteria("utilisateurPrenom", dto.getUtilisateurPrenom(), "e.utilisateur.prenom", "String", dto.getUtilisateurPrenomParam(), param, index, locale));
             }
             if (Utilities.isNotBlank(dto.getPrestationLibelle()) || Utilities.searchParamIsNotEmpty(dto.getPrestationLibelleParam())) {
                 listOfQuery.add(CriteriaUtils.generateCriteria("prestationLibelle", dto.getPrestationLibelle(), "e.prestation.libelle", "String", dto.getPrestationLibelleParam(), param, index, locale));

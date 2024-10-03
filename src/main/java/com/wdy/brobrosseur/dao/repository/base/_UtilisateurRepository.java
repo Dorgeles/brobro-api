@@ -180,15 +180,27 @@ public interface _UtilisateurRepository {
      */
     @Query("select e from Utilisateur e where e.createdAt = :createdAt and e.isDeleted = :isDeleted")
     List<Utilisateur> findByCreatedAt(@Param("createdAt")Date createdAt, @Param("isDeleted")Boolean isDeleted);
+
     /**
-     * Finds Utilisateur by using typeClient as a search criteria.
+     * Finds Utilisateur by using typeClientId as a search criteria.
      *
-     * @param typeClient
-     * @return An Object Utilisateur whose typeClient is equals to the given typeClient. If
+     * @param typeClientId
+     * @return An Object Utilisateur whose typeClientId is equals to the given typeClientId. If
      *         no Utilisateur is found, this method returns null.
      */
-    @Query("select e from Utilisateur e where e.typeClient = :typeClient and e.isDeleted = :isDeleted")
-    List<Utilisateur> findByTypeClient(@Param("typeClient")Integer typeClient, @Param("isDeleted")Boolean isDeleted);
+    @Query("select e from Utilisateur e where e.typeClient.id = :typeClientId and e.isDeleted = :isDeleted")
+    List<Utilisateur> findByTypeClientId(@Param("typeClientId")Integer typeClientId, @Param("isDeleted")Boolean isDeleted);
+
+  /**
+   * Finds one Utilisateur by using typeClientId as a search criteria.
+   *
+   * @param typeClientId
+   * @return An Object Utilisateur whose typeClientId is equals to the given typeClientId. If
+   *         no Utilisateur is found, this method returns null.
+   */
+  @Query("select e from Utilisateur e where e.typeClient.id = :typeClientId and e.isDeleted = :isDeleted")
+  Utilisateur findUtilisateurByTypeClientId(@Param("typeClientId")Integer typeClientId, @Param("isDeleted")Boolean isDeleted);
+
 
 
 
@@ -337,8 +349,11 @@ public interface _UtilisateurRepository {
             if (Utilities.isNotBlank(dto.getCreatedAt()) || Utilities.searchParamIsNotEmpty(dto.getCreatedAtParam())) {
                 listOfQuery.add(CriteriaUtils.generateCriteria("createdAt", dto.getCreatedAt(), "e.createdAt", "Date", dto.getCreatedAtParam(), param, index, locale));
             }
-            if (dto.getTypeClient() != null || Utilities.searchParamIsNotEmpty(dto.getTypeClientParam())) {
-                listOfQuery.add(CriteriaUtils.generateCriteria("typeClient", dto.getTypeClient(), "e.typeClient", "Integer", dto.getTypeClientParam(), param, index, locale));
+                        if (dto.getTypeClientId() != null || Utilities.searchParamIsNotEmpty(dto.getTypeClientIdParam())) {
+                listOfQuery.add(CriteriaUtils.generateCriteria("typeClientId", dto.getTypeClientId(), "e.typeClient.id", "Integer", dto.getTypeClientIdParam(), param, index, locale));
+            }
+            if (Utilities.isNotBlank(dto.getTypeClientLibelle()) || Utilities.searchParamIsNotEmpty(dto.getTypeClientLibelleParam())) {
+                listOfQuery.add(CriteriaUtils.generateCriteria("typeClientLibelle", dto.getTypeClientLibelle(), "e.typeClient.libelle", "String", dto.getTypeClientLibelleParam(), param, index, locale));
             }
 
             /*List<String> listOfCustomQuery = _generateCriteria(dto, param, index, locale);

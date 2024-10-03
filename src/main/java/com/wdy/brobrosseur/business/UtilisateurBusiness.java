@@ -1,7 +1,7 @@
                                                                             																		
 /*
  * Java business for entity table utilisateur 
- * Created on 2024-09-29 ( Time 22:52:48 )
+ * Created on 2024-10-03 ( Time 13:00:22 )
  * Generator tool : Telosys Tools Generator ( version 3.3.0 )
  * Copyright 2018 Geo. All Rights Reserved.
  */
@@ -18,7 +18,6 @@ import javax.persistence.PersistenceContext;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import java.util.stream.Collectors;
 
 import com.wdy.brobrosseur.utils.*;
 import com.wdy.brobrosseur.utils.dto.*;
@@ -29,6 +28,7 @@ import com.wdy.brobrosseur.utils.contract.Request;
 import com.wdy.brobrosseur.utils.contract.Response;
 import com.wdy.brobrosseur.utils.dto.transformer.*;
 import com.wdy.brobrosseur.dao.entity.Utilisateur;
+import com.wdy.brobrosseur.dao.entity.TypeClient;
 import com.wdy.brobrosseur.dao.entity.*;
 import com.wdy.brobrosseur.dao.repository.*;
 
@@ -46,11 +46,13 @@ public class UtilisateurBusiness implements IBasicBusiness<Request<UtilisateurDt
 	@Autowired
 	private UtilisateurRepository utilisateurRepository;
 	@Autowired
-	private VendeurRepository vendeurRepository;
+	private TypeClientRepository typeClientRepository;
 	@Autowired
-	private CustomerRepository customerRepository;
+	private UtilisateurRoleRepository utilisateurRoleRepository;
 	@Autowired
-	private CoursierRepository coursierRepository;
+	private UtilisateurActiviteRepository utilisateurActiviteRepository;
+	@Autowired
+	private CommandRepository commandRepository;
 	@Autowired
 	private FunctionalError functionalError;
 	@Autowired
@@ -86,9 +88,16 @@ public class UtilisateurBusiness implements IBasicBusiness<Request<UtilisateurDt
 			// Definir les parametres obligatoires
 			Map<String, java.lang.Object> fieldsToVerify = new HashMap<String, java.lang.Object>();
 			fieldsToVerify.put("nom", dto.getNom());
+			fieldsToVerify.put("username", dto.getUsername());
 			fieldsToVerify.put("prenom", dto.getPrenom());
 			fieldsToVerify.put("email", dto.getEmail());
 			fieldsToVerify.put("telephone", dto.getTelephone());
+			fieldsToVerify.put("telephone2", dto.getTelephone2());
+			fieldsToVerify.put("motDePasse", dto.getMotDePasse());
+			fieldsToVerify.put("statusId", dto.getStatusId());
+			fieldsToVerify.put("deletedAt", dto.getDeletedAt());
+			fieldsToVerify.put("isLocked", dto.getIsLocked());
+			fieldsToVerify.put("typeClientId", dto.getTypeClientId());
 			if (!Validate.RequiredValue(fieldsToVerify).isGood()) {
 				response.setStatus(functionalError.FIELD_EMPTY(Validate.getValidate().getField(), locale));
 				response.setHasError(true);
@@ -97,6 +106,15 @@ public class UtilisateurBusiness implements IBasicBusiness<Request<UtilisateurDt
 
 			// Verify if utilisateur to insert do not exist
 			Utilisateur existingEntity = null;
+
+/*
+			if (existingEntity != null) {
+				response.setStatus(functionalError.DATA_EXIST("utilisateur id -> " + dto.getId(), locale));
+				response.setHasError(true);
+				return response;
+			}
+
+*/
 			// verif unique email in db
 			existingEntity = utilisateurRepository.findByEmail(dto.getEmail(), false);
 			if (existingEntity != null) {
@@ -110,49 +128,19 @@ public class UtilisateurBusiness implements IBasicBusiness<Request<UtilisateurDt
 				response.setHasError(true);
 				return response;
 			}
-			existingEntity = utilisateurRepository.findByTelephone(dto.getTelephone(), false);
-			if (existingEntity != null) {
-				response.setStatus(functionalError.DATA_EXIST("utilisateur contact -> " + dto.getTelephone(), locale));
-				response.setHasError(true);
-				return response;
-			}
-			// verif unique email in items to save
-			if (items.stream().anyMatch(a -> a.getTelephone().equalsIgnoreCase(dto.getTelephone()))) {
-				response.setStatus(functionalError.DATA_DUPLICATE(" contact ", locale));
-				response.setHasError(true);
-				return response;
-			}
-			if (Utilities.isNotBlank(dto.getUsername())){
-				String generatedUserName =Utilities.getUsernameFromFullName(dto.getNom()+ dto.getPrenom());
-				// vérification de l'unicité du username
-				List<Utilisateur> existingUsername = utilisateurRepository.findByUsername(generatedUserName, false);
-				if (Utilities.isNotEmpty(existingUsername)) {
-					// recuperer le dernier caractère du username
-					String foundUsername = existingUsername.get(existingUsername.size() - 1).getUsername();
-					// incrementer le dernier caractère du username s'il est un chiffre
-					if (Character.isDigit(foundUsername.charAt(foundUsername.length() - 1))) {
-						int incrementer = Integer.parseInt(foundUsername.substring(foundUsername.length() - 1)) + 1;
-						// le username incrementé
-						generatedUserName = generatedUserName.substring(0, generatedUserName.length() - 1);
-						generatedUserName = generatedUserName + incrementer;
-					} else {
-						generatedUserName = generatedUserName + "1";
-					}
-					dto.setUsername(generatedUserName);
-				}
-			} else {
-				List<Utilisateur> existingUsername = utilisateurRepository.findByUsername(dto.getUsername(), false);
-				if (Utilities.isNotEmpty(existingUsername)) {
-					Status status = new Status();
-					status.setCode("409");
-					status.setMessage("Le username "+  dto.getUsername() +" proposé existe déjà");
-					response.setStatus(status);
+
+			// Verify if typeClient exist
+			TypeClient existingTypeClient = null;
+			if (dto.getTypeClientId() != null && dto.getTypeClientId() > 0){
+				existingTypeClient = typeClientRepository.findOne(dto.getTypeClientId(), false);
+				if (existingTypeClient == null) {
+					response.setStatus(functionalError.DATA_NOT_EXIST("typeClient typeClientId -> " + dto.getTypeClientId(), locale));
 					response.setHasError(true);
 					return response;
 				}
 			}
-			Utilisateur entityToSave = null;
-			entityToSave = UtilisateurTransformer.INSTANCE.toEntity(dto);
+				Utilisateur entityToSave = null;
+			entityToSave = UtilisateurTransformer.INSTANCE.toEntity(dto, existingTypeClient);
 			entityToSave.setIsDeleted(false);
 			entityToSave.setCreatedBy(request.getUser());
 			entityToSave.setCreatedAt(Utilities.getCurrentDate());
@@ -226,6 +214,16 @@ public class UtilisateurBusiness implements IBasicBusiness<Request<UtilisateurDt
 				return response;
 			}
 
+			// Verify if typeClient exist
+			if (dto.getTypeClientId() != null && dto.getTypeClientId() > 0){
+				TypeClient existingTypeClient = typeClientRepository.findOne(dto.getTypeClientId(), false);
+				if (existingTypeClient == null) {
+					response.setStatus(functionalError.DATA_NOT_EXIST("typeClient typeClientId -> " + dto.getTypeClientId(), locale));
+					response.setHasError(true);
+					return response;
+				}
+				entityToSave.setTypeClient(existingTypeClient);
+			}
 			if (Utilities.notBlank(dto.getNom())) {
 				entityToSave.setNom(dto.getNom());
 			}
@@ -261,9 +259,6 @@ public class UtilisateurBusiness implements IBasicBusiness<Request<UtilisateurDt
 			}
 			if (dto.getIsLocked() != null) {
 				entityToSave.setIsLocked(dto.getIsLocked());
-			}
-			if (dto.getTypeClient() != null && dto.getTypeClient() > 0) {
-				entityToSave.setTypeClient(dto.getTypeClient());
 			}
 			entityToSave.setUpdatedBy(request.getUser());
 			entityToSave.setUpdatedAt(Utilities.getCurrentDate());
@@ -341,24 +336,24 @@ public class UtilisateurBusiness implements IBasicBusiness<Request<UtilisateurDt
 			// ----------- CHECK IF DATA IS USED
 			// -----------------------------------------------------------------------
 
-			// vendeur
-			List<Vendeur> listOfVendeur = vendeurRepository.findByUtilisateurId(existingEntity.getId(), false);
-			if (listOfVendeur != null && !listOfVendeur.isEmpty()){
-				response.setStatus(functionalError.DATA_NOT_DELETABLE("(" + listOfVendeur.size() + ")", locale));
+			// utilisateurRole
+			List<UtilisateurRole> listOfUtilisateurRole = utilisateurRoleRepository.findByUtilisateurId(existingEntity.getId(), false);
+			if (listOfUtilisateurRole != null && !listOfUtilisateurRole.isEmpty()){
+				response.setStatus(functionalError.DATA_NOT_DELETABLE("(" + listOfUtilisateurRole.size() + ")", locale));
 				response.setHasError(true);
 				return response;
 			}
-			// customer
-			List<Customer> listOfCustomer = customerRepository.findByUtilisateurId(existingEntity.getId(), false);
-			if (listOfCustomer != null && !listOfCustomer.isEmpty()){
-				response.setStatus(functionalError.DATA_NOT_DELETABLE("(" + listOfCustomer.size() + ")", locale));
+			// utilisateurActivite
+			List<UtilisateurActivite> listOfUtilisateurActivite = utilisateurActiviteRepository.findByUtilisateurId(existingEntity.getId(), false);
+			if (listOfUtilisateurActivite != null && !listOfUtilisateurActivite.isEmpty()){
+				response.setStatus(functionalError.DATA_NOT_DELETABLE("(" + listOfUtilisateurActivite.size() + ")", locale));
 				response.setHasError(true);
 				return response;
 			}
-			// coursier
-			List<Coursier> listOfCoursier = coursierRepository.findByUtilisateurId(existingEntity.getId(), false);
-			if (listOfCoursier != null && !listOfCoursier.isEmpty()){
-				response.setStatus(functionalError.DATA_NOT_DELETABLE("(" + listOfCoursier.size() + ")", locale));
+			// command
+			List<Command> listOfCommand = commandRepository.findByUtilisateurId(existingEntity.getId(), false);
+			if (listOfCommand != null && !listOfCommand.isEmpty()){
+				response.setStatus(functionalError.DATA_NOT_DELETABLE("(" + listOfCommand.size() + ")", locale));
 				response.setHasError(true);
 				return response;
 			}

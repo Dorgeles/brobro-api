@@ -2,7 +2,7 @@
 
 /*
  * Java controller for entity table prestation 
- * Created on 2024-09-29 ( Time 23:04:15 )
+ * Created on 2024-10-03 ( Time 13:00:22 )
  * Generator tool : Telosys Tools Generator ( version 3.3.0 )
  * Copyright 2017 Savoir Faire Linux. All Rights Reserved.
  */

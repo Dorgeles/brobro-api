@@ -1,7 +1,7 @@
 
 /*
  * Java dto for entity table utilisateur 
- * Created on 2024-09-29 ( Time 22:52:47 )
+ * Created on 2024-10-03 ( Time 13:00:22 )
  * Generator tool : Telosys Tools Generator ( version 3.3.0 )
  * Copyright 2018 Geo. All Rights Reserved.
  */
@@ -49,11 +49,13 @@ public class _UtilisateurDto implements Cloneable {
     protected Boolean    isLocked             ;
 	protected String     updatedAt            ;
 	protected String     createdAt            ;
-    protected Integer    typeClient           ;
+    protected Integer    typeClientId         ;
 
     //----------------------------------------------------------------------
     // ENTITY LINKS FIELD ( RELATIONSHIP )
     //----------------------------------------------------------------------
+	//protected Integer    typeClient;
+	protected String typeClientLibelle;
 
 	// Search param
 	protected SearchParam<Integer>  idParam               ;                     
@@ -72,7 +74,9 @@ public class _UtilisateurDto implements Cloneable {
 	protected SearchParam<Boolean>  isLockedParam         ;                     
 	protected SearchParam<String>   updatedAtParam        ;                     
 	protected SearchParam<String>   createdAtParam        ;                     
+	protected SearchParam<Integer>  typeClientIdParam     ;                     
 	protected SearchParam<Integer>  typeClientParam       ;                     
+	protected SearchParam<String>   typeClientLibelleParam;                     
 
 	// order param
 	protected String orderField;

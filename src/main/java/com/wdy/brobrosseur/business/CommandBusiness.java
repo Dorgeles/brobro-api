@@ -1,7 +1,7 @@
                                                                 															
 /*
  * Java business for entity table command 
- * Created on 2024-09-29 ( Time 22:05:54 )
+ * Created on 2024-10-03 ( Time 13:00:22 )
  * Generator tool : Telosys Tools Generator ( version 3.3.0 )
  * Copyright 2018 Geo. All Rights Reserved.
  */
@@ -28,9 +28,8 @@ import com.wdy.brobrosseur.utils.contract.Request;
 import com.wdy.brobrosseur.utils.contract.Response;
 import com.wdy.brobrosseur.utils.dto.transformer.*;
 import com.wdy.brobrosseur.dao.entity.Command;
-import com.wdy.brobrosseur.dao.entity.Customer;
+import com.wdy.brobrosseur.dao.entity.Utilisateur;
 import com.wdy.brobrosseur.dao.entity.Prestation;
-import com.wdy.brobrosseur.dao.entity.Coursier;
 import com.wdy.brobrosseur.dao.entity.*;
 import com.wdy.brobrosseur.dao.repository.*;
 
@@ -50,13 +49,9 @@ public class CommandBusiness implements IBasicBusiness<Request<CommandDto>, Resp
 	@Autowired
 	private EvaluationCommandRepository evaluationCommandRepository;
 	@Autowired
-	private CustomerRepository customerRepository;
+	private UtilisateurRepository utilisateurRepository;
 	@Autowired
 	private PrestationRepository prestationRepository;
-	@Autowired
-	private EvaluationPrestationRepository evaluationPrestationRepository;
-	@Autowired
-	private CoursierRepository coursierRepository;
 	@Autowired
 	private FunctionalError functionalError;
 	@Autowired
@@ -91,11 +86,11 @@ public class CommandBusiness implements IBasicBusiness<Request<CommandDto>, Resp
 		for (CommandDto dto : request.getDatas()) {
 			// Definir les parametres obligatoires
 			Map<String, java.lang.Object> fieldsToVerify = new HashMap<String, java.lang.Object>();
-			fieldsToVerify.put("consommateurId", dto.getConsommateurId());
-			fieldsToVerify.put("coursierId", dto.getCoursierId());
+			fieldsToVerify.put("utilisateurId", dto.getUtilisateurId());
 			fieldsToVerify.put("prestationId", dto.getPrestationId());
 			fieldsToVerify.put("typeCommand", dto.getTypeCommand());
 			fieldsToVerify.put("latitudeLivraison", dto.getLatitudeLivraison());
+			fieldsToVerify.put("note", dto.getNote());
 			fieldsToVerify.put("longitudeLivraison", dto.getLongitudeLivraison());
 			fieldsToVerify.put("statusId", dto.getStatusId());
 			fieldsToVerify.put("deletedAt", dto.getDeletedAt());
@@ -116,12 +111,12 @@ public class CommandBusiness implements IBasicBusiness<Request<CommandDto>, Resp
 			}
 
 */
-			// Verify if customer exist
-			Customer existingCustomer = null;
-			if (dto.getConsommateurId() != null && dto.getConsommateurId() > 0){
-				existingCustomer = customerRepository.findOne(dto.getConsommateurId(), false);
-				if (existingCustomer == null) {
-					response.setStatus(functionalError.DATA_NOT_EXIST("customer consommateurId -> " + dto.getConsommateurId(), locale));
+			// Verify if utilisateur exist
+			Utilisateur existingUtilisateur = null;
+			if (dto.getUtilisateurId() != null && dto.getUtilisateurId() > 0){
+				existingUtilisateur = utilisateurRepository.findOne(dto.getUtilisateurId(), false);
+				if (existingUtilisateur == null) {
+					response.setStatus(functionalError.DATA_NOT_EXIST("utilisateur utilisateurId -> " + dto.getUtilisateurId(), locale));
 					response.setHasError(true);
 					return response;
 				}
@@ -136,18 +131,8 @@ public class CommandBusiness implements IBasicBusiness<Request<CommandDto>, Resp
 					return response;
 				}
 			}
-			// Verify if coursier exist
-			Coursier existingCoursier = null;
-			if (dto.getCoursierId() != null && dto.getCoursierId() > 0){
-				existingCoursier = coursierRepository.findOne(dto.getCoursierId(), false);
-				if (existingCoursier == null) {
-					response.setStatus(functionalError.DATA_NOT_EXIST("coursier coursierId -> " + dto.getCoursierId(), locale));
-					response.setHasError(true);
-					return response;
-				}
-			}
 				Command entityToSave = null;
-			entityToSave = CommandTransformer.INSTANCE.toEntity(dto, existingCustomer, existingPrestation, existingCoursier);
+			entityToSave = CommandTransformer.INSTANCE.toEntity(dto, existingUtilisateur, existingPrestation);
 			entityToSave.setIsDeleted(false);
 			entityToSave.setCreatedBy(request.getUser());
 			entityToSave.setCreatedAt(Utilities.getCurrentDate());
@@ -221,15 +206,15 @@ public class CommandBusiness implements IBasicBusiness<Request<CommandDto>, Resp
 				return response;
 			}
 
-			// Verify if customer exist
-			if (dto.getConsommateurId() != null && dto.getConsommateurId() > 0){
-				Customer existingCustomer = customerRepository.findOne(dto.getConsommateurId(), false);
-				if (existingCustomer == null) {
-					response.setStatus(functionalError.DATA_NOT_EXIST("customer consommateurId -> " + dto.getConsommateurId(), locale));
+			// Verify if utilisateur exist
+			if (dto.getUtilisateurId() != null && dto.getUtilisateurId() > 0){
+				Utilisateur existingUtilisateur = utilisateurRepository.findOne(dto.getUtilisateurId(), false);
+				if (existingUtilisateur == null) {
+					response.setStatus(functionalError.DATA_NOT_EXIST("utilisateur utilisateurId -> " + dto.getUtilisateurId(), locale));
 					response.setHasError(true);
 					return response;
 				}
-				entityToSave.setCustomer(existingCustomer);
+				entityToSave.setUtilisateur(existingUtilisateur);
 			}
 			// Verify if prestation exist
 			if (dto.getPrestationId() != null && dto.getPrestationId() > 0){
@@ -241,21 +226,14 @@ public class CommandBusiness implements IBasicBusiness<Request<CommandDto>, Resp
 				}
 				entityToSave.setPrestation(existingPrestation);
 			}
-			// Verify if coursier exist
-			if (dto.getCoursierId() != null && dto.getCoursierId() > 0){
-				Coursier existingCoursier = coursierRepository.findOne(dto.getCoursierId(), false);
-				if (existingCoursier == null) {
-					response.setStatus(functionalError.DATA_NOT_EXIST("coursier coursierId -> " + dto.getCoursierId(), locale));
-					response.setHasError(true);
-					return response;
-				}
-				entityToSave.setCoursier(existingCoursier);
-			}
 			if (Utilities.notBlank(dto.getTypeCommand())) {
 				entityToSave.setTypeCommand(dto.getTypeCommand());
 			}
 			if (Utilities.notBlank(dto.getLatitudeLivraison())) {
 				entityToSave.setLatitudeLivraison(dto.getLatitudeLivraison());
+			}
+			if (dto.getNote() != null && dto.getNote() > 0) {
+				entityToSave.setNote(dto.getNote());
 			}
 			if (Utilities.notBlank(dto.getLongitudeLivraison())) {
 				entityToSave.setLongitudeLivraison(dto.getLongitudeLivraison());
@@ -352,13 +330,6 @@ public class CommandBusiness implements IBasicBusiness<Request<CommandDto>, Resp
 			List<EvaluationCommand> listOfEvaluationCommand = evaluationCommandRepository.findByCommandeId(existingEntity.getId(), false);
 			if (listOfEvaluationCommand != null && !listOfEvaluationCommand.isEmpty()){
 				response.setStatus(functionalError.DATA_NOT_DELETABLE("(" + listOfEvaluationCommand.size() + ")", locale));
-				response.setHasError(true);
-				return response;
-			}
-			// evaluationPrestation
-			List<EvaluationPrestation> listOfEvaluationPrestation = evaluationPrestationRepository.findByCommandeId(existingEntity.getId(), false);
-			if (listOfEvaluationPrestation != null && !listOfEvaluationPrestation.isEmpty()){
-				response.setStatus(functionalError.DATA_NOT_DELETABLE("(" + listOfEvaluationPrestation.size() + ")", locale));
 				response.setHasError(true);
 				return response;
 			}

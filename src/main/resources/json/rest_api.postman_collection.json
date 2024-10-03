@@ -8,6 +8,232 @@
     },
     "item": [
 		{
+			"name": "activite",
+			"item": [
+                {
+					"name": "activite.create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"libelle\": \"\", \t\t\t\"description\": \"\", \t\t\t\"latitude\": \"\", \t\t\t\"longitude\": \"\", \t\t\t\"noteMoyenne\": \"\", \t\t\t\"statusId\": \"\", \t\t\t\"dateOuverture\": \"\", \t\t\t\"dateFermeture\": \"\", \t\t\t\"deletedAt\": \"\", \t\t\t\"dateFin\": \"\" \t\t}  \t]   }"
+						},
+						"url": {
+							"raw": "{{appUrl}}/activite/create",
+							"host": [
+								"{{appUrl}}"
+							],
+							"path": [
+								"activite",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+                    "name": "activite.update",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"id\": \"\", \t\t\t\"libelle\": \"\", \t\t\t\"description\": \"\", \t\t\t\"latitude\": \"\", \t\t\t\"longitude\": \"\", \t\t\t\"noteMoyenne\": \"\", \t\t\t\"statusId\": \"\", \t\t\t\"dateOuverture\": \"\", \t\t\t\"dateFermeture\": \"\", \t\t\t\"deletedAt\": \"\", \t\t\t\"dateFin\": \"\" \t\t}  \t]   }"
+                        },
+                        "url": {
+                            "raw": "{{appUrl}}/activite/update",
+                            "host": [
+                                "{{appUrl}}"
+                            ],
+                            "path": [
+                                "activite",
+                                "update"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                     "name": "activite.delete",
+                     "request": {
+                         "method": "POST",
+                         "header": [
+                             {
+                                 "key": "Content-Type",
+                                 "value": "application/json"
+                             }
+                         ],
+                         "body": {
+                             "mode": "raw",
+                            "raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"id\": \"\" \t\t}  \t]   }"
+                         },
+                         "url": {
+                             "raw": "{{appUrl}}/activite/delete",
+                             "host": [
+                                 "{{appUrl}}"
+                             ],
+                             "path": [
+                                 "activite",
+                                 "delete"
+                             ]
+                         }
+                     },
+                     "response": []
+                 },
+                 {
+                   "name": "activite.getByCriteria",
+                   "request": {
+                       "method": "POST",
+                       "header": [
+                           {
+                               "key": "Content-Type",
+                               "value": "application/json"
+                           }
+                       ],
+                       "body": {
+                           "mode": "raw",
+			            "raw": "{ \t\"user\":\"1\", \t\"isSimpleLoading\":false, \t\"data\":{   \t\t\"id\": \"\", \t\t\"libelle\": \"\", \t\t\"description\": \"\", \t\t\"latitude\": \"\", \t\t\"longitude\": \"\", \t\t\"noteMoyenne\": \"\", \t\t\"statusId\": \"\", \t\t\"dateOuverture\": \"\", \t\t\"dateFermeture\": \"\", \t\t\"updatedBy\": \"\", \t\t\"isDeleted\": \"\", \t\t\"createdBy\": \"\", \t\t\"deletedAt\": \"\", \t\t\"updatedAt\": \"\", \t\t\"createdAt\": \"\", \t\t\"dateFin\": \"\" \t}   }"
+},
+                       "url": {
+                           "raw": "{{appUrl}}/activite/getByCriteria",
+                           "host": [
+                               "{{appUrl}}"
+                           ],
+                           "path": [
+                               "activite",
+                               "getByCriteria"
+                           ]
+                       }
+                   },
+                   "response": []
+               }
+			]
+		},
+		{
+			"name": "activitePrestation",
+			"item": [
+                {
+					"name": "activitePrestation.create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"activiteId\": \"\", \t\t\t\"prestationId\": \"\", \t\t\t\"description\": \"\", \t\t\t\"libelle\": \"\", \t\t\t\"deletedAt\": \"\" \t\t}  \t]   }"
+						},
+						"url": {
+							"raw": "{{appUrl}}/activitePrestation/create",
+							"host": [
+								"{{appUrl}}"
+							],
+							"path": [
+								"activitePrestation",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+                    "name": "activitePrestation.update",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"id\": \"\", \t\t\t\"activiteId\": \"\", \t\t\t\"prestationId\": \"\", \t\t\t\"description\": \"\", \t\t\t\"libelle\": \"\", \t\t\t\"deletedAt\": \"\" \t\t}  \t]   }"
+                        },
+                        "url": {
+                            "raw": "{{appUrl}}/activitePrestation/update",
+                            "host": [
+                                "{{appUrl}}"
+                            ],
+                            "path": [
+                                "activitePrestation",
+                                "update"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                     "name": "activitePrestation.delete",
+                     "request": {
+                         "method": "POST",
+                         "header": [
+                             {
+                                 "key": "Content-Type",
+                                 "value": "application/json"
+                             }
+                         ],
+                         "body": {
+                             "mode": "raw",
+                            "raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"id\": \"\" \t\t}  \t]   }"
+                         },
+                         "url": {
+                             "raw": "{{appUrl}}/activitePrestation/delete",
+                             "host": [
+                                 "{{appUrl}}"
+                             ],
+                             "path": [
+                                 "activitePrestation",
+                                 "delete"
+                             ]
+                         }
+                     },
+                     "response": []
+                 },
+                 {
+                   "name": "activitePrestation.getByCriteria",
+                   "request": {
+                       "method": "POST",
+                       "header": [
+                           {
+                               "key": "Content-Type",
+                               "value": "application/json"
+                           }
+                       ],
+                       "body": {
+                           "mode": "raw",
+			            "raw": "{ \t\"user\":\"1\", \t\"isSimpleLoading\":false, \t\"data\":{   \t\t\"id\": \"\", \t\t\"activiteId\": \"\", \t\t\"prestationId\": \"\", \t\t\"description\": \"\", \t\t\"libelle\": \"\", \t\t\"updatedBy\": \"\", \t\t\"isDeleted\": \"\", \t\t\"createdBy\": \"\", \t\t\"deletedAt\": \"\", \t\t\"updatedAt\": \"\", \t\t\"createdAt\": \"\" \t}   }"
+},
+                       "url": {
+                           "raw": "{{appUrl}}/activitePrestation/getByCriteria",
+                           "host": [
+                               "{{appUrl}}"
+                           ],
+                           "path": [
+                               "activitePrestation",
+                               "getByCriteria"
+                           ]
+                       }
+                   },
+                   "response": []
+               }
+			]
+		},
+		{
 			"name": "command",
 			"item": [
                 {
@@ -22,7 +248,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"consommateurId\": \"\", \t\t\t\"coursierId\": \"\", \t\t\t\"prestationId\": \"\", \t\t\t\"typeCommand\": \"\", \t\t\t\"latitudeLivraison\": \"\", \t\t\t\"longitudeLivraison\": \"\", \t\t\t\"statusId\": \"\", \t\t\t\"deletedAt\": \"\" \t\t}  \t]   }"
+							"raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"utilisateurId\": \"\", \t\t\t\"prestationId\": \"\", \t\t\t\"typeCommand\": \"\", \t\t\t\"latitudeLivraison\": \"\", \t\t\t\"note\": \"\", \t\t\t\"longitudeLivraison\": \"\", \t\t\t\"statusId\": \"\", \t\t\t\"deletedAt\": \"\" \t\t}  \t]   }"
 						},
 						"url": {
 							"raw": "{{appUrl}}/command/create",
@@ -49,7 +275,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"id\": \"\", \t\t\t\"consommateurId\": \"\", \t\t\t\"coursierId\": \"\", \t\t\t\"prestationId\": \"\", \t\t\t\"typeCommand\": \"\", \t\t\t\"latitudeLivraison\": \"\", \t\t\t\"longitudeLivraison\": \"\", \t\t\t\"statusId\": \"\", \t\t\t\"deletedAt\": \"\" \t\t}  \t]   }"
+                            "raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"id\": \"\", \t\t\t\"utilisateurId\": \"\", \t\t\t\"prestationId\": \"\", \t\t\t\"typeCommand\": \"\", \t\t\t\"latitudeLivraison\": \"\", \t\t\t\"note\": \"\", \t\t\t\"longitudeLivraison\": \"\", \t\t\t\"statusId\": \"\", \t\t\t\"deletedAt\": \"\" \t\t}  \t]   }"
                         },
                         "url": {
                             "raw": "{{appUrl}}/command/update",
@@ -103,7 +329,7 @@
                        ],
                        "body": {
                            "mode": "raw",
-			            "raw": "{ \t\"user\":\"1\", \t\"isSimpleLoading\":false, \t\"data\":{   \t\t\"id\": \"\", \t\t\"consommateurId\": \"\", \t\t\"coursierId\": \"\", \t\t\"prestationId\": \"\", \t\t\"typeCommand\": \"\", \t\t\"latitudeLivraison\": \"\", \t\t\"longitudeLivraison\": \"\", \t\t\"statusId\": \"\", \t\t\"updatedBy\": \"\", \t\t\"isDeleted\": \"\", \t\t\"createdBy\": \"\", \t\t\"deletedAt\": \"\", \t\t\"updatedAt\": \"\", \t\t\"createdAt\": \"\" \t}   }"
+			            "raw": "{ \t\"user\":\"1\", \t\"isSimpleLoading\":false, \t\"data\":{   \t\t\"id\": \"\", \t\t\"utilisateurId\": \"\", \t\t\"prestationId\": \"\", \t\t\"typeCommand\": \"\", \t\t\"latitudeLivraison\": \"\", \t\t\"note\": \"\", \t\t\"longitudeLivraison\": \"\", \t\t\"statusId\": \"\", \t\t\"updatedBy\": \"\", \t\t\"isDeleted\": \"\", \t\t\"createdBy\": \"\", \t\t\"deletedAt\": \"\", \t\t\"updatedAt\": \"\", \t\t\"createdAt\": \"\" \t}   }"
 },
                        "url": {
                            "raw": "{{appUrl}}/command/getByCriteria",
@@ -112,345 +338,6 @@
                            ],
                            "path": [
                                "command",
-                               "getByCriteria"
-                           ]
-                       }
-                   },
-                   "response": []
-               }
-			]
-		},
-		{
-			"name": "coursier",
-			"item": [
-                {
-					"name": "coursier.create",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"utilisateurId\": \"\", \t\t\t\"disponible\": \"\", \t\t\t\"statusId\": \"\", \t\t\t\"deletedAt\": \"\" \t\t}  \t]   }"
-						},
-						"url": {
-							"raw": "{{appUrl}}/coursier/create",
-							"host": [
-								"{{appUrl}}"
-							],
-							"path": [
-								"coursier",
-								"create"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-                    "name": "coursier.update",
-                    "request": {
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"id\": \"\", \t\t\t\"utilisateurId\": \"\", \t\t\t\"disponible\": \"\", \t\t\t\"statusId\": \"\", \t\t\t\"deletedAt\": \"\" \t\t}  \t]   }"
-                        },
-                        "url": {
-                            "raw": "{{appUrl}}/coursier/update",
-                            "host": [
-                                "{{appUrl}}"
-                            ],
-                            "path": [
-                                "coursier",
-                                "update"
-                            ]
-                        }
-                    },
-                    "response": []
-                },
-                {
-                     "name": "coursier.delete",
-                     "request": {
-                         "method": "POST",
-                         "header": [
-                             {
-                                 "key": "Content-Type",
-                                 "value": "application/json"
-                             }
-                         ],
-                         "body": {
-                             "mode": "raw",
-                            "raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"id\": \"\" \t\t}  \t]   }"
-                         },
-                         "url": {
-                             "raw": "{{appUrl}}/coursier/delete",
-                             "host": [
-                                 "{{appUrl}}"
-                             ],
-                             "path": [
-                                 "coursier",
-                                 "delete"
-                             ]
-                         }
-                     },
-                     "response": []
-                 },
-                 {
-                   "name": "coursier.getByCriteria",
-                   "request": {
-                       "method": "POST",
-                       "header": [
-                           {
-                               "key": "Content-Type",
-                               "value": "application/json"
-                           }
-                       ],
-                       "body": {
-                           "mode": "raw",
-			            "raw": "{ \t\"user\":\"1\", \t\"isSimpleLoading\":false, \t\"data\":{   \t\t\"id\": \"\", \t\t\"utilisateurId\": \"\", \t\t\"disponible\": \"\", \t\t\"statusId\": \"\", \t\t\"updatedBy\": \"\", \t\t\"isDeleted\": \"\", \t\t\"createdBy\": \"\", \t\t\"deletedAt\": \"\", \t\t\"updatedAt\": \"\", \t\t\"createdAt\": \"\" \t}   }"
-},
-                       "url": {
-                           "raw": "{{appUrl}}/coursier/getByCriteria",
-                           "host": [
-                               "{{appUrl}}"
-                           ],
-                           "path": [
-                               "coursier",
-                               "getByCriteria"
-                           ]
-                       }
-                   },
-                   "response": []
-               }
-			]
-		},
-		{
-			"name": "coursierMoyenDeplacement",
-			"item": [
-                {
-					"name": "coursierMoyenDeplacement.create",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"coursierId\": \"\", \t\t\t\"moyenDeplacementId\": \"\", \t\t\t\"dateDebut\": \"\", \t\t\t\"dateFin\": \"\", \t\t\t\"statusId\": \"\", \t\t\t\"deletedAt\": \"\" \t\t}  \t]   }"
-						},
-						"url": {
-							"raw": "{{appUrl}}/coursierMoyenDeplacement/create",
-							"host": [
-								"{{appUrl}}"
-							],
-							"path": [
-								"coursierMoyenDeplacement",
-								"create"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-                    "name": "coursierMoyenDeplacement.update",
-                    "request": {
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"id\": \"\", \t\t\t\"coursierId\": \"\", \t\t\t\"moyenDeplacementId\": \"\", \t\t\t\"dateDebut\": \"\", \t\t\t\"dateFin\": \"\", \t\t\t\"statusId\": \"\", \t\t\t\"deletedAt\": \"\" \t\t}  \t]   }"
-                        },
-                        "url": {
-                            "raw": "{{appUrl}}/coursierMoyenDeplacement/update",
-                            "host": [
-                                "{{appUrl}}"
-                            ],
-                            "path": [
-                                "coursierMoyenDeplacement",
-                                "update"
-                            ]
-                        }
-                    },
-                    "response": []
-                },
-                {
-                     "name": "coursierMoyenDeplacement.delete",
-                     "request": {
-                         "method": "POST",
-                         "header": [
-                             {
-                                 "key": "Content-Type",
-                                 "value": "application/json"
-                             }
-                         ],
-                         "body": {
-                             "mode": "raw",
-                            "raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"id\": \"\" \t\t}  \t]   }"
-                         },
-                         "url": {
-                             "raw": "{{appUrl}}/coursierMoyenDeplacement/delete",
-                             "host": [
-                                 "{{appUrl}}"
-                             ],
-                             "path": [
-                                 "coursierMoyenDeplacement",
-                                 "delete"
-                             ]
-                         }
-                     },
-                     "response": []
-                 },
-                 {
-                   "name": "coursierMoyenDeplacement.getByCriteria",
-                   "request": {
-                       "method": "POST",
-                       "header": [
-                           {
-                               "key": "Content-Type",
-                               "value": "application/json"
-                           }
-                       ],
-                       "body": {
-                           "mode": "raw",
-			            "raw": "{ \t\"user\":\"1\", \t\"isSimpleLoading\":false, \t\"data\":{   \t\t\"id\": \"\", \t\t\"coursierId\": \"\", \t\t\"moyenDeplacementId\": \"\", \t\t\"dateDebut\": \"\", \t\t\"dateFin\": \"\", \t\t\"statusId\": \"\", \t\t\"updatedBy\": \"\", \t\t\"isDeleted\": \"\", \t\t\"createdBy\": \"\", \t\t\"deletedAt\": \"\", \t\t\"updatedAt\": \"\", \t\t\"createdAt\": \"\" \t}   }"
-},
-                       "url": {
-                           "raw": "{{appUrl}}/coursierMoyenDeplacement/getByCriteria",
-                           "host": [
-                               "{{appUrl}}"
-                           ],
-                           "path": [
-                               "coursierMoyenDeplacement",
-                               "getByCriteria"
-                           ]
-                       }
-                   },
-                   "response": []
-               }
-			]
-		},
-		{
-			"name": "customer",
-			"item": [
-                {
-					"name": "customer.create",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"utilisateurId\": \"\", \t\t\t\"statusId\": \"\", \t\t\t\"deletedAt\": \"\" \t\t}  \t]   }"
-						},
-						"url": {
-							"raw": "{{appUrl}}/customer/create",
-							"host": [
-								"{{appUrl}}"
-							],
-							"path": [
-								"customer",
-								"create"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-                    "name": "customer.update",
-                    "request": {
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"id\": \"\", \t\t\t\"utilisateurId\": \"\", \t\t\t\"statusId\": \"\", \t\t\t\"deletedAt\": \"\" \t\t}  \t]   }"
-                        },
-                        "url": {
-                            "raw": "{{appUrl}}/customer/update",
-                            "host": [
-                                "{{appUrl}}"
-                            ],
-                            "path": [
-                                "customer",
-                                "update"
-                            ]
-                        }
-                    },
-                    "response": []
-                },
-                {
-                     "name": "customer.delete",
-                     "request": {
-                         "method": "POST",
-                         "header": [
-                             {
-                                 "key": "Content-Type",
-                                 "value": "application/json"
-                             }
-                         ],
-                         "body": {
-                             "mode": "raw",
-                            "raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"id\": \"\" \t\t}  \t]   }"
-                         },
-                         "url": {
-                             "raw": "{{appUrl}}/customer/delete",
-                             "host": [
-                                 "{{appUrl}}"
-                             ],
-                             "path": [
-                                 "customer",
-                                 "delete"
-                             ]
-                         }
-                     },
-                     "response": []
-                 },
-                 {
-                   "name": "customer.getByCriteria",
-                   "request": {
-                       "method": "POST",
-                       "header": [
-                           {
-                               "key": "Content-Type",
-                               "value": "application/json"
-                           }
-                       ],
-                       "body": {
-                           "mode": "raw",
-			            "raw": "{ \t\"user\":\"1\", \t\"isSimpleLoading\":false, \t\"data\":{   \t\t\"id\": \"\", \t\t\"utilisateurId\": \"\", \t\t\"statusId\": \"\", \t\t\"updatedBy\": \"\", \t\t\"isDeleted\": \"\", \t\t\"createdBy\": \"\", \t\t\"deletedAt\": \"\", \t\t\"updatedAt\": \"\", \t\t\"createdAt\": \"\" \t}   }"
-},
-                       "url": {
-                           "raw": "{{appUrl}}/customer/getByCriteria",
-                           "host": [
-                               "{{appUrl}}"
-                           ],
-                           "path": [
-                               "customer",
                                "getByCriteria"
                            ]
                        }
@@ -564,232 +451,6 @@
                            ],
                            "path": [
                                "evaluationCommand",
-                               "getByCriteria"
-                           ]
-                       }
-                   },
-                   "response": []
-               }
-			]
-		},
-		{
-			"name": "evaluationPrestation",
-			"item": [
-                {
-					"name": "evaluationPrestation.create",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"customerId\": \"\", \t\t\t\"prestationId\": \"\", \t\t\t\"commandeId\": \"\", \t\t\t\"note\": \"\", \t\t\t\"commentaire\": \"\", \t\t\t\"statusId\": \"\", \t\t\t\"deletedAt\": \"\" \t\t}  \t]   }"
-						},
-						"url": {
-							"raw": "{{appUrl}}/evaluationPrestation/create",
-							"host": [
-								"{{appUrl}}"
-							],
-							"path": [
-								"evaluationPrestation",
-								"create"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-                    "name": "evaluationPrestation.update",
-                    "request": {
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"id\": \"\", \t\t\t\"customerId\": \"\", \t\t\t\"prestationId\": \"\", \t\t\t\"commandeId\": \"\", \t\t\t\"note\": \"\", \t\t\t\"commentaire\": \"\", \t\t\t\"statusId\": \"\", \t\t\t\"deletedAt\": \"\" \t\t}  \t]   }"
-                        },
-                        "url": {
-                            "raw": "{{appUrl}}/evaluationPrestation/update",
-                            "host": [
-                                "{{appUrl}}"
-                            ],
-                            "path": [
-                                "evaluationPrestation",
-                                "update"
-                            ]
-                        }
-                    },
-                    "response": []
-                },
-                {
-                     "name": "evaluationPrestation.delete",
-                     "request": {
-                         "method": "POST",
-                         "header": [
-                             {
-                                 "key": "Content-Type",
-                                 "value": "application/json"
-                             }
-                         ],
-                         "body": {
-                             "mode": "raw",
-                            "raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"id\": \"\" \t\t}  \t]   }"
-                         },
-                         "url": {
-                             "raw": "{{appUrl}}/evaluationPrestation/delete",
-                             "host": [
-                                 "{{appUrl}}"
-                             ],
-                             "path": [
-                                 "evaluationPrestation",
-                                 "delete"
-                             ]
-                         }
-                     },
-                     "response": []
-                 },
-                 {
-                   "name": "evaluationPrestation.getByCriteria",
-                   "request": {
-                       "method": "POST",
-                       "header": [
-                           {
-                               "key": "Content-Type",
-                               "value": "application/json"
-                           }
-                       ],
-                       "body": {
-                           "mode": "raw",
-			            "raw": "{ \t\"user\":\"1\", \t\"isSimpleLoading\":false, \t\"data\":{   \t\t\"id\": \"\", \t\t\"customerId\": \"\", \t\t\"prestationId\": \"\", \t\t\"commandeId\": \"\", \t\t\"note\": \"\", \t\t\"commentaire\": \"\", \t\t\"statusId\": \"\", \t\t\"updatedBy\": \"\", \t\t\"isDeleted\": \"\", \t\t\"createdBy\": \"\", \t\t\"deletedAt\": \"\", \t\t\"updatedAt\": \"\", \t\t\"createdAt\": \"\" \t}   }"
-},
-                       "url": {
-                           "raw": "{{appUrl}}/evaluationPrestation/getByCriteria",
-                           "host": [
-                               "{{appUrl}}"
-                           ],
-                           "path": [
-                               "evaluationPrestation",
-                               "getByCriteria"
-                           ]
-                       }
-                   },
-                   "response": []
-               }
-			]
-		},
-		{
-			"name": "evalutationProjet",
-			"item": [
-                {
-					"name": "evalutationProjet.create",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"projetId\": \"\", \t\t\t\"note\": \"\", \t\t\t\"statusId\": \"\", \t\t\t\"deletedAt\": \"\" \t\t}  \t]   }"
-						},
-						"url": {
-							"raw": "{{appUrl}}/evalutationProjet/create",
-							"host": [
-								"{{appUrl}}"
-							],
-							"path": [
-								"evalutationProjet",
-								"create"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-                    "name": "evalutationProjet.update",
-                    "request": {
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"id\": \"\", \t\t\t\"projetId\": \"\", \t\t\t\"note\": \"\", \t\t\t\"statusId\": \"\", \t\t\t\"deletedAt\": \"\" \t\t}  \t]   }"
-                        },
-                        "url": {
-                            "raw": "{{appUrl}}/evalutationProjet/update",
-                            "host": [
-                                "{{appUrl}}"
-                            ],
-                            "path": [
-                                "evalutationProjet",
-                                "update"
-                            ]
-                        }
-                    },
-                    "response": []
-                },
-                {
-                     "name": "evalutationProjet.delete",
-                     "request": {
-                         "method": "POST",
-                         "header": [
-                             {
-                                 "key": "Content-Type",
-                                 "value": "application/json"
-                             }
-                         ],
-                         "body": {
-                             "mode": "raw",
-                            "raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"id\": \"\" \t\t}  \t]   }"
-                         },
-                         "url": {
-                             "raw": "{{appUrl}}/evalutationProjet/delete",
-                             "host": [
-                                 "{{appUrl}}"
-                             ],
-                             "path": [
-                                 "evalutationProjet",
-                                 "delete"
-                             ]
-                         }
-                     },
-                     "response": []
-                 },
-                 {
-                   "name": "evalutationProjet.getByCriteria",
-                   "request": {
-                       "method": "POST",
-                       "header": [
-                           {
-                               "key": "Content-Type",
-                               "value": "application/json"
-                           }
-                       ],
-                       "body": {
-                           "mode": "raw",
-			            "raw": "{ \t\"user\":\"1\", \t\"isSimpleLoading\":false, \t\"data\":{   \t\t\"id\": \"\", \t\t\"projetId\": \"\", \t\t\"note\": \"\", \t\t\"statusId\": \"\", \t\t\"updatedBy\": \"\", \t\t\"isDeleted\": \"\", \t\t\"createdBy\": \"\", \t\t\"deletedAt\": \"\", \t\t\"updatedAt\": \"\", \t\t\"createdAt\": \"\" \t}   }"
-},
-                       "url": {
-                           "raw": "{{appUrl}}/evalutationProjet/getByCriteria",
-                           "host": [
-                               "{{appUrl}}"
-                           ],
-                           "path": [
-                               "evalutationProjet",
                                "getByCriteria"
                            ]
                        }
@@ -1025,6 +686,119 @@
 			]
 		},
 		{
+			"name": "prestataireZoneLivraison",
+			"item": [
+                {
+					"name": "prestataireZoneLivraison.create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"prestataireId\": \"\", \t\t\t\"zoneLivraisonId\": \"\", \t\t\t\"description\": \"\", \t\t\t\"libelle\": \"\", \t\t\t\"statusId\": \"\", \t\t\t\"deletedAt\": \"\", \t\t\t\"dateFin\": \"\" \t\t}  \t]   }"
+						},
+						"url": {
+							"raw": "{{appUrl}}/prestataireZoneLivraison/create",
+							"host": [
+								"{{appUrl}}"
+							],
+							"path": [
+								"prestataireZoneLivraison",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+                    "name": "prestataireZoneLivraison.update",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"id\": \"\", \t\t\t\"prestataireId\": \"\", \t\t\t\"zoneLivraisonId\": \"\", \t\t\t\"description\": \"\", \t\t\t\"libelle\": \"\", \t\t\t\"statusId\": \"\", \t\t\t\"deletedAt\": \"\", \t\t\t\"dateFin\": \"\" \t\t}  \t]   }"
+                        },
+                        "url": {
+                            "raw": "{{appUrl}}/prestataireZoneLivraison/update",
+                            "host": [
+                                "{{appUrl}}"
+                            ],
+                            "path": [
+                                "prestataireZoneLivraison",
+                                "update"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                     "name": "prestataireZoneLivraison.delete",
+                     "request": {
+                         "method": "POST",
+                         "header": [
+                             {
+                                 "key": "Content-Type",
+                                 "value": "application/json"
+                             }
+                         ],
+                         "body": {
+                             "mode": "raw",
+                            "raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"id\": \"\" \t\t}  \t]   }"
+                         },
+                         "url": {
+                             "raw": "{{appUrl}}/prestataireZoneLivraison/delete",
+                             "host": [
+                                 "{{appUrl}}"
+                             ],
+                             "path": [
+                                 "prestataireZoneLivraison",
+                                 "delete"
+                             ]
+                         }
+                     },
+                     "response": []
+                 },
+                 {
+                   "name": "prestataireZoneLivraison.getByCriteria",
+                   "request": {
+                       "method": "POST",
+                       "header": [
+                           {
+                               "key": "Content-Type",
+                               "value": "application/json"
+                           }
+                       ],
+                       "body": {
+                           "mode": "raw",
+			            "raw": "{ \t\"user\":\"1\", \t\"isSimpleLoading\":false, \t\"data\":{   \t\t\"id\": \"\", \t\t\"prestataireId\": \"\", \t\t\"zoneLivraisonId\": \"\", \t\t\"description\": \"\", \t\t\"libelle\": \"\", \t\t\"statusId\": \"\", \t\t\"updatedBy\": \"\", \t\t\"isDeleted\": \"\", \t\t\"createdBy\": \"\", \t\t\"deletedAt\": \"\", \t\t\"updatedAt\": \"\", \t\t\"createdAt\": \"\", \t\t\"dateFin\": \"\" \t}   }"
+},
+                       "url": {
+                           "raw": "{{appUrl}}/prestataireZoneLivraison/getByCriteria",
+                           "host": [
+                               "{{appUrl}}"
+                           ],
+                           "path": [
+                               "prestataireZoneLivraison",
+                               "getByCriteria"
+                           ]
+                       }
+                   },
+                   "response": []
+               }
+			]
+		},
+		{
 			"name": "prestation",
 			"item": [
                 {
@@ -1138,10 +912,10 @@
 			]
 		},
 		{
-			"name": "projet",
+			"name": "prestationMoyenDeplacement",
 			"item": [
                 {
-					"name": "projet.create",
+					"name": "prestationMoyenDeplacement.create",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1152,15 +926,15 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"vendeurId\": \"\", \t\t\t\"nom\": \"\", \t\t\t\"description\": \"\", \t\t\t\"latitude\": \"\", \t\t\t\"longitude\": \"\", \t\t\t\"noteMoyenne\": \"\", \t\t\t\"statusId\": \"\", \t\t\t\"deletedAt\": \"\" \t\t}  \t]   }"
+							"raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"presatationId\": \"\", \t\t\t\"moyenDeplacementId\": \"\", \t\t\t\"dateDebut\": \"\", \t\t\t\"dateFin\": \"\", \t\t\t\"statusId\": \"\", \t\t\t\"deletedAt\": \"\" \t\t}  \t]   }"
 						},
 						"url": {
-							"raw": "{{appUrl}}/projet/create",
+							"raw": "{{appUrl}}/prestationMoyenDeplacement/create",
 							"host": [
 								"{{appUrl}}"
 							],
 							"path": [
-								"projet",
+								"prestationMoyenDeplacement",
 								"create"
 							]
 						}
@@ -1168,7 +942,7 @@
 					"response": []
 				},
 				{
-                    "name": "projet.update",
+                    "name": "prestationMoyenDeplacement.update",
                     "request": {
                         "method": "POST",
                         "header": [
@@ -1179,15 +953,15 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"id\": \"\", \t\t\t\"vendeurId\": \"\", \t\t\t\"nom\": \"\", \t\t\t\"description\": \"\", \t\t\t\"latitude\": \"\", \t\t\t\"longitude\": \"\", \t\t\t\"noteMoyenne\": \"\", \t\t\t\"statusId\": \"\", \t\t\t\"deletedAt\": \"\" \t\t}  \t]   }"
+                            "raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"id\": \"\", \t\t\t\"presatationId\": \"\", \t\t\t\"moyenDeplacementId\": \"\", \t\t\t\"dateDebut\": \"\", \t\t\t\"dateFin\": \"\", \t\t\t\"statusId\": \"\", \t\t\t\"deletedAt\": \"\" \t\t}  \t]   }"
                         },
                         "url": {
-                            "raw": "{{appUrl}}/projet/update",
+                            "raw": "{{appUrl}}/prestationMoyenDeplacement/update",
                             "host": [
                                 "{{appUrl}}"
                             ],
                             "path": [
-                                "projet",
+                                "prestationMoyenDeplacement",
                                 "update"
                             ]
                         }
@@ -1195,7 +969,7 @@
                     "response": []
                 },
                 {
-                     "name": "projet.delete",
+                     "name": "prestationMoyenDeplacement.delete",
                      "request": {
                          "method": "POST",
                          "header": [
@@ -1209,12 +983,12 @@
                             "raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"id\": \"\" \t\t}  \t]   }"
                          },
                          "url": {
-                             "raw": "{{appUrl}}/projet/delete",
+                             "raw": "{{appUrl}}/prestationMoyenDeplacement/delete",
                              "host": [
                                  "{{appUrl}}"
                              ],
                              "path": [
-                                 "projet",
+                                 "prestationMoyenDeplacement",
                                  "delete"
                              ]
                          }
@@ -1222,7 +996,7 @@
                      "response": []
                  },
                  {
-                   "name": "projet.getByCriteria",
+                   "name": "prestationMoyenDeplacement.getByCriteria",
                    "request": {
                        "method": "POST",
                        "header": [
@@ -1233,15 +1007,15 @@
                        ],
                        "body": {
                            "mode": "raw",
-			            "raw": "{ \t\"user\":\"1\", \t\"isSimpleLoading\":false, \t\"data\":{   \t\t\"id\": \"\", \t\t\"vendeurId\": \"\", \t\t\"nom\": \"\", \t\t\"description\": \"\", \t\t\"latitude\": \"\", \t\t\"longitude\": \"\", \t\t\"noteMoyenne\": \"\", \t\t\"statusId\": \"\", \t\t\"updatedBy\": \"\", \t\t\"isDeleted\": \"\", \t\t\"createdBy\": \"\", \t\t\"deletedAt\": \"\", \t\t\"updatedAt\": \"\", \t\t\"createdAt\": \"\" \t}   }"
+			            "raw": "{ \t\"user\":\"1\", \t\"isSimpleLoading\":false, \t\"data\":{   \t\t\"id\": \"\", \t\t\"presatationId\": \"\", \t\t\"moyenDeplacementId\": \"\", \t\t\"dateDebut\": \"\", \t\t\"dateFin\": \"\", \t\t\"statusId\": \"\", \t\t\"updatedBy\": \"\", \t\t\"isDeleted\": \"\", \t\t\"createdBy\": \"\", \t\t\"deletedAt\": \"\", \t\t\"updatedAt\": \"\", \t\t\"createdAt\": \"\" \t}   }"
 },
                        "url": {
-                           "raw": "{{appUrl}}/projet/getByCriteria",
+                           "raw": "{{appUrl}}/prestationMoyenDeplacement/getByCriteria",
                            "host": [
                                "{{appUrl}}"
                            ],
                            "path": [
-                               "projet",
+                               "prestationMoyenDeplacement",
                                "getByCriteria"
                            ]
                        }
@@ -1265,7 +1039,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"projetId\": \"\", \t\t\t\"url\": \"\", \t\t\t\"statusId\": \"\", \t\t\t\"deletedAt\": \"\" \t\t}  \t]   }"
+							"raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"activiteId\": \"\", \t\t\t\"url\": \"\", \t\t\t\"statusId\": \"\", \t\t\t\"deletedAt\": \"\" \t\t}  \t]   }"
 						},
 						"url": {
 							"raw": "{{appUrl}}/recordImage/create",
@@ -1292,7 +1066,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"id\": \"\", \t\t\t\"projetId\": \"\", \t\t\t\"url\": \"\", \t\t\t\"statusId\": \"\", \t\t\t\"deletedAt\": \"\" \t\t}  \t]   }"
+                            "raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"id\": \"\", \t\t\t\"activiteId\": \"\", \t\t\t\"url\": \"\", \t\t\t\"statusId\": \"\", \t\t\t\"deletedAt\": \"\" \t\t}  \t]   }"
                         },
                         "url": {
                             "raw": "{{appUrl}}/recordImage/update",
@@ -1346,7 +1120,7 @@
                        ],
                        "body": {
                            "mode": "raw",
-			            "raw": "{ \t\"user\":\"1\", \t\"isSimpleLoading\":false, \t\"data\":{   \t\t\"id\": \"\", \t\t\"projetId\": \"\", \t\t\"url\": \"\", \t\t\"statusId\": \"\", \t\t\"updatedBy\": \"\", \t\t\"isDeleted\": \"\", \t\t\"createdBy\": \"\", \t\t\"deletedAt\": \"\", \t\t\"updatedAt\": \"\", \t\t\"createdAt\": \"\" \t}   }"
+			            "raw": "{ \t\"user\":\"1\", \t\"isSimpleLoading\":false, \t\"data\":{   \t\t\"id\": \"\", \t\t\"activiteId\": \"\", \t\t\"url\": \"\", \t\t\"statusId\": \"\", \t\t\"updatedBy\": \"\", \t\t\"isDeleted\": \"\", \t\t\"createdBy\": \"\", \t\t\"deletedAt\": \"\", \t\t\"updatedAt\": \"\", \t\t\"createdAt\": \"\" \t}   }"
 },
                        "url": {
                            "raw": "{{appUrl}}/recordImage/getByCriteria",
@@ -1355,6 +1129,232 @@
                            ],
                            "path": [
                                "recordImage",
+                               "getByCriteria"
+                           ]
+                       }
+                   },
+                   "response": []
+               }
+			]
+		},
+		{
+			"name": "role",
+			"item": [
+                {
+					"name": "role.create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"description\": \"\", \t\t\t\"libelle\": \"\", \t\t\t\"statusId\": \"\", \t\t\t\"deletedAt\": \"\", \t\t\t\"dateFin\": \"\" \t\t}  \t]   }"
+						},
+						"url": {
+							"raw": "{{appUrl}}/role/create",
+							"host": [
+								"{{appUrl}}"
+							],
+							"path": [
+								"role",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+                    "name": "role.update",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"id\": \"\", \t\t\t\"description\": \"\", \t\t\t\"libelle\": \"\", \t\t\t\"statusId\": \"\", \t\t\t\"deletedAt\": \"\", \t\t\t\"dateFin\": \"\" \t\t}  \t]   }"
+                        },
+                        "url": {
+                            "raw": "{{appUrl}}/role/update",
+                            "host": [
+                                "{{appUrl}}"
+                            ],
+                            "path": [
+                                "role",
+                                "update"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                     "name": "role.delete",
+                     "request": {
+                         "method": "POST",
+                         "header": [
+                             {
+                                 "key": "Content-Type",
+                                 "value": "application/json"
+                             }
+                         ],
+                         "body": {
+                             "mode": "raw",
+                            "raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"id\": \"\" \t\t}  \t]   }"
+                         },
+                         "url": {
+                             "raw": "{{appUrl}}/role/delete",
+                             "host": [
+                                 "{{appUrl}}"
+                             ],
+                             "path": [
+                                 "role",
+                                 "delete"
+                             ]
+                         }
+                     },
+                     "response": []
+                 },
+                 {
+                   "name": "role.getByCriteria",
+                   "request": {
+                       "method": "POST",
+                       "header": [
+                           {
+                               "key": "Content-Type",
+                               "value": "application/json"
+                           }
+                       ],
+                       "body": {
+                           "mode": "raw",
+			            "raw": "{ \t\"user\":\"1\", \t\"isSimpleLoading\":false, \t\"data\":{   \t\t\"id\": \"\", \t\t\"description\": \"\", \t\t\"libelle\": \"\", \t\t\"statusId\": \"\", \t\t\"updatedBy\": \"\", \t\t\"isDeleted\": \"\", \t\t\"createdBy\": \"\", \t\t\"deletedAt\": \"\", \t\t\"updatedAt\": \"\", \t\t\"createdAt\": \"\", \t\t\"dateFin\": \"\" \t}   }"
+},
+                       "url": {
+                           "raw": "{{appUrl}}/role/getByCriteria",
+                           "host": [
+                               "{{appUrl}}"
+                           ],
+                           "path": [
+                               "role",
+                               "getByCriteria"
+                           ]
+                       }
+                   },
+                   "response": []
+               }
+			]
+		},
+		{
+			"name": "typeClient",
+			"item": [
+                {
+					"name": "typeClient.create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"description\": \"\", \t\t\t\"libelle\": \"\", \t\t\t\"statusId\": \"\", \t\t\t\"deletedAt\": \"\" \t\t}  \t]   }"
+						},
+						"url": {
+							"raw": "{{appUrl}}/typeClient/create",
+							"host": [
+								"{{appUrl}}"
+							],
+							"path": [
+								"typeClient",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+                    "name": "typeClient.update",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"id\": \"\", \t\t\t\"description\": \"\", \t\t\t\"libelle\": \"\", \t\t\t\"statusId\": \"\", \t\t\t\"deletedAt\": \"\" \t\t}  \t]   }"
+                        },
+                        "url": {
+                            "raw": "{{appUrl}}/typeClient/update",
+                            "host": [
+                                "{{appUrl}}"
+                            ],
+                            "path": [
+                                "typeClient",
+                                "update"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                     "name": "typeClient.delete",
+                     "request": {
+                         "method": "POST",
+                         "header": [
+                             {
+                                 "key": "Content-Type",
+                                 "value": "application/json"
+                             }
+                         ],
+                         "body": {
+                             "mode": "raw",
+                            "raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"id\": \"\" \t\t}  \t]   }"
+                         },
+                         "url": {
+                             "raw": "{{appUrl}}/typeClient/delete",
+                             "host": [
+                                 "{{appUrl}}"
+                             ],
+                             "path": [
+                                 "typeClient",
+                                 "delete"
+                             ]
+                         }
+                     },
+                     "response": []
+                 },
+                 {
+                   "name": "typeClient.getByCriteria",
+                   "request": {
+                       "method": "POST",
+                       "header": [
+                           {
+                               "key": "Content-Type",
+                               "value": "application/json"
+                           }
+                       ],
+                       "body": {
+                           "mode": "raw",
+			            "raw": "{ \t\"user\":\"1\", \t\"isSimpleLoading\":false, \t\"data\":{   \t\t\"id\": \"\", \t\t\"description\": \"\", \t\t\"libelle\": \"\", \t\t\"statusId\": \"\", \t\t\"updatedBy\": \"\", \t\t\"isDeleted\": \"\", \t\t\"createdBy\": \"\", \t\t\"deletedAt\": \"\", \t\t\"updatedAt\": \"\", \t\t\"createdAt\": \"\" \t}   }"
+},
+                       "url": {
+                           "raw": "{{appUrl}}/typeClient/getByCriteria",
+                           "host": [
+                               "{{appUrl}}"
+                           ],
+                           "path": [
+                               "typeClient",
                                "getByCriteria"
                            ]
                        }
@@ -1378,7 +1378,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"nom\": \"\", \t\t\t\"username\": \"\", \t\t\t\"prenom\": \"\", \t\t\t\"email\": \"\", \t\t\t\"telephone\": \"\", \t\t\t\"telephone2\": \"\", \t\t\t\"motDePasse\": \"\", \t\t\t\"statusId\": \"\", \t\t\t\"deletedAt\": \"\", \t\t\t\"isLocked\": \"\", \t\t\t\"typeClient\": \"\" \t\t}  \t]   }"
+							"raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"nom\": \"\", \t\t\t\"username\": \"\", \t\t\t\"prenom\": \"\", \t\t\t\"email\": \"\", \t\t\t\"telephone\": \"\", \t\t\t\"telephone2\": \"\", \t\t\t\"motDePasse\": \"\", \t\t\t\"statusId\": \"\", \t\t\t\"deletedAt\": \"\", \t\t\t\"isLocked\": \"\", \t\t\t\"typeClientId\": \"\" \t\t}  \t]   }"
 						},
 						"url": {
 							"raw": "{{appUrl}}/utilisateur/create",
@@ -1405,7 +1405,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"id\": \"\", \t\t\t\"nom\": \"\", \t\t\t\"username\": \"\", \t\t\t\"prenom\": \"\", \t\t\t\"email\": \"\", \t\t\t\"telephone\": \"\", \t\t\t\"telephone2\": \"\", \t\t\t\"motDePasse\": \"\", \t\t\t\"statusId\": \"\", \t\t\t\"deletedAt\": \"\", \t\t\t\"isLocked\": \"\", \t\t\t\"typeClient\": \"\" \t\t}  \t]   }"
+                            "raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"id\": \"\", \t\t\t\"nom\": \"\", \t\t\t\"username\": \"\", \t\t\t\"prenom\": \"\", \t\t\t\"email\": \"\", \t\t\t\"telephone\": \"\", \t\t\t\"telephone2\": \"\", \t\t\t\"motDePasse\": \"\", \t\t\t\"statusId\": \"\", \t\t\t\"deletedAt\": \"\", \t\t\t\"isLocked\": \"\", \t\t\t\"typeClientId\": \"\" \t\t}  \t]   }"
                         },
                         "url": {
                             "raw": "{{appUrl}}/utilisateur/update",
@@ -1459,7 +1459,7 @@
                        ],
                        "body": {
                            "mode": "raw",
-			            "raw": "{ \t\"user\":\"1\", \t\"isSimpleLoading\":false, \t\"data\":{   \t\t\"id\": \"\", \t\t\"nom\": \"\", \t\t\"username\": \"\", \t\t\"prenom\": \"\", \t\t\"email\": \"\", \t\t\"telephone\": \"\", \t\t\"telephone2\": \"\", \t\t\"motDePasse\": \"\", \t\t\"statusId\": \"\", \t\t\"updatedBy\": \"\", \t\t\"isDeleted\": \"\", \t\t\"createdBy\": \"\", \t\t\"deletedAt\": \"\", \t\t\"isLocked\": \"\", \t\t\"updatedAt\": \"\", \t\t\"createdAt\": \"\", \t\t\"typeClient\": \"\" \t}   }"
+			            "raw": "{ \t\"user\":\"1\", \t\"isSimpleLoading\":false, \t\"data\":{   \t\t\"id\": \"\", \t\t\"nom\": \"\", \t\t\"username\": \"\", \t\t\"prenom\": \"\", \t\t\"email\": \"\", \t\t\"telephone\": \"\", \t\t\"telephone2\": \"\", \t\t\"motDePasse\": \"\", \t\t\"statusId\": \"\", \t\t\"updatedBy\": \"\", \t\t\"isDeleted\": \"\", \t\t\"createdBy\": \"\", \t\t\"deletedAt\": \"\", \t\t\"isLocked\": \"\", \t\t\"updatedAt\": \"\", \t\t\"createdAt\": \"\", \t\t\"typeClientId\": \"\" \t}   }"
 },
                        "url": {
                            "raw": "{{appUrl}}/utilisateur/getByCriteria",
@@ -1477,10 +1477,10 @@
 			]
 		},
 		{
-			"name": "vendeur",
+			"name": "utilisateurActivite",
 			"item": [
                 {
-					"name": "vendeur.create",
+					"name": "utilisateurActivite.create",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1491,15 +1491,15 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"utilisateurId\": \"\", \t\t\t\"statusId\": \"\", \t\t\t\"deletedAt\": \"\" \t\t}  \t]   }"
+							"raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"utilisateurId\": \"\", \t\t\t\"activiteId\": \"\", \t\t\t\"commentaire\": \"\", \t\t\t\"statusId\": \"\", \t\t\t\"deletedAt\": \"\", \t\t\t\"dateFin\": \"\" \t\t}  \t]   }"
 						},
 						"url": {
-							"raw": "{{appUrl}}/vendeur/create",
+							"raw": "{{appUrl}}/utilisateurActivite/create",
 							"host": [
 								"{{appUrl}}"
 							],
 							"path": [
-								"vendeur",
+								"utilisateurActivite",
 								"create"
 							]
 						}
@@ -1507,7 +1507,7 @@
 					"response": []
 				},
 				{
-                    "name": "vendeur.update",
+                    "name": "utilisateurActivite.update",
                     "request": {
                         "method": "POST",
                         "header": [
@@ -1518,15 +1518,15 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"id\": \"\", \t\t\t\"utilisateurId\": \"\", \t\t\t\"statusId\": \"\", \t\t\t\"deletedAt\": \"\" \t\t}  \t]   }"
+                            "raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"id\": \"\", \t\t\t\"utilisateurId\": \"\", \t\t\t\"activiteId\": \"\", \t\t\t\"commentaire\": \"\", \t\t\t\"statusId\": \"\", \t\t\t\"deletedAt\": \"\", \t\t\t\"dateFin\": \"\" \t\t}  \t]   }"
                         },
                         "url": {
-                            "raw": "{{appUrl}}/vendeur/update",
+                            "raw": "{{appUrl}}/utilisateurActivite/update",
                             "host": [
                                 "{{appUrl}}"
                             ],
                             "path": [
-                                "vendeur",
+                                "utilisateurActivite",
                                 "update"
                             ]
                         }
@@ -1534,7 +1534,7 @@
                     "response": []
                 },
                 {
-                     "name": "vendeur.delete",
+                     "name": "utilisateurActivite.delete",
                      "request": {
                          "method": "POST",
                          "header": [
@@ -1548,12 +1548,12 @@
                             "raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"id\": \"\" \t\t}  \t]   }"
                          },
                          "url": {
-                             "raw": "{{appUrl}}/vendeur/delete",
+                             "raw": "{{appUrl}}/utilisateurActivite/delete",
                              "host": [
                                  "{{appUrl}}"
                              ],
                              "path": [
-                                 "vendeur",
+                                 "utilisateurActivite",
                                  "delete"
                              ]
                          }
@@ -1561,7 +1561,7 @@
                      "response": []
                  },
                  {
-                   "name": "vendeur.getByCriteria",
+                   "name": "utilisateurActivite.getByCriteria",
                    "request": {
                        "method": "POST",
                        "header": [
@@ -1572,15 +1572,128 @@
                        ],
                        "body": {
                            "mode": "raw",
-			            "raw": "{ \t\"user\":\"1\", \t\"isSimpleLoading\":false, \t\"data\":{   \t\t\"id\": \"\", \t\t\"utilisateurId\": \"\", \t\t\"statusId\": \"\", \t\t\"updatedBy\": \"\", \t\t\"isDeleted\": \"\", \t\t\"createdBy\": \"\", \t\t\"deletedAt\": \"\", \t\t\"updatedAt\": \"\", \t\t\"createdAt\": \"\" \t}   }"
+			            "raw": "{ \t\"user\":\"1\", \t\"isSimpleLoading\":false, \t\"data\":{   \t\t\"id\": \"\", \t\t\"utilisateurId\": \"\", \t\t\"activiteId\": \"\", \t\t\"commentaire\": \"\", \t\t\"statusId\": \"\", \t\t\"updatedBy\": \"\", \t\t\"isDeleted\": \"\", \t\t\"createdBy\": \"\", \t\t\"deletedAt\": \"\", \t\t\"updatedAt\": \"\", \t\t\"createdAt\": \"\", \t\t\"dateFin\": \"\" \t}   }"
 },
                        "url": {
-                           "raw": "{{appUrl}}/vendeur/getByCriteria",
+                           "raw": "{{appUrl}}/utilisateurActivite/getByCriteria",
                            "host": [
                                "{{appUrl}}"
                            ],
                            "path": [
-                               "vendeur",
+                               "utilisateurActivite",
+                               "getByCriteria"
+                           ]
+                       }
+                   },
+                   "response": []
+               }
+			]
+		},
+		{
+			"name": "utilisateurRole",
+			"item": [
+                {
+					"name": "utilisateurRole.create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"utilisateurId\": \"\", \t\t\t\"roleId\": \"\", \t\t\t\"commentaire\": \"\", \t\t\t\"statusId\": \"\", \t\t\t\"deletedAt\": \"\" \t\t}  \t]   }"
+						},
+						"url": {
+							"raw": "{{appUrl}}/utilisateurRole/create",
+							"host": [
+								"{{appUrl}}"
+							],
+							"path": [
+								"utilisateurRole",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+                    "name": "utilisateurRole.update",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"id\": \"\", \t\t\t\"utilisateurId\": \"\", \t\t\t\"roleId\": \"\", \t\t\t\"commentaire\": \"\", \t\t\t\"statusId\": \"\", \t\t\t\"deletedAt\": \"\" \t\t}  \t]   }"
+                        },
+                        "url": {
+                            "raw": "{{appUrl}}/utilisateurRole/update",
+                            "host": [
+                                "{{appUrl}}"
+                            ],
+                            "path": [
+                                "utilisateurRole",
+                                "update"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                     "name": "utilisateurRole.delete",
+                     "request": {
+                         "method": "POST",
+                         "header": [
+                             {
+                                 "key": "Content-Type",
+                                 "value": "application/json"
+                             }
+                         ],
+                         "body": {
+                             "mode": "raw",
+                            "raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"id\": \"\" \t\t}  \t]   }"
+                         },
+                         "url": {
+                             "raw": "{{appUrl}}/utilisateurRole/delete",
+                             "host": [
+                                 "{{appUrl}}"
+                             ],
+                             "path": [
+                                 "utilisateurRole",
+                                 "delete"
+                             ]
+                         }
+                     },
+                     "response": []
+                 },
+                 {
+                   "name": "utilisateurRole.getByCriteria",
+                   "request": {
+                       "method": "POST",
+                       "header": [
+                           {
+                               "key": "Content-Type",
+                               "value": "application/json"
+                           }
+                       ],
+                       "body": {
+                           "mode": "raw",
+			            "raw": "{ \t\"user\":\"1\", \t\"isSimpleLoading\":false, \t\"data\":{   \t\t\"id\": \"\", \t\t\"utilisateurId\": \"\", \t\t\"roleId\": \"\", \t\t\"commentaire\": \"\", \t\t\"statusId\": \"\", \t\t\"updatedBy\": \"\", \t\t\"isDeleted\": \"\", \t\t\"createdBy\": \"\", \t\t\"deletedAt\": \"\", \t\t\"updatedAt\": \"\", \t\t\"createdAt\": \"\" \t}   }"
+},
+                       "url": {
+                           "raw": "{{appUrl}}/utilisateurRole/getByCriteria",
+                           "host": [
+                               "{{appUrl}}"
+                           ],
+                           "path": [
+                               "utilisateurRole",
                                "getByCriteria"
                            ]
                        }
@@ -1604,7 +1717,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"coursierId\": \"\", \t\t\t\"latitudeDepart\": \"\", \t\t\t\"longitudeDepart\": \"\", \t\t\t\"latitudeArrivee\": \"\", \t\t\t\"longitudeArrivee\": \"\", \t\t\t\"statusId\": \"\", \t\t\t\"deletedAt\": \"\" \t\t}  \t]   }"
+							"raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"latitudeDepart\": \"\", \t\t\t\"longitudeDepart\": \"\", \t\t\t\"latitudeArrivee\": \"\", \t\t\t\"longitudeArrivee\": \"\", \t\t\t\"statusId\": \"\", \t\t\t\"deletedAt\": \"\" \t\t}  \t]   }"
 						},
 						"url": {
 							"raw": "{{appUrl}}/zoneLivraison/create",
@@ -1631,7 +1744,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"id\": \"\", \t\t\t\"coursierId\": \"\", \t\t\t\"latitudeDepart\": \"\", \t\t\t\"longitudeDepart\": \"\", \t\t\t\"latitudeArrivee\": \"\", \t\t\t\"longitudeArrivee\": \"\", \t\t\t\"statusId\": \"\", \t\t\t\"deletedAt\": \"\" \t\t}  \t]   }"
+                            "raw": "{ \t\"user\":\"1\", \t\"datas\":[ \t\t{   \t\t\t\"id\": \"\", \t\t\t\"latitudeDepart\": \"\", \t\t\t\"longitudeDepart\": \"\", \t\t\t\"latitudeArrivee\": \"\", \t\t\t\"longitudeArrivee\": \"\", \t\t\t\"statusId\": \"\", \t\t\t\"deletedAt\": \"\" \t\t}  \t]   }"
                         },
                         "url": {
                             "raw": "{{appUrl}}/zoneLivraison/update",
@@ -1685,7 +1798,7 @@
                        ],
                        "body": {
                            "mode": "raw",
-			            "raw": "{ \t\"user\":\"1\", \t\"isSimpleLoading\":false, \t\"data\":{   \t\t\"id\": \"\", \t\t\"coursierId\": \"\", \t\t\"latitudeDepart\": \"\", \t\t\"longitudeDepart\": \"\", \t\t\"latitudeArrivee\": \"\", \t\t\"longitudeArrivee\": \"\", \t\t\"statusId\": \"\", \t\t\"updatedBy\": \"\", \t\t\"isDeleted\": \"\", \t\t\"createdBy\": \"\", \t\t\"deletedAt\": \"\", \t\t\"updatedAt\": \"\", \t\t\"createdAt\": \"\" \t}   }"
+			            "raw": "{ \t\"user\":\"1\", \t\"isSimpleLoading\":false, \t\"data\":{   \t\t\"id\": \"\", \t\t\"latitudeDepart\": \"\", \t\t\"longitudeDepart\": \"\", \t\t\"latitudeArrivee\": \"\", \t\t\"longitudeArrivee\": \"\", \t\t\"statusId\": \"\", \t\t\"updatedBy\": \"\", \t\t\"isDeleted\": \"\", \t\t\"createdBy\": \"\", \t\t\"deletedAt\": \"\", \t\t\"updatedAt\": \"\", \t\t\"createdAt\": \"\" \t}   }"
 },
                        "url": {
                            "raw": "{{appUrl}}/zoneLivraison/getByCriteria",

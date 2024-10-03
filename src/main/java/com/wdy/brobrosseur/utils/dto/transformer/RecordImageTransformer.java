@@ -2,7 +2,7 @@
 
 /*
  * Java transformer for entity table record_image 
- * Created on 2024-09-29 ( Time 22:05:55 )
+ * Created on 2024-10-03 ( Time 13:19:22 )
  * Generator tool : Telosys Tools Generator ( version 3.3.0 )
  * Copyright 2018 Geo. All Rights Reserved.
  */
@@ -40,8 +40,8 @@ public interface RecordImageTransformer {
 		@Mapping(source="entity.deletedAt", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="deletedAt"),
 		@Mapping(source="entity.updatedAt", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="updatedAt"),
 		@Mapping(source="entity.createdAt", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="createdAt"),
-		@Mapping(source="entity.projet.id", target="projetId"),
-		@Mapping(source="entity.projet.nom", target="projetNom"),
+		@Mapping(source="entity.activite.id", target="activiteId"),
+		@Mapping(source="entity.activite.libelle", target="activiteLibelle"),
 	})
 	RecordImageDto toDto(RecordImage entity) throws ParseException;
 
@@ -78,9 +78,9 @@ public interface RecordImageTransformer {
 		@Mapping(source="dto.deletedAt", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="deletedAt"),
 		@Mapping(source="dto.updatedAt", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="updatedAt"),
 		@Mapping(source="dto.createdAt", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="createdAt"),
-		@Mapping(source="projet", target="projet"),
+		@Mapping(source="activite", target="activite"),
 	})
-    RecordImage toEntity(RecordImageDto dto, Projet projet) throws ParseException;
+    RecordImage toEntity(RecordImageDto dto, Activite activite) throws ParseException;
 
     //List<RecordImage> toEntities(List<RecordImageDto> dtos) throws ParseException;
 

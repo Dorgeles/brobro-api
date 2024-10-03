@@ -1,7 +1,7 @@
 
 /*
  * Java dto for entity table record_image 
- * Created on 2024-09-29 ( Time 22:05:55 )
+ * Created on 2024-10-03 ( Time 13:00:22 )
  * Generator tool : Telosys Tools Generator ( version 3.3.0 )
  * Copyright 2018 Geo. All Rights Reserved.
  */
@@ -33,7 +33,7 @@ public class _RecordImageDto implements Cloneable {
 
     protected Integer    id                   ; // Primary Key
 
-    protected Integer    projetId             ;
+    protected Integer    activiteId           ;
     protected String     url                  ;
     protected Integer    statusId             ;
     protected Integer    updatedBy            ;
@@ -46,12 +46,12 @@ public class _RecordImageDto implements Cloneable {
     //----------------------------------------------------------------------
     // ENTITY LINKS FIELD ( RELATIONSHIP )
     //----------------------------------------------------------------------
-	//protected Integer    projet;
-	protected String projetNom;
+	//protected Integer    activite;
+	protected String activiteLibelle;
 
 	// Search param
 	protected SearchParam<Integer>  idParam               ;                     
-	protected SearchParam<Integer>  projetIdParam         ;                     
+	protected SearchParam<Integer>  activiteIdParam       ;                     
 	protected SearchParam<String>   urlParam              ;                     
 	protected SearchParam<Integer>  statusIdParam         ;                     
 	protected SearchParam<Integer>  updatedByParam        ;                     
@@ -60,8 +60,8 @@ public class _RecordImageDto implements Cloneable {
 	protected SearchParam<String>   deletedAtParam        ;                     
 	protected SearchParam<String>   updatedAtParam        ;                     
 	protected SearchParam<String>   createdAtParam        ;                     
-	protected SearchParam<Integer>  projetParam           ;                     
-	protected SearchParam<String>   projetNomParam        ;                     
+	protected SearchParam<Integer>  activiteParam         ;                     
+	protected SearchParam<String>   activiteLibelleParam  ;                     
 
 	// order param
 	protected String orderField;

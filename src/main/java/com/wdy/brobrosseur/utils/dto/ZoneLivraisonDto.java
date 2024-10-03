@@ -1,7 +1,7 @@
 
 /*
  * Java dto for entity table zone_livraison 
- * Created on 2024-09-29 ( Time 22:05:55 )
+ * Created on 2024-10-03 ( Time 13:00:22 )
  * Generator tool : Telosys Tools Generator ( version 3.3.0 )
  * Copyright 2018 Geo. All Rights Reserved.
  */
@@ -9,6 +9,7 @@
 package com.wdy.brobrosseur.utils.dto;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;

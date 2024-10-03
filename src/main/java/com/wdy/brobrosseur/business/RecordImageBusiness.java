@@ -1,7 +1,7 @@
                                                 											
 /*
  * Java business for entity table record_image 
- * Created on 2024-09-29 ( Time 22:05:55 )
+ * Created on 2024-10-03 ( Time 13:00:22 )
  * Generator tool : Telosys Tools Generator ( version 3.3.0 )
  * Copyright 2018 Geo. All Rights Reserved.
  */
@@ -28,7 +28,7 @@ import com.wdy.brobrosseur.utils.contract.Request;
 import com.wdy.brobrosseur.utils.contract.Response;
 import com.wdy.brobrosseur.utils.dto.transformer.*;
 import com.wdy.brobrosseur.dao.entity.RecordImage;
-import com.wdy.brobrosseur.dao.entity.Projet;
+import com.wdy.brobrosseur.dao.entity.Activite;
 import com.wdy.brobrosseur.dao.entity.*;
 import com.wdy.brobrosseur.dao.repository.*;
 
@@ -46,7 +46,7 @@ public class RecordImageBusiness implements IBasicBusiness<Request<RecordImageDt
 	@Autowired
 	private RecordImageRepository recordImageRepository;
 	@Autowired
-	private ProjetRepository projetRepository;
+	private ActiviteRepository activiteRepository;
 	@Autowired
 	private FunctionalError functionalError;
 	@Autowired
@@ -81,7 +81,7 @@ public class RecordImageBusiness implements IBasicBusiness<Request<RecordImageDt
 		for (RecordImageDto dto : request.getDatas()) {
 			// Definir les parametres obligatoires
 			Map<String, java.lang.Object> fieldsToVerify = new HashMap<String, java.lang.Object>();
-			fieldsToVerify.put("projetId", dto.getProjetId());
+			fieldsToVerify.put("activiteId", dto.getActiviteId());
 			fieldsToVerify.put("url", dto.getUrl());
 			fieldsToVerify.put("statusId", dto.getStatusId());
 			fieldsToVerify.put("deletedAt", dto.getDeletedAt());
@@ -102,18 +102,18 @@ public class RecordImageBusiness implements IBasicBusiness<Request<RecordImageDt
 			}
 
 */
-			// Verify if projet exist
-			Projet existingProjet = null;
-			if (dto.getProjetId() != null && dto.getProjetId() > 0){
-				existingProjet = projetRepository.findOne(dto.getProjetId(), false);
-				if (existingProjet == null) {
-					response.setStatus(functionalError.DATA_NOT_EXIST("projet projetId -> " + dto.getProjetId(), locale));
+			// Verify if activite exist
+			Activite existingActivite = null;
+			if (dto.getActiviteId() != null && dto.getActiviteId() > 0){
+				existingActivite = activiteRepository.findOne(dto.getActiviteId(), false);
+				if (existingActivite == null) {
+					response.setStatus(functionalError.DATA_NOT_EXIST("activite activiteId -> " + dto.getActiviteId(), locale));
 					response.setHasError(true);
 					return response;
 				}
 			}
 				RecordImage entityToSave = null;
-			entityToSave = RecordImageTransformer.INSTANCE.toEntity(dto, existingProjet);
+			entityToSave = RecordImageTransformer.INSTANCE.toEntity(dto, existingActivite);
 			entityToSave.setIsDeleted(false);
 			entityToSave.setCreatedBy(request.getUser());
 			entityToSave.setCreatedAt(Utilities.getCurrentDate());
@@ -187,15 +187,15 @@ public class RecordImageBusiness implements IBasicBusiness<Request<RecordImageDt
 				return response;
 			}
 
-			// Verify if projet exist
-			if (dto.getProjetId() != null && dto.getProjetId() > 0){
-				Projet existingProjet = projetRepository.findOne(dto.getProjetId(), false);
-				if (existingProjet == null) {
-					response.setStatus(functionalError.DATA_NOT_EXIST("projet projetId -> " + dto.getProjetId(), locale));
+			// Verify if activite exist
+			if (dto.getActiviteId() != null && dto.getActiviteId() > 0){
+				Activite existingActivite = activiteRepository.findOne(dto.getActiviteId(), false);
+				if (existingActivite == null) {
+					response.setStatus(functionalError.DATA_NOT_EXIST("activite activiteId -> " + dto.getActiviteId(), locale));
 					response.setHasError(true);
 					return response;
 				}
-				entityToSave.setProjet(existingProjet);
+				entityToSave.setActivite(existingActivite);
 			}
 			if (Utilities.notBlank(dto.getUrl())) {
 				entityToSave.setUrl(dto.getUrl());

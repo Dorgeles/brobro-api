@@ -1,7 +1,7 @@
 
 /*
  * Java dto for entity table command 
- * Created on 2024-09-29 ( Time 22:05:54 )
+ * Created on 2024-10-03 ( Time 13:00:22 )
  * Generator tool : Telosys Tools Generator ( version 3.3.0 )
  * Copyright 2018 Geo. All Rights Reserved.
  */
@@ -34,11 +34,11 @@ public class _CommandDto implements Cloneable {
 
     protected Integer    id                   ; // Primary Key
 
-    protected Integer    consommateurId       ;
-    protected Integer    coursierId           ;
+    protected Integer    utilisateurId        ;
     protected Integer    prestationId         ;
     protected String     typeCommand          ;
     protected String     latitudeLivraison    ;
+    protected Integer    note                 ;
     protected String     longitudeLivraison   ;
     protected Integer    statusId             ;
     protected Integer    updatedBy            ;
@@ -51,18 +51,21 @@ public class _CommandDto implements Cloneable {
     //----------------------------------------------------------------------
     // ENTITY LINKS FIELD ( RELATIONSHIP )
     //----------------------------------------------------------------------
-	//protected Integer    customer;
+	//protected Integer    utilisateur;
+	protected String utilisateurNom;
+	protected String utilisateurPrenom;
+	protected String utilisateurEmail;
+	protected String utilisateurTelephone;
 	//protected Integer    prestation;
 	protected String prestationLibelle;
-	//protected Integer    coursier;
 
 	// Search param
 	protected SearchParam<Integer>  idParam               ;                     
-	protected SearchParam<Integer>  consommateurIdParam   ;                     
-	protected SearchParam<Integer>  coursierIdParam       ;                     
+	protected SearchParam<Integer>  utilisateurIdParam    ;                     
 	protected SearchParam<Integer>  prestationIdParam     ;                     
 	protected SearchParam<String>   typeCommandParam      ;                     
 	protected SearchParam<String>   latitudeLivraisonParam;                     
+	protected SearchParam<Integer>  noteParam             ;                     
 	protected SearchParam<String>   longitudeLivraisonParam;                     
 	protected SearchParam<Integer>  statusIdParam         ;                     
 	protected SearchParam<Integer>  updatedByParam        ;                     
@@ -71,10 +74,13 @@ public class _CommandDto implements Cloneable {
 	protected SearchParam<String>   deletedAtParam        ;                     
 	protected SearchParam<String>   updatedAtParam        ;                     
 	protected SearchParam<String>   createdAtParam        ;                     
-	protected SearchParam<Integer>  customerParam         ;                     
+	protected SearchParam<Integer>  utilisateurParam      ;                     
+	protected SearchParam<String>   utilisateurNomParam   ;                     
+	protected SearchParam<String>   utilisateurPrenomParam;                     
+	protected SearchParam<String>   utilisateurEmailParam ;                     
+	protected SearchParam<String>   utilisateurTelephoneParam;                     
 	protected SearchParam<Integer>  prestationParam       ;                     
 	protected SearchParam<String>   prestationLibelleParam;                     
-	protected SearchParam<Integer>  coursierParam         ;                     
 
 	// order param
 	protected String orderField;
