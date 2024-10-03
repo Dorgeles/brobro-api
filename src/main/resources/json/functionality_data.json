@@ -1,0 +1,366 @@
+{
+	"user": 1,
+	"datas": [
+		{
+			"code": "COMMAND",
+			"name": "COMMAND"
+		},
+		{
+			"code": "VIEW_COMMAND",
+			"parentCode": "COMMAND",
+			"name": "VIEW COMMAND"
+		},
+		{
+			"code": "CREATE_COMMAND",
+			"parentCode": "COMMAND",
+			"name": "CREATE COMMAND"
+		},
+		{
+			"code": "UPDATE_COMMAND",
+			"parentCode": "COMMAND",
+			"name": "UPDATE COMMAND"
+		},
+		{
+			"code": "DELETE_COMMAND",
+			"parentCode": "COMMAND",
+			"name": "DELETE COMMAND"
+		},
+		{
+			"code": "COURSIER",
+			"name": "COURSIER"
+		},
+		{
+			"code": "VIEW_COURSIER",
+			"parentCode": "COURSIER",
+			"name": "VIEW COURSIER"
+		},
+		{
+			"code": "CREATE_COURSIER",
+			"parentCode": "COURSIER",
+			"name": "CREATE COURSIER"
+		},
+		{
+			"code": "UPDATE_COURSIER",
+			"parentCode": "COURSIER",
+			"name": "UPDATE COURSIER"
+		},
+		{
+			"code": "DELETE_COURSIER",
+			"parentCode": "COURSIER",
+			"name": "DELETE COURSIER"
+		},
+		{
+			"code": "COURSIER_MOYEN_DEPLACEMENT",
+			"name": "COURSIER_MOYEN_DEPLACEMENT"
+		},
+		{
+			"code": "VIEW_COURSIER_MOYEN_DEPLACEMENT",
+			"parentCode": "COURSIER_MOYEN_DEPLACEMENT",
+			"name": "VIEW COURSIER_MOYEN_DEPLACEMENT"
+		},
+		{
+			"code": "CREATE_COURSIER_MOYEN_DEPLACEMENT",
+			"parentCode": "COURSIER_MOYEN_DEPLACEMENT",
+			"name": "CREATE COURSIER_MOYEN_DEPLACEMENT"
+		},
+		{
+			"code": "UPDATE_COURSIER_MOYEN_DEPLACEMENT",
+			"parentCode": "COURSIER_MOYEN_DEPLACEMENT",
+			"name": "UPDATE COURSIER_MOYEN_DEPLACEMENT"
+		},
+		{
+			"code": "DELETE_COURSIER_MOYEN_DEPLACEMENT",
+			"parentCode": "COURSIER_MOYEN_DEPLACEMENT",
+			"name": "DELETE COURSIER_MOYEN_DEPLACEMENT"
+		},
+		{
+			"code": "CUSTOMER",
+			"name": "CUSTOMER"
+		},
+		{
+			"code": "VIEW_CUSTOMER",
+			"parentCode": "CUSTOMER",
+			"name": "VIEW CUSTOMER"
+		},
+		{
+			"code": "CREATE_CUSTOMER",
+			"parentCode": "CUSTOMER",
+			"name": "CREATE CUSTOMER"
+		},
+		{
+			"code": "UPDATE_CUSTOMER",
+			"parentCode": "CUSTOMER",
+			"name": "UPDATE CUSTOMER"
+		},
+		{
+			"code": "DELETE_CUSTOMER",
+			"parentCode": "CUSTOMER",
+			"name": "DELETE CUSTOMER"
+		},
+		{
+			"code": "EVALUATION_COMMAND",
+			"name": "EVALUATION_COMMAND"
+		},
+		{
+			"code": "VIEW_EVALUATION_COMMAND",
+			"parentCode": "EVALUATION_COMMAND",
+			"name": "VIEW EVALUATION_COMMAND"
+		},
+		{
+			"code": "CREATE_EVALUATION_COMMAND",
+			"parentCode": "EVALUATION_COMMAND",
+			"name": "CREATE EVALUATION_COMMAND"
+		},
+		{
+			"code": "UPDATE_EVALUATION_COMMAND",
+			"parentCode": "EVALUATION_COMMAND",
+			"name": "UPDATE EVALUATION_COMMAND"
+		},
+		{
+			"code": "DELETE_EVALUATION_COMMAND",
+			"parentCode": "EVALUATION_COMMAND",
+			"name": "DELETE EVALUATION_COMMAND"
+		},
+		{
+			"code": "EVALUATION_PRESTATION",
+			"name": "EVALUATION_PRESTATION"
+		},
+		{
+			"code": "VIEW_EVALUATION_PRESTATION",
+			"parentCode": "EVALUATION_PRESTATION",
+			"name": "VIEW EVALUATION_PRESTATION"
+		},
+		{
+			"code": "CREATE_EVALUATION_PRESTATION",
+			"parentCode": "EVALUATION_PRESTATION",
+			"name": "CREATE EVALUATION_PRESTATION"
+		},
+		{
+			"code": "UPDATE_EVALUATION_PRESTATION",
+			"parentCode": "EVALUATION_PRESTATION",
+			"name": "UPDATE EVALUATION_PRESTATION"
+		},
+		{
+			"code": "DELETE_EVALUATION_PRESTATION",
+			"parentCode": "EVALUATION_PRESTATION",
+			"name": "DELETE EVALUATION_PRESTATION"
+		},
+		{
+			"code": "EVALUTATION_PROJET",
+			"name": "EVALUTATION_PROJET"
+		},
+		{
+			"code": "VIEW_EVALUTATION_PROJET",
+			"parentCode": "EVALUTATION_PROJET",
+			"name": "VIEW EVALUTATION_PROJET"
+		},
+		{
+			"code": "CREATE_EVALUTATION_PROJET",
+			"parentCode": "EVALUTATION_PROJET",
+			"name": "CREATE EVALUTATION_PROJET"
+		},
+		{
+			"code": "UPDATE_EVALUTATION_PROJET",
+			"parentCode": "EVALUTATION_PROJET",
+			"name": "UPDATE EVALUTATION_PROJET"
+		},
+		{
+			"code": "DELETE_EVALUTATION_PROJET",
+			"parentCode": "EVALUTATION_PROJET",
+			"name": "DELETE EVALUTATION_PROJET"
+		},
+		{
+			"code": "IMAGES_PRESTATION",
+			"name": "IMAGES_PRESTATION"
+		},
+		{
+			"code": "VIEW_IMAGES_PRESTATION",
+			"parentCode": "IMAGES_PRESTATION",
+			"name": "VIEW IMAGES_PRESTATION"
+		},
+		{
+			"code": "CREATE_IMAGES_PRESTATION",
+			"parentCode": "IMAGES_PRESTATION",
+			"name": "CREATE IMAGES_PRESTATION"
+		},
+		{
+			"code": "UPDATE_IMAGES_PRESTATION",
+			"parentCode": "IMAGES_PRESTATION",
+			"name": "UPDATE IMAGES_PRESTATION"
+		},
+		{
+			"code": "DELETE_IMAGES_PRESTATION",
+			"parentCode": "IMAGES_PRESTATION",
+			"name": "DELETE IMAGES_PRESTATION"
+		},
+		{
+			"code": "MOYEN_DEPLACEMENT",
+			"name": "MOYEN_DEPLACEMENT"
+		},
+		{
+			"code": "VIEW_MOYEN_DEPLACEMENT",
+			"parentCode": "MOYEN_DEPLACEMENT",
+			"name": "VIEW MOYEN_DEPLACEMENT"
+		},
+		{
+			"code": "CREATE_MOYEN_DEPLACEMENT",
+			"parentCode": "MOYEN_DEPLACEMENT",
+			"name": "CREATE MOYEN_DEPLACEMENT"
+		},
+		{
+			"code": "UPDATE_MOYEN_DEPLACEMENT",
+			"parentCode": "MOYEN_DEPLACEMENT",
+			"name": "UPDATE MOYEN_DEPLACEMENT"
+		},
+		{
+			"code": "DELETE_MOYEN_DEPLACEMENT",
+			"parentCode": "MOYEN_DEPLACEMENT",
+			"name": "DELETE MOYEN_DEPLACEMENT"
+		},
+		{
+			"code": "PRESTATION",
+			"name": "PRESTATION"
+		},
+		{
+			"code": "VIEW_PRESTATION",
+			"parentCode": "PRESTATION",
+			"name": "VIEW PRESTATION"
+		},
+		{
+			"code": "CREATE_PRESTATION",
+			"parentCode": "PRESTATION",
+			"name": "CREATE PRESTATION"
+		},
+		{
+			"code": "UPDATE_PRESTATION",
+			"parentCode": "PRESTATION",
+			"name": "UPDATE PRESTATION"
+		},
+		{
+			"code": "DELETE_PRESTATION",
+			"parentCode": "PRESTATION",
+			"name": "DELETE PRESTATION"
+		},
+		{
+			"code": "PROJET",
+			"name": "PROJET"
+		},
+		{
+			"code": "VIEW_PROJET",
+			"parentCode": "PROJET",
+			"name": "VIEW PROJET"
+		},
+		{
+			"code": "CREATE_PROJET",
+			"parentCode": "PROJET",
+			"name": "CREATE PROJET"
+		},
+		{
+			"code": "UPDATE_PROJET",
+			"parentCode": "PROJET",
+			"name": "UPDATE PROJET"
+		},
+		{
+			"code": "DELETE_PROJET",
+			"parentCode": "PROJET",
+			"name": "DELETE PROJET"
+		},
+		{
+			"code": "RECORD_IMAGE",
+			"name": "RECORD_IMAGE"
+		},
+		{
+			"code": "VIEW_RECORD_IMAGE",
+			"parentCode": "RECORD_IMAGE",
+			"name": "VIEW RECORD_IMAGE"
+		},
+		{
+			"code": "CREATE_RECORD_IMAGE",
+			"parentCode": "RECORD_IMAGE",
+			"name": "CREATE RECORD_IMAGE"
+		},
+		{
+			"code": "UPDATE_RECORD_IMAGE",
+			"parentCode": "RECORD_IMAGE",
+			"name": "UPDATE RECORD_IMAGE"
+		},
+		{
+			"code": "DELETE_RECORD_IMAGE",
+			"parentCode": "RECORD_IMAGE",
+			"name": "DELETE RECORD_IMAGE"
+		},
+		{
+			"code": "UTILISATEUR",
+			"name": "UTILISATEUR"
+		},
+		{
+			"code": "VIEW_UTILISATEUR",
+			"parentCode": "UTILISATEUR",
+			"name": "VIEW UTILISATEUR"
+		},
+		{
+			"code": "CREATE_UTILISATEUR",
+			"parentCode": "UTILISATEUR",
+			"name": "CREATE UTILISATEUR"
+		},
+		{
+			"code": "UPDATE_UTILISATEUR",
+			"parentCode": "UTILISATEUR",
+			"name": "UPDATE UTILISATEUR"
+		},
+		{
+			"code": "DELETE_UTILISATEUR",
+			"parentCode": "UTILISATEUR",
+			"name": "DELETE UTILISATEUR"
+		},
+		{
+			"code": "VENDEUR",
+			"name": "VENDEUR"
+		},
+		{
+			"code": "VIEW_VENDEUR",
+			"parentCode": "VENDEUR",
+			"name": "VIEW VENDEUR"
+		},
+		{
+			"code": "CREATE_VENDEUR",
+			"parentCode": "VENDEUR",
+			"name": "CREATE VENDEUR"
+		},
+		{
+			"code": "UPDATE_VENDEUR",
+			"parentCode": "VENDEUR",
+			"name": "UPDATE VENDEUR"
+		},
+		{
+			"code": "DELETE_VENDEUR",
+			"parentCode": "VENDEUR",
+			"name": "DELETE VENDEUR"
+		},
+		{
+			"code": "ZONE_LIVRAISON",
+			"name": "ZONE_LIVRAISON"
+		},
+		{
+			"code": "VIEW_ZONE_LIVRAISON",
+			"parentCode": "ZONE_LIVRAISON",
+			"name": "VIEW ZONE_LIVRAISON"
+		},
+		{
+			"code": "CREATE_ZONE_LIVRAISON",
+			"parentCode": "ZONE_LIVRAISON",
+			"name": "CREATE ZONE_LIVRAISON"
+		},
+		{
+			"code": "UPDATE_ZONE_LIVRAISON",
+			"parentCode": "ZONE_LIVRAISON",
+			"name": "UPDATE ZONE_LIVRAISON"
+		},
+		{
+			"code": "DELETE_ZONE_LIVRAISON",
+			"parentCode": "ZONE_LIVRAISON",
+			"name": "DELETE ZONE_LIVRAISON"
+		}
+
+	]
+}
