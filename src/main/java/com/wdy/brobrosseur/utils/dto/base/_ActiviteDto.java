@@ -1,7 +1,7 @@
 
 /*
  * Java dto for entity table activite 
- * Created on 2024-10-03 ( Time 13:00:22 )
+ * Created on 2024-10-03 ( Time 17:22:58 )
  * Generator tool : Telosys Tools Generator ( version 3.3.0 )
  * Copyright 2018 Geo. All Rights Reserved.
  */

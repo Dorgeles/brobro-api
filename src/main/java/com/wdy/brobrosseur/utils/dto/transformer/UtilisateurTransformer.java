@@ -37,9 +37,9 @@ public interface UtilisateurTransformer {
 
 	@FullTransformerQualifier
 	@Mappings({
-		@Mapping(source="entity.deletedAt", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="deletedAt"),
-		@Mapping(source="entity.updatedAt", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="updatedAt"),
-		@Mapping(source="entity.createdAt", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="createdAt"),
+		@Mapping(source="entity.deletedAt", dateFormat="dd/MM/yyyy",target="deletedAt"),
+		@Mapping(source="entity.updatedAt", dateFormat="dd/MM/yyyy",target="updatedAt"),
+		@Mapping(source="entity.createdAt", dateFormat="dd/MM/yyyy",target="createdAt"),
 		@Mapping(source="entity.typeClient.id", target="typeClientId"),
 		@Mapping(source="entity.typeClient.libelle", target="typeClientLibelle"),
 	})
@@ -83,10 +83,10 @@ public interface UtilisateurTransformer {
 		@Mapping(source="dto.updatedBy", target="updatedBy"),
 		@Mapping(source="dto.isDeleted", target="isDeleted"),
 		@Mapping(source="dto.createdBy", target="createdBy"),
-		@Mapping(source="dto.deletedAt", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="deletedAt"),
+		@Mapping(source="dto.deletedAt", dateFormat="dd/MM/yyyy",target="deletedAt"),
 		@Mapping(source="dto.isLocked", target="isLocked"),
-		@Mapping(source="dto.updatedAt", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="updatedAt"),
-		@Mapping(source="dto.createdAt", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="createdAt"),
+		@Mapping(source="dto.updatedAt", dateFormat="dd/MM/yyyy",target="updatedAt"),
+		@Mapping(source="dto.createdAt", dateFormat="dd/MM/yyyy",target="createdAt"),
 		@Mapping(source="typeClient", target="typeClient"),
 	})
     Utilisateur toEntity(UtilisateurDto dto, TypeClient typeClient) throws ParseException;

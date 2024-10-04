@@ -18,6 +18,7 @@ import javax.persistence.PersistenceContext;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import com.wdy.brobrosseur.utils.*;
 import com.wdy.brobrosseur.utils.dto.*;
@@ -61,10 +62,11 @@ public class ActiviteBusiness implements IBasicBusiness<Request<ActiviteDto>, Re
 
 	private SimpleDateFormat dateFormat;
 	private SimpleDateFormat dateTimeFormat;
-
+	private SimpleDateFormat timeFormat;
 	public ActiviteBusiness() {
-		dateFormat =new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
-		dateTimeFormat =new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+		dateFormat =new SimpleDateFormat("dd/MM/yyyy");
+		dateTimeFormat =new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		timeFormat = new SimpleDateFormat("HH:mm:ss");
 	}
 	
 	/**
@@ -88,17 +90,15 @@ public class ActiviteBusiness implements IBasicBusiness<Request<ActiviteDto>, Re
 			fieldsToVerify.put("description", dto.getDescription());
 			fieldsToVerify.put("latitude", dto.getLatitude());
 			fieldsToVerify.put("longitude", dto.getLongitude());
-			fieldsToVerify.put("noteMoyenne", dto.getNoteMoyenne());
-			fieldsToVerify.put("statusId", dto.getStatusId());
 			fieldsToVerify.put("dateOuverture", dto.getDateOuverture());
 			fieldsToVerify.put("dateFermeture", dto.getDateFermeture());
-			fieldsToVerify.put("deletedAt", dto.getDeletedAt());
-			fieldsToVerify.put("dateFin", dto.getDateFin());
 			if (!Validate.RequiredValue(fieldsToVerify).isGood()) {
 				response.setStatus(functionalError.FIELD_EMPTY(Validate.getValidate().getField(), locale));
 				response.setHasError(true);
 				return response;
 			}
+			//dto.setDateOuverture(timeFormat.format());
+			// il faudrait ajouter un controle sur la vérification des données géographique
 
 			// Verify if activite to insert do not exist
 			Activite existingEntity = null;
@@ -111,21 +111,21 @@ public class ActiviteBusiness implements IBasicBusiness<Request<ActiviteDto>, Re
 			}
 
 */
-			// verif unique libelle in db
-			existingEntity = activiteRepository.findByLibelle(dto.getLibelle(), false);
-			if (existingEntity != null) {
-				response.setStatus(functionalError.DATA_EXIST("activite libelle -> " + dto.getLibelle(), locale));
-				response.setHasError(true);
-				return response;
+			// recupération de toutes les activites du client
+			List<Activite> prevousActivites = new ArrayList<>();
+			List<UtilisateurActivite> activiteList = utilisateurActiviteRepository.findByUtilisateurId(request.getUser(), false);
+			if (Utilities.isNotEmpty(activiteList)) {
+				prevousActivites = activiteList.stream().map(UtilisateurActivite::getActivite).collect(Collectors.toList());
+				for (Activite activite : prevousActivites) {
+					if (dto.getLibelle().equals(activite.getLibelle())) {
+						response.setStatus(functionalError.DATA_EXIST("activite -> " + dto.getLibelle(), locale));
+						response.setHasError(true);
+						return response;
+					}
+				}
 			}
-			// verif unique libelle in items to save
-			if (items.stream().anyMatch(a -> a.getLibelle().equalsIgnoreCase(dto.getLibelle()))) {
-				response.setStatus(functionalError.DATA_DUPLICATE(" libelle ", locale));
-				response.setHasError(true);
-				return response;
-			}
-
 				Activite entityToSave = null;
+
 			entityToSave = ActiviteTransformer.INSTANCE.toEntity(dto);
 			entityToSave.setIsDeleted(false);
 			entityToSave.setCreatedBy(request.getUser());
@@ -219,10 +219,10 @@ public class ActiviteBusiness implements IBasicBusiness<Request<ActiviteDto>, Re
 				entityToSave.setStatusId(dto.getStatusId());
 			}
 			if (Utilities.notBlank(dto.getDateOuverture())) {
-				entityToSave.setDateOuverture(dateFormat.parse(dto.getDateOuverture()));
+				entityToSave.setDateOuverture(dto.getDateOuverture());
 			}
 			if (Utilities.notBlank(dto.getDateFermeture())) {
-				entityToSave.setDateFermeture(dateFormat.parse(dto.getDateFermeture()));
+				entityToSave.setDateFermeture(dto.getDateFermeture());
 			}
 			if (dto.getUpdatedBy() != null && dto.getUpdatedBy() > 0) {
 				entityToSave.setUpdatedBy(dto.getUpdatedBy());

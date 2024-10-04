@@ -66,8 +66,8 @@ public class UtilisateurBusiness implements IBasicBusiness<Request<UtilisateurDt
 	private SimpleDateFormat dateTimeFormat;
 
 	public UtilisateurBusiness() {
-		dateFormat =new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
-		dateTimeFormat =new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+		dateFormat =new SimpleDateFormat("dd/MM/yyyy");
+		dateTimeFormat =new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 	}
 	
 	/**
@@ -88,16 +88,11 @@ public class UtilisateurBusiness implements IBasicBusiness<Request<UtilisateurDt
 			// Definir les parametres obligatoires
 			Map<String, java.lang.Object> fieldsToVerify = new HashMap<String, java.lang.Object>();
 			fieldsToVerify.put("nom", dto.getNom());
-			fieldsToVerify.put("username", dto.getUsername());
+			//fieldsToVerify.put("username", dto.getUsername());
 			fieldsToVerify.put("prenom", dto.getPrenom());
 			fieldsToVerify.put("email", dto.getEmail());
 			fieldsToVerify.put("telephone", dto.getTelephone());
-			fieldsToVerify.put("telephone2", dto.getTelephone2());
 			fieldsToVerify.put("motDePasse", dto.getMotDePasse());
-			fieldsToVerify.put("statusId", dto.getStatusId());
-			fieldsToVerify.put("deletedAt", dto.getDeletedAt());
-			fieldsToVerify.put("isLocked", dto.getIsLocked());
-			fieldsToVerify.put("typeClientId", dto.getTypeClientId());
 			if (!Validate.RequiredValue(fieldsToVerify).isGood()) {
 				response.setStatus(functionalError.FIELD_EMPTY(Validate.getValidate().getField(), locale));
 				response.setHasError(true);
@@ -106,6 +101,7 @@ public class UtilisateurBusiness implements IBasicBusiness<Request<UtilisateurDt
 
 			// Verify if utilisateur to insert do not exist
 			Utilisateur existingEntity = null;
+			List<Utilisateur> exitingUsernameUser = new ArrayList<>();
 
 /*
 			if (existingEntity != null) {
@@ -127,6 +123,15 @@ public class UtilisateurBusiness implements IBasicBusiness<Request<UtilisateurDt
 				response.setStatus(functionalError.DATA_DUPLICATE(" email ", locale));
 				response.setHasError(true);
 				return response;
+			}
+			// verif unique email in db
+			if (Utilities.isNotBlank(dto.getUsername())) {
+				exitingUsernameUser = utilisateurRepository.findByUsername(dto.getUsername(), false);
+				if (Utilities.isNotEmpty(exitingUsernameUser)) {
+					response.setStatus(functionalError.DATA_EXIST("utilisateur username -> " + dto.getUsername(), locale));
+					response.setHasError(true);
+					return response;
+				}
 			}
 
 			// Verify if typeClient exist

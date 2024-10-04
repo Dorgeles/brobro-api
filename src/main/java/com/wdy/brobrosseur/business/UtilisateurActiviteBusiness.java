@@ -18,6 +18,7 @@ import javax.persistence.PersistenceContext;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import com.wdy.brobrosseur.utils.*;
 import com.wdy.brobrosseur.utils.dto.*;
@@ -49,6 +50,8 @@ public class UtilisateurActiviteBusiness implements IBasicBusiness<Request<Utili
 	@Autowired
 	private ActiviteRepository activiteRepository;
 	@Autowired
+	private ActiviteBusiness activiteBusiness;
+	@Autowired
 	private UtilisateurRepository utilisateurRepository;
 	@Autowired
 	private FunctionalError functionalError;
@@ -61,10 +64,12 @@ public class UtilisateurActiviteBusiness implements IBasicBusiness<Request<Utili
 
 	private SimpleDateFormat dateFormat;
 	private SimpleDateFormat dateTimeFormat;
+	private SimpleDateFormat timeFormat;
 
 	public UtilisateurActiviteBusiness() {
-		dateFormat =new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
-		dateTimeFormat =new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+		dateFormat =new SimpleDateFormat("dd/MM/yyyy");
+		dateTimeFormat =new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		timeFormat =new SimpleDateFormat("HH:mm:ss");
 	}
 	
 	/**
@@ -85,16 +90,13 @@ public class UtilisateurActiviteBusiness implements IBasicBusiness<Request<Utili
 			// Definir les parametres obligatoires
 			Map<String, java.lang.Object> fieldsToVerify = new HashMap<String, java.lang.Object>();
 			fieldsToVerify.put("utilisateurId", dto.getUtilisateurId());
-			fieldsToVerify.put("activiteId", dto.getActiviteId());
-			fieldsToVerify.put("commentaire", dto.getCommentaire());
-			fieldsToVerify.put("statusId", dto.getStatusId());
-			fieldsToVerify.put("deletedAt", dto.getDeletedAt());
-			fieldsToVerify.put("dateFin", dto.getDateFin());
+			fieldsToVerify.put("datasActivite", dto.getDatasActivite());
 			if (!Validate.RequiredValue(fieldsToVerify).isGood()) {
 				response.setStatus(functionalError.FIELD_EMPTY(Validate.getValidate().getField(), locale));
 				response.setHasError(true);
 				return response;
 			}
+
 
 			// Verify if utilisateurActivite to insert do not exist
 			UtilisateurActivite existingEntity = null;
@@ -109,14 +111,18 @@ public class UtilisateurActiviteBusiness implements IBasicBusiness<Request<Utili
 */
 			// Verify if activite exist
 			Activite existingActivite = null;
-			if (dto.getActiviteId() != null && dto.getActiviteId() > 0){
-				existingActivite = activiteRepository.findOne(dto.getActiviteId(), false);
-				if (existingActivite == null) {
-					response.setStatus(functionalError.DATA_NOT_EXIST("activite activiteId -> " + dto.getActiviteId(), locale));
-					response.setHasError(true);
-					return response;
-				}
+			Request<ActiviteDto> requestActivite = new Request<ActiviteDto>();
+			requestActivite.setDatas(dto.getDatasActivite());
+			requestActivite.setUser(dto.getUtilisateurId());
+			Response<ActiviteDto> responseActivite = activiteBusiness.create(requestActivite, locale);
+			if (!responseActivite.isHasError()) {
+				existingActivite = ActiviteTransformer.INSTANCE.toEntity(responseActivite.getItems().get(0));
+			} else {
+				response.setStatus(responseActivite.getStatus());
+				response.setHasError(true);
+				return response;
 			}
+
 			// Verify if utilisateur exist
 			Utilisateur existingUtilisateur = null;
 			if (dto.getUtilisateurId() != null && dto.getUtilisateurId() > 0){
@@ -127,7 +133,7 @@ public class UtilisateurActiviteBusiness implements IBasicBusiness<Request<Utili
 					return response;
 				}
 			}
-				UtilisateurActivite entityToSave = null;
+			UtilisateurActivite entityToSave = null;
 			entityToSave = UtilisateurActiviteTransformer.INSTANCE.toEntity(dto, existingActivite, existingUtilisateur);
 			entityToSave.setIsDeleted(false);
 			entityToSave.setCreatedBy(request.getUser());
@@ -390,7 +396,13 @@ public class UtilisateurActiviteBusiness implements IBasicBusiness<Request<Utili
 	 */
 	private UtilisateurActiviteDto getFullInfos(UtilisateurActiviteDto dto, Integer size, Boolean isSimpleLoading, Locale locale) throws Exception {
 		// put code here
-
+		List<UtilisateurActivite> activiteList = utilisateurActiviteRepository.findByUtilisateurId(dto.getUtilisateurId(), false);
+		if (Utilities.isNotEmpty(activiteList)) {
+		dto.setDatasActivite(ActiviteTransformer.INSTANCE.toDtos(activiteList.stream().map(UtilisateurActivite::getActivite).collect(Collectors.toList())));
+		}
+		dto.setActiviteId(null);
+		dto.setActiviteLibelle(null);
+		dto.setUtilisateurNom(null);
 		if (Utilities.isTrue(isSimpleLoading)) {
 			return dto;
 		}

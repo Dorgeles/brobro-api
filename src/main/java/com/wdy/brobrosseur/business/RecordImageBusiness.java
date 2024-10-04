@@ -60,8 +60,8 @@ public class RecordImageBusiness implements IBasicBusiness<Request<RecordImageDt
 	private SimpleDateFormat dateTimeFormat;
 
 	public RecordImageBusiness() {
-		dateFormat =new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
-		dateTimeFormat =new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+		dateFormat =new SimpleDateFormat("dd/MM/yyyy");
+		dateTimeFormat =new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 	}
 	
 	/**

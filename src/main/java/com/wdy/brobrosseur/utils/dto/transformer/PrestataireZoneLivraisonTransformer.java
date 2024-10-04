@@ -37,10 +37,10 @@ public interface PrestataireZoneLivraisonTransformer {
 
 	@FullTransformerQualifier
 	@Mappings({
-		@Mapping(source="entity.deletedAt", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="deletedAt"),
-		@Mapping(source="entity.updatedAt", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="updatedAt"),
-		@Mapping(source="entity.createdAt", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="createdAt"),
-		@Mapping(source="entity.dateFin", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="dateFin"),
+		@Mapping(source="entity.deletedAt", dateFormat="dd/MM/yyyy",target="deletedAt"),
+		@Mapping(source="entity.updatedAt", dateFormat="dd/MM/yyyy",target="updatedAt"),
+		@Mapping(source="entity.createdAt", dateFormat="dd/MM/yyyy",target="createdAt"),
+		@Mapping(source="entity.dateFin", dateFormat="dd/MM/yyyy",target="dateFin"),
 		@Mapping(source="entity.zoneLivraison.id", target="zoneLivraisonId"),
 		@Mapping(source="entity.prestation.id", target="prestataireId"),
 		@Mapping(source="entity.prestation.libelle", target="prestationLibelle"),
@@ -79,10 +79,10 @@ public interface PrestataireZoneLivraisonTransformer {
 		@Mapping(source="dto.updatedBy", target="updatedBy"),
 		@Mapping(source="dto.isDeleted", target="isDeleted"),
 		@Mapping(source="dto.createdBy", target="createdBy"),
-		@Mapping(source="dto.deletedAt", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="deletedAt"),
-		@Mapping(source="dto.updatedAt", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="updatedAt"),
-		@Mapping(source="dto.createdAt", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="createdAt"),
-		@Mapping(source="dto.dateFin", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="dateFin"),
+		@Mapping(source="dto.deletedAt", dateFormat="dd/MM/yyyy",target="deletedAt"),
+		@Mapping(source="dto.updatedAt", dateFormat="dd/MM/yyyy",target="updatedAt"),
+		@Mapping(source="dto.createdAt", dateFormat="dd/MM/yyyy",target="createdAt"),
+		@Mapping(source="dto.dateFin", dateFormat="dd/MM/yyyy",target="dateFin"),
 		@Mapping(source="zoneLivraison", target="zoneLivraison"),
 		@Mapping(source="prestation", target="prestation"),
 	})

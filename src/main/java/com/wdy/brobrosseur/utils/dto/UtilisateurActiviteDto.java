@@ -10,6 +10,8 @@ package com.wdy.brobrosseur.utils.dto;
 
 import java.util.Date;
 import java.util.Date;
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -31,6 +33,7 @@ import com.wdy.brobrosseur.utils.dto.base._UtilisateurActiviteDto;
 public class UtilisateurActiviteDto extends _UtilisateurActiviteDto{
 
     private String    statusLibelle               ;
+	private List<ActiviteDto> datasActivite                ;
     
 	//----------------------------------------------------------------------
     // clone METHOD

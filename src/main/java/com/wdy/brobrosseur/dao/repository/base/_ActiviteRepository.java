@@ -107,7 +107,7 @@ public interface _ActiviteRepository {
      *         no Activite is found, this method returns null.
      */
     @Query("select e from Activite e where e.dateOuverture = :dateOuverture and e.isDeleted = :isDeleted")
-    List<Activite> findByDateOuverture(@Param("dateOuverture")Date dateOuverture, @Param("isDeleted")Boolean isDeleted);
+    List<Activite> findByDateOuverture(@Param("dateOuverture")String dateOuverture, @Param("isDeleted")Boolean isDeleted);
     /**
      * Finds Activite by using dateFermeture as a search criteria.
      *
@@ -116,7 +116,7 @@ public interface _ActiviteRepository {
      *         no Activite is found, this method returns null.
      */
     @Query("select e from Activite e where e.dateFermeture = :dateFermeture and e.isDeleted = :isDeleted")
-    List<Activite> findByDateFermeture(@Param("dateFermeture")Date dateFermeture, @Param("isDeleted")Boolean isDeleted);
+    List<Activite> findByDateFermeture(@Param("dateFermeture")String dateFermeture, @Param("isDeleted")Boolean isDeleted);
     /**
      * Finds Activite by using updatedBy as a search criteria.
      *

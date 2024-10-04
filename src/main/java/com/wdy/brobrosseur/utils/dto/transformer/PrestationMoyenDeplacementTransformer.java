@@ -38,10 +38,10 @@ public interface PrestationMoyenDeplacementTransformer {
 	@FullTransformerQualifier
 	@Mappings({
 		@Mapping(source="entity.dateDebut", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="dateDebut"),
-		@Mapping(source="entity.dateFin", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="dateFin"),
-		@Mapping(source="entity.deletedAt", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="deletedAt"),
-		@Mapping(source="entity.updatedAt", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="updatedAt"),
-		@Mapping(source="entity.createdAt", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="createdAt"),
+		@Mapping(source="entity.dateFin", dateFormat="dd/MM/yyyy",target="dateFin"),
+		@Mapping(source="entity.deletedAt", dateFormat="dd/MM/yyyy",target="deletedAt"),
+		@Mapping(source="entity.updatedAt", dateFormat="dd/MM/yyyy",target="updatedAt"),
+		@Mapping(source="entity.createdAt", dateFormat="dd/MM/yyyy",target="createdAt"),
 		@Mapping(source="entity.moyenDeplacement.id", target="moyenDeplacementId"),
 		@Mapping(source="entity.moyenDeplacement.libelle", target="moyenDeplacementLibelle"),
 		@Mapping(source="entity.prestation.id", target="presatationId"),
@@ -75,14 +75,14 @@ public interface PrestationMoyenDeplacementTransformer {
 	@Mappings({
 		@Mapping(source="dto.id", target="id"),
 		@Mapping(source="dto.dateDebut", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="dateDebut"),
-		@Mapping(source="dto.dateFin", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="dateFin"),
+		@Mapping(source="dto.dateFin", dateFormat="dd/MM/yyyy",target="dateFin"),
 		@Mapping(source="dto.statusId", target="statusId"),
 		@Mapping(source="dto.updatedBy", target="updatedBy"),
 		@Mapping(source="dto.isDeleted", target="isDeleted"),
 		@Mapping(source="dto.createdBy", target="createdBy"),
-		@Mapping(source="dto.deletedAt", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="deletedAt"),
-		@Mapping(source="dto.updatedAt", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="updatedAt"),
-		@Mapping(source="dto.createdAt", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="createdAt"),
+		@Mapping(source="dto.deletedAt", dateFormat="dd/MM/yyyy",target="deletedAt"),
+		@Mapping(source="dto.updatedAt", dateFormat="dd/MM/yyyy",target="updatedAt"),
+		@Mapping(source="dto.createdAt", dateFormat="dd/MM/yyyy",target="createdAt"),
 		@Mapping(source="moyenDeplacement", target="moyenDeplacement"),
 		@Mapping(source="prestation", target="prestation"),
 	})

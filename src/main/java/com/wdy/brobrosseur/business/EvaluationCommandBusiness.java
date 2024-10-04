@@ -60,8 +60,8 @@ public class EvaluationCommandBusiness implements IBasicBusiness<Request<Evaluat
 	private SimpleDateFormat dateTimeFormat;
 
 	public EvaluationCommandBusiness() {
-		dateFormat =new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
-		dateTimeFormat =new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+		dateFormat =new SimpleDateFormat("dd/MM/yyyy");
+		dateTimeFormat =new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 	}
 	
 	/**

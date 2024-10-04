@@ -111,8 +111,8 @@ public class ${businessName} implements IBasicBusiness<Request<${entity.name}Dto
 	private SimpleDateFormat dateTimeFormat;
 
 	public ${businessName}() {
-		dateFormat =new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
-		dateTimeFormat =new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+		dateFormat =new SimpleDateFormat("dd/MM/yyyy");
+		dateTimeFormat =new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 	}
 #if( ${businessName} == ${tenantEntityBusiness} )
 	public ${tenantEntityName}Dto getTenant(String code) throws ParseException {

@@ -2,7 +2,7 @@
 
 /*
  * Java transformer for entity table activite 
- * Created on 2024-10-03 ( Time 13:19:22 )
+ * Created on 2024-10-03 ( Time 17:22:58 )
  * Generator tool : Telosys Tools Generator ( version 3.3.0 )
  * Copyright 2018 Geo. All Rights Reserved.
  */
@@ -37,12 +37,10 @@ public interface ActiviteTransformer {
 
 	@FullTransformerQualifier
 	@Mappings({
-		@Mapping(source="entity.dateOuverture", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="dateOuverture"),
-		@Mapping(source="entity.dateFermeture", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="dateFermeture"),
-		@Mapping(source="entity.deletedAt", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="deletedAt"),
-		@Mapping(source="entity.updatedAt", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="updatedAt"),
-		@Mapping(source="entity.createdAt", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="createdAt"),
-		@Mapping(source="entity.dateFin", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="dateFin"),
+		@Mapping(source="entity.deletedAt", dateFormat="dd/MM/yyyy",target="deletedAt"),
+		@Mapping(source="entity.updatedAt", dateFormat="dd/MM/yyyy",target="updatedAt"),
+		@Mapping(source="entity.createdAt", dateFormat="dd/MM/yyyy",target="createdAt"),
+		@Mapping(source="entity.dateFin", dateFormat="dd/MM/yyyy",target="dateFin"),
 	})
 	ActiviteDto toDto(Activite entity) throws ParseException;
 
@@ -78,15 +76,15 @@ public interface ActiviteTransformer {
 		@Mapping(source="dto.longitude", target="longitude"),
 		@Mapping(source="dto.noteMoyenne", target="noteMoyenne"),
 		@Mapping(source="dto.statusId", target="statusId"),
-		@Mapping(source="dto.dateOuverture", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="dateOuverture"),
-		@Mapping(source="dto.dateFermeture", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="dateFermeture"),
+		@Mapping(source="dto.dateOuverture", target="dateOuverture"),
+		@Mapping(source="dto.dateFermeture", target="dateFermeture"),
 		@Mapping(source="dto.updatedBy", target="updatedBy"),
 		@Mapping(source="dto.isDeleted", target="isDeleted"),
 		@Mapping(source="dto.createdBy", target="createdBy"),
-		@Mapping(source="dto.deletedAt", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="deletedAt"),
-		@Mapping(source="dto.updatedAt", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="updatedAt"),
-		@Mapping(source="dto.createdAt", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="createdAt"),
-		@Mapping(source="dto.dateFin", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="dateFin"),
+		@Mapping(source="dto.deletedAt", dateFormat="dd/MM/yyyy",target="deletedAt"),
+		@Mapping(source="dto.updatedAt", dateFormat="dd/MM/yyyy",target="updatedAt"),
+		@Mapping(source="dto.createdAt", dateFormat="dd/MM/yyyy",target="createdAt"),
+		@Mapping(source="dto.dateFin", dateFormat="dd/MM/yyyy",target="dateFin"),
 	})
     Activite toEntity(ActiviteDto dto) throws ParseException;
 

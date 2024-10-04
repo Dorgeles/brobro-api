@@ -45,7 +45,7 @@ public interface ${transformer} {
 	@Mappings({
 #foreach( $field in $entity.attributes )
 #if( $field.isTimestampType() )
-		@Mapping(source="entity.${field.name}", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="${field.name}"),
+		@Mapping(source="entity.${field.name}", dateFormat="dd/MM/yyyy",target="${field.name}"),
 #end
 #end
 #foreach( $link in $entity.selectedLinks )
@@ -97,7 +97,7 @@ public interface ${transformer} {
 	@Mappings({
 #foreach( $field in $entity.getAttributesByCriteria( $const.NOT_IN_SELECTED_LINKS ) )
 #if( $field.isTimestampType() )
-		@Mapping(source="dto.${field.name}", dateFormat="YYYY-MM-DD'T'HH:mm:ss.000'Z'",target="${field.name}"),
+		@Mapping(source="dto.${field.name}", dateFormat="dd/MM/yyyy",target="${field.name}"),
 #end
 #if( !$field.isTimestampType() )
 		@Mapping(source="dto.${field.name}", target="${field.name}"),
