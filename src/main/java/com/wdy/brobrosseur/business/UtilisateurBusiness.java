@@ -52,6 +52,8 @@ public class UtilisateurBusiness implements IBasicBusiness<Request<UtilisateurDt
 	@Autowired
 	private UtilisateurActiviteRepository utilisateurActiviteRepository;
 	@Autowired
+	private ActiviteBusiness activiteBusiness;
+	@Autowired
 	private CommandRepository commandRepository;
 	@Autowired
 	private FunctionalError functionalError;
@@ -436,6 +438,25 @@ public class UtilisateurBusiness implements IBasicBusiness<Request<UtilisateurDt
 	 */
 	private UtilisateurDto getFullInfos(UtilisateurDto dto, Integer size, Boolean isSimpleLoading, Locale locale) throws Exception {
 		// put code here
+		// recupération de toutes les activités d'un utilisateur
+		List<UtilisateurActivite> datasUtilisateurAct = utilisateurActiviteRepository.findByUtilisateurId(dto.getId(), Boolean.FALSE);
+		if (Utilities.isNotEmpty(datasUtilisateurAct)) {
+			List<ActiviteDto> datas = new ArrayList<>();
+			for ( UtilisateurActivite ua : datasUtilisateurAct) {
+				datas.add(ActiviteTransformer.INSTANCE.toLiteDto(ua.getActivite()));
+			}
+			if (Utilities.isEmpty( datas)) {
+				datas.parallelStream().forEach( dtoActivite -> {
+					try {
+						dtoActivite = activiteBusiness.getFullInfos(dtoActivite, size, Boolean.TRUE, locale);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				});
+			}
+			dto.setBusiness(datas);
+		}
+
 
 		if (Utilities.isTrue(isSimpleLoading)) {
 			return dto;

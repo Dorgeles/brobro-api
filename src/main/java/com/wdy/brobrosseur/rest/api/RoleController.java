@@ -9,6 +9,8 @@
 
 package com.wdy.brobrosseur.rest.api;
 
+import io.minio.errors.MinioException;
+import io.minio.messages.Bucket;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -25,6 +27,8 @@ import com.wdy.brobrosseur.utils.contract.Response;
 import com.wdy.brobrosseur.utils.enums.FunctionalityEnum;
 import com.wdy.brobrosseur.business.*;
 import com.wdy.brobrosseur.rest.fact.ControllerFactory;
+
+import java.util.List;
 
 /**
 Controller for table "role"
@@ -49,6 +53,13 @@ public class RoleController {
         Response<RoleDto> response = controllerFactory.create(roleBusiness, request, FunctionalityEnum.CREATE_ROLE);
 		// System.out.println("end method /role/create");
         return response;
+    }
+
+    @RequestMapping(value="/hello",method=RequestMethod.GET)
+    public String get() throws Exception {
+    	 System.out.println("start method /role/get");
+         String status = roleBusiness.getMinioTry();
+        return status;
     }
 
 	@RequestMapping(value="/update",method=RequestMethod.POST,consumes = {"application/json"},produces={"application/json"})

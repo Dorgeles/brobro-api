@@ -8,6 +8,7 @@
 package com.wdy.brobrosseur.utils;
 
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -21,11 +22,22 @@ import org.springframework.stereotype.Component;
  * @author Geo
  */
 
-//@Component
-//@Getter
-//@NoArgsConstructor
-//@ToString
+@Component
+@Getter
+@NoArgsConstructor
+@ToString
 public class ParamsUtils {
 
 
+    @Value("${spring.minio.url}")
+    private String minioUrl;
+
+    @Value("${spring.minio.access-key}")
+    private String minioAccessKey;
+
+    @Value("${spring.minio.secret-key}")
+    private String minioSecretKey;
+
+    @Value("${spring.minio.bucket}")
+    private String minioBucketName;
 }

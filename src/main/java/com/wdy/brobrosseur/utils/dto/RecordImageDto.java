@@ -31,7 +31,10 @@ import com.wdy.brobrosseur.utils.dto.base._RecordImageDto;
 public class RecordImageDto extends _RecordImageDto{
 
     private String    statusLibelle               ;
-    
+	private String mimeType;
+	private String fileName;
+	private String fileBase64;
+
 	//----------------------------------------------------------------------
     // clone METHOD
     //----------------------------------------------------------------------

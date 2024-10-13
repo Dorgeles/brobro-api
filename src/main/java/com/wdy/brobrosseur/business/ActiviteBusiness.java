@@ -86,8 +86,6 @@ public class ActiviteBusiness implements IBasicBusiness<Request<ActiviteDto>, Re
 		for (ActiviteDto dto : request.getDatas()) {
 			// Definir les parametres obligatoires
 			Map<String, java.lang.Object> fieldsToVerify = new HashMap<String, java.lang.Object>();
-			fieldsToVerify.put("libelle", dto.getLibelle());
-			fieldsToVerify.put("description", dto.getDescription());
 			fieldsToVerify.put("latitude", dto.getLatitude());
 			fieldsToVerify.put("longitude", dto.getLongitude());
 			fieldsToVerify.put("dateOuverture", dto.getDateOuverture());
@@ -405,7 +403,7 @@ public class ActiviteBusiness implements IBasicBusiness<Request<ActiviteDto>, Re
 	 * @return
 	 * @throws Exception
 	 */
-	private ActiviteDto getFullInfos(ActiviteDto dto, Integer size, Boolean isSimpleLoading, Locale locale) throws Exception {
+	public ActiviteDto getFullInfos(ActiviteDto dto, Integer size, Boolean isSimpleLoading, Locale locale) throws Exception {
 		// put code here
 
 		if (Utilities.isTrue(isSimpleLoading)) {

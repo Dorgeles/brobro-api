@@ -1,7 +1,7 @@
 
 /*
- * Java dto for entity table utilisateur 
- * Created on 2024-10-03 ( Time 13:00:22 )
+ * Java dto for entity table setting 
+ * Created on 2024-10-12 ( Time 17:44:58 )
  * Generator tool : Telosys Tools Generator ( version 3.3.0 )
  * Copyright 2018 Geo. All Rights Reserved.
  */
@@ -9,20 +9,18 @@
 package com.wdy.brobrosseur.utils.dto;
 
 import java.util.Date;
-import java.util.List;
 import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-import com.wdy.brobrosseur.dao.entity.Activite;
 import lombok.*;
 
 import com.wdy.brobrosseur.utils.contract.*;
-import com.wdy.brobrosseur.utils.dto.base._UtilisateurDto;
+import com.wdy.brobrosseur.utils.dto.base._SettingDto;
 
 /**
- * DTO for table "utilisateur"
+ * DTO for table "setting"
  *
  * @author Geo
  */
@@ -30,10 +28,9 @@ import com.wdy.brobrosseur.utils.dto.base._UtilisateurDto;
 @ToString
 @JsonInclude(Include.NON_NULL)
 @JsonPropertyOrder(alphabetic = true)
-public class UtilisateurDto extends _UtilisateurDto{
+public class SettingDto extends _SettingDto{
 
     private String    statusLibelle               ;
-	private List<ActiviteDto> business;
     
 	//----------------------------------------------------------------------
     // clone METHOD

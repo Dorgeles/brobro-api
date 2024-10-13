@@ -1,17 +1,13 @@
-                                                    												
+                                                											
 /*
- * Java business for entity table role 
- * Created on 2024-10-03 ( Time 13:00:22 )
+ * Java business for entity table setting 
+ * Created on 2024-10-12 ( Time 17:44:58 )
  * Generator tool : Telosys Tools Generator ( version 3.3.0 )
  * Copyright 2018 Geo. All Rights Reserved.
  */
 
 package com.wdy.brobrosseur.business;
 
-import io.minio.MinioClient;
-import io.minio.PutObjectArgs;
-import io.minio.UploadObjectArgs;
-import io.minio.messages.Bucket;
 import lombok.extern.java.Log;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,31 +27,27 @@ import com.wdy.brobrosseur.utils.contract.IBasicBusiness;
 import com.wdy.brobrosseur.utils.contract.Request;
 import com.wdy.brobrosseur.utils.contract.Response;
 import com.wdy.brobrosseur.utils.dto.transformer.*;
-import com.wdy.brobrosseur.dao.entity.Role;
+import com.wdy.brobrosseur.dao.entity.Setting;
 import com.wdy.brobrosseur.dao.entity.*;
 import com.wdy.brobrosseur.dao.repository.*;
 
 /**
-BUSINESS for table "role"
+BUSINESS for table "setting"
  * 
  * @author Geo
  *
  */
 
 @Component
-public class RoleBusiness implements IBasicBusiness<Request<RoleDto>, Response<RoleDto>> {
+public class SettingBusiness implements IBasicBusiness<Request<SettingDto>, Response<SettingDto>> {
 
-	private Response<RoleDto> response;
+	private Response<SettingDto> response;
 	@Autowired
-	private RoleRepository roleRepository;
-	@Autowired
-	private UtilisateurRoleRepository utilisateurRoleRepository;
+	private SettingRepository settingRepository;
 	@Autowired
 	private FunctionalError functionalError;
 	@Autowired
 	private TechnicalError technicalError;
-	@Autowired
-	private MinioClientConfig minioClientConfig;
 	@Autowired
 	private ExceptionUtils exceptionUtils;
 	@PersistenceContext
@@ -64,66 +56,63 @@ public class RoleBusiness implements IBasicBusiness<Request<RoleDto>, Response<R
 	private SimpleDateFormat dateFormat;
 	private SimpleDateFormat dateTimeFormat;
 
-	public RoleBusiness() {
+	public SettingBusiness() {
 		dateFormat =new SimpleDateFormat("dd/MM/yyyy");
 		dateTimeFormat =new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 	}
 	
 	/**
-	 * create Role by using RoleDto as object.
+	 * create Setting by using SettingDto as object.
 	 * 
 	 * @param request
 	 * @return response
 	 * 
 	 */
 	@Override
-	public Response<RoleDto> create(Request<RoleDto> request, Locale locale)  throws ParseException {
-		// System.out.println("----begin create Role-----");
+	public Response<SettingDto> create(Request<SettingDto> request, Locale locale)  throws ParseException {
+		// System.out.println("----begin create Setting-----");
 
-		Response<RoleDto> response = new Response<RoleDto>();
-		List<Role>        items    = new ArrayList<Role>();
+		Response<SettingDto> response = new Response<SettingDto>();
+		List<Setting>        items    = new ArrayList<Setting>();
 			
-		for (RoleDto dto : request.getDatas()) {
+		for (SettingDto dto : request.getDatas()) {
 			// Definir les parametres obligatoires
 			Map<String, java.lang.Object> fieldsToVerify = new HashMap<String, java.lang.Object>();
-			fieldsToVerify.put("description", dto.getDescription());
-			fieldsToVerify.put("libelle", dto.getLibelle());
-			fieldsToVerify.put("statusId", dto.getStatusId());
-			fieldsToVerify.put("deletedAt", dto.getDeletedAt());
-			fieldsToVerify.put("dateFin", dto.getDateFin());
+			fieldsToVerify.put("code", dto.getCode());
+			fieldsToVerify.put("valeur", dto.getValeur());
 			if (!Validate.RequiredValue(fieldsToVerify).isGood()) {
 				response.setStatus(functionalError.FIELD_EMPTY(Validate.getValidate().getField(), locale));
 				response.setHasError(true);
 				return response;
 			}
 
-			// Verify if role to insert do not exist
-			Role existingEntity = null;
+			// Verify if setting to insert do not exist
+			Setting existingEntity = null;
 
 /*
 			if (existingEntity != null) {
-				response.setStatus(functionalError.DATA_EXIST("role id -> " + dto.getId(), locale));
+				response.setStatus(functionalError.DATA_EXIST("setting id -> " + dto.getId(), locale));
 				response.setHasError(true);
 				return response;
 			}
 
 */
-			// verif unique libelle in db
-			existingEntity = roleRepository.findByLibelle(dto.getLibelle(), false);
+			// verif unique code in db
+			existingEntity = settingRepository.findByCode(dto.getCode(), false);
 			if (existingEntity != null) {
-				response.setStatus(functionalError.DATA_EXIST("role libelle -> " + dto.getLibelle(), locale));
+				response.setStatus(functionalError.DATA_EXIST("setting code -> " + dto.getCode(), locale));
 				response.setHasError(true);
 				return response;
 			}
-			// verif unique libelle in items to save
-			if (items.stream().anyMatch(a -> a.getLibelle().equalsIgnoreCase(dto.getLibelle()))) {
-				response.setStatus(functionalError.DATA_DUPLICATE(" libelle ", locale));
+			// verif unique code in items to save
+			if (items.stream().anyMatch(a -> a.getCode().equalsIgnoreCase(dto.getCode()))) {
+				response.setStatus(functionalError.DATA_DUPLICATE(" code ", locale));
 				response.setHasError(true);
 				return response;
 			}
 
-				Role entityToSave = null;
-			entityToSave = RoleTransformer.INSTANCE.toEntity(dto);
+				Setting entityToSave = null;
+			entityToSave = SettingTransformer.INSTANCE.toEntity(dto);
 			entityToSave.setIsDeleted(false);
 			entityToSave.setCreatedBy(request.getUser());
 			entityToSave.setCreatedAt(Utilities.getCurrentDate());
@@ -132,15 +121,15 @@ public class RoleBusiness implements IBasicBusiness<Request<RoleDto>, Response<R
 		}
 
 		if (!items.isEmpty()) {
-			List<Role> itemsSaved = null;
+			List<Setting> itemsSaved = null;
 			// inserer les donnees en base de donnees
-			itemsSaved = roleRepository.saveAll((Iterable<Role>) items);
+			itemsSaved = settingRepository.saveAll((Iterable<Setting>) items);
 			if (itemsSaved == null) {
-				response.setStatus(functionalError.SAVE_FAIL("role", locale));
+				response.setStatus(functionalError.SAVE_FAIL("setting", locale));
 				response.setHasError(true);
 				return response;
 			}
-			List<RoleDto> itemsDto = (Utilities.isTrue(request.getIsSimpleLoading())) ? RoleTransformer.INSTANCE.toLiteDtos(itemsSaved) : RoleTransformer.INSTANCE.toDtos(itemsSaved);
+			List<SettingDto> itemsDto = (Utilities.isTrue(request.getIsSimpleLoading())) ? SettingTransformer.INSTANCE.toLiteDtos(itemsSaved) : SettingTransformer.INSTANCE.toDtos(itemsSaved);
 
 			final int size = itemsSaved.size();
 			List<String>  listOfError      = Collections.synchronizedList(new ArrayList<String>());
@@ -160,44 +149,25 @@ public class RoleBusiness implements IBasicBusiness<Request<RoleDto>, Response<R
 			response.setHasError(false);
 		}
 
-		// System.out.println("----end create Role-----");
+		// System.out.println("----end create Setting-----");
 		return response;
 	}
 
-
-//	public String getMinioTry()  throws Exception {
-//		try {
-//			MinioClient minioClient = minioClientConfig.getMinioClientVIP();
-//			List<Bucket> bList = minioClient.listBuckets();
-//			System.out.println("Connection successful, total buckets : " + bList.size());
-//
-//			PutObjectArgs args = PutObjectArgs.builder()
-//					.bucket("robrosseur")
-//					.stream()
-//					.build();
-//
-//			minioClient.putObject(args);
-//		} catch (Exception e) {
-//			throw new RuntimeException(e);
-//		}
-//		return "ok";
-//	}
-
 	/**
-	 * update Role by using RoleDto as object.
+	 * update Setting by using SettingDto as object.
 	 * 
 	 * @param request
 	 * @return response
 	 * 
 	 */
 	@Override
-	public Response<RoleDto> update(Request<RoleDto> request, Locale locale)  throws ParseException {
-		// System.out.println("----begin update Role-----");
+	public Response<SettingDto> update(Request<SettingDto> request, Locale locale)  throws ParseException {
+		// System.out.println("----begin update Setting-----");
 
-		Response<RoleDto> response = new Response<RoleDto>();
-		List<Role>        items    = new ArrayList<Role>();
+		Response<SettingDto> response = new Response<SettingDto>();
+		List<Setting>        items    = new ArrayList<Setting>();
 			
-		for (RoleDto dto : request.getDatas()) {
+		for (SettingDto dto : request.getDatas()) {
 			// Definir les parametres obligatoires
 			Map<String, java.lang.Object> fieldsToVerify = new HashMap<String, java.lang.Object>();
 			fieldsToVerify.put("id", dto.getId());
@@ -207,20 +177,20 @@ public class RoleBusiness implements IBasicBusiness<Request<RoleDto>, Response<R
 				return response;
 			}
 
-			// Verifier si la role existe
-			Role entityToSave = null;
-			entityToSave = roleRepository.findOne(dto.getId(), false);
+			// Verifier si la setting existe
+			Setting entityToSave = null;
+			entityToSave = settingRepository.findOne(dto.getId(), false);
 			if (entityToSave == null) {
-				response.setStatus(functionalError.DATA_NOT_EXIST("role id -> " + dto.getId(), locale));
+				response.setStatus(functionalError.DATA_NOT_EXIST("setting id -> " + dto.getId(), locale));
 				response.setHasError(true);
 				return response;
 			}
 
-			if (Utilities.notBlank(dto.getDescription())) {
-				entityToSave.setDescription(dto.getDescription());
+			if (Utilities.notBlank(dto.getCode())) {
+				entityToSave.setCode(dto.getCode());
 			}
-			if (Utilities.notBlank(dto.getLibelle())) {
-				entityToSave.setLibelle(dto.getLibelle());
+			if (Utilities.notBlank(dto.getValeur())) {
+				entityToSave.setValeur(dto.getValeur());
 			}
 			if (dto.getStatusId() != null && dto.getStatusId() > 0) {
 				entityToSave.setStatusId(dto.getStatusId());
@@ -234,24 +204,21 @@ public class RoleBusiness implements IBasicBusiness<Request<RoleDto>, Response<R
 			if (Utilities.notBlank(dto.getDeletedAt())) {
 				entityToSave.setDeletedAt(dateFormat.parse(dto.getDeletedAt()));
 			}
-			if (Utilities.notBlank(dto.getDateFin())) {
-				entityToSave.setDateFin(dateFormat.parse(dto.getDateFin()));
-			}
 			entityToSave.setUpdatedBy(request.getUser());
 			entityToSave.setUpdatedAt(Utilities.getCurrentDate());
 			items.add(entityToSave);
 		}
 
 		if (!items.isEmpty()) {
-			List<Role> itemsSaved = null;
+			List<Setting> itemsSaved = null;
 			// maj les donnees en base
-			itemsSaved = roleRepository.saveAll((Iterable<Role>) items);
+			itemsSaved = settingRepository.saveAll((Iterable<Setting>) items);
 			if (itemsSaved == null) {
-				response.setStatus(functionalError.SAVE_FAIL("role", locale));
+				response.setStatus(functionalError.SAVE_FAIL("setting", locale));
 				response.setHasError(true);
 				return response;
 			}
-			List<RoleDto> itemsDto = (Utilities.isTrue(request.getIsSimpleLoading())) ? RoleTransformer.INSTANCE.toLiteDtos(itemsSaved) : RoleTransformer.INSTANCE.toDtos(itemsSaved);
+			List<SettingDto> itemsDto = (Utilities.isTrue(request.getIsSimpleLoading())) ? SettingTransformer.INSTANCE.toLiteDtos(itemsSaved) : SettingTransformer.INSTANCE.toDtos(itemsSaved);
 
 			final int size = itemsSaved.size();
 			List<String>  listOfError      = Collections.synchronizedList(new ArrayList<String>());
@@ -271,25 +238,25 @@ public class RoleBusiness implements IBasicBusiness<Request<RoleDto>, Response<R
 			response.setHasError(false);
 		}
 
-		// System.out.println("----end update Role-----");
+		// System.out.println("----end update Setting-----");
 		return response;
 	}
 
 	/**
-	 * delete Role by using RoleDto as object.
+	 * delete Setting by using SettingDto as object.
 	 * 
 	 * @param request
 	 * @return response
 	 * 
 	 */
 	@Override
-	public Response<RoleDto> delete(Request<RoleDto> request, Locale locale)  {
-		// System.out.println("----begin delete Role-----");
+	public Response<SettingDto> delete(Request<SettingDto> request, Locale locale)  {
+		// System.out.println("----begin delete Setting-----");
 
-		Response<RoleDto> response = new Response<RoleDto>();
-		List<Role>        items    = new ArrayList<Role>();
+		Response<SettingDto> response = new Response<SettingDto>();
+		List<Setting>        items    = new ArrayList<Setting>();
 			
-		for (RoleDto dto : request.getDatas()) {
+		for (SettingDto dto : request.getDatas()) {
 			// Definir les parametres obligatoires
 			Map<String, java.lang.Object> fieldsToVerify = new HashMap<String, java.lang.Object>();
 			fieldsToVerify.put("id", dto.getId());
@@ -299,12 +266,12 @@ public class RoleBusiness implements IBasicBusiness<Request<RoleDto>, Response<R
 				return response;
 			}
 
-			// Verifier si la role existe
-			Role existingEntity = null;
+			// Verifier si la setting existe
+			Setting existingEntity = null;
 
-			existingEntity = roleRepository.findOne(dto.getId(), false);
+			existingEntity = settingRepository.findOne(dto.getId(), false);
 			if (existingEntity == null) {
-				response.setStatus(functionalError.DATA_NOT_EXIST("role -> " + dto.getId(), locale));
+				response.setStatus(functionalError.DATA_NOT_EXIST("setting -> " + dto.getId(), locale));
 				response.setHasError(true);
 				return response;
 			}
@@ -313,13 +280,6 @@ public class RoleBusiness implements IBasicBusiness<Request<RoleDto>, Response<R
 			// ----------- CHECK IF DATA IS USED
 			// -----------------------------------------------------------------------
 
-			// utilisateurRole
-			List<UtilisateurRole> listOfUtilisateurRole = utilisateurRoleRepository.findByRoleId(existingEntity.getId(), false);
-			if (listOfUtilisateurRole != null && !listOfUtilisateurRole.isEmpty()){
-				response.setStatus(functionalError.DATA_NOT_DELETABLE("(" + listOfUtilisateurRole.size() + ")", locale));
-				response.setHasError(true);
-				return response;
-			}
 
 
 			existingEntity.setIsDeleted(true);
@@ -329,31 +289,31 @@ public class RoleBusiness implements IBasicBusiness<Request<RoleDto>, Response<R
 
 		if (!items.isEmpty()) {
 			// supprimer les donnees en base
-			roleRepository.saveAll((Iterable<Role>) items);
+			settingRepository.saveAll((Iterable<Setting>) items);
 
 			response.setHasError(false);
 		}
 
-		// System.out.println("----end delete Role-----");
+		// System.out.println("----end delete Setting-----");
 		return response;
 	}
 
 	/**
-	 * get Role by using RoleDto as object.
+	 * get Setting by using SettingDto as object.
 	 * 
 	 * @param request
 	 * @return response
 	 * 
 	 */
 	@Override
-	public Response<RoleDto> getByCriteria(Request<RoleDto> request, Locale locale)  throws Exception {
-		// System.out.println("----begin get Role-----");
+	public Response<SettingDto> getByCriteria(Request<SettingDto> request, Locale locale)  throws Exception {
+		// System.out.println("----begin get Setting-----");
 
-		Response<RoleDto> response = new Response<RoleDto>();
-		List<Role> items 			 = roleRepository.getByCriteria(request, em, locale);
+		Response<SettingDto> response = new Response<SettingDto>();
+		List<Setting> items 			 = settingRepository.getByCriteria(request, em, locale);
 
 		if (items != null && !items.isEmpty()) {
-			List<RoleDto> itemsDto = (Utilities.isTrue(request.getIsSimpleLoading())) ? RoleTransformer.INSTANCE.toLiteDtos(items) : RoleTransformer.INSTANCE.toDtos(items);
+			List<SettingDto> itemsDto = (Utilities.isTrue(request.getIsSimpleLoading())) ? SettingTransformer.INSTANCE.toLiteDtos(items) : SettingTransformer.INSTANCE.toDtos(items);
 
 			final int size = items.size();
 			List<String>  listOfError      = Collections.synchronizedList(new ArrayList<String>());
@@ -370,20 +330,20 @@ public class RoleBusiness implements IBasicBusiness<Request<RoleDto>, Response<R
 				throw new RuntimeException(StringUtils.join(objArray, ", "));
 			}
 			response.setItems(itemsDto);
-			response.setCount(roleRepository.count(request, em, locale));
+			response.setCount(settingRepository.count(request, em, locale));
 			response.setHasError(false);
 		} else {
-			response.setStatus(functionalError.DATA_EMPTY("role", locale));
+			response.setStatus(functionalError.DATA_EMPTY("setting", locale));
 			response.setHasError(false);
 			return response;
 		}
 
-		// System.out.println("----end get Role-----");
+		// System.out.println("----end get Setting-----");
 		return response;
 	}
 
 	/**
-	 * get full RoleDto by using Role as object.
+	 * get full SettingDto by using Setting as object.
 	 * 
 	 * @param dto
 	 * @param size
@@ -392,7 +352,7 @@ public class RoleBusiness implements IBasicBusiness<Request<RoleDto>, Response<R
 	 * @return
 	 * @throws Exception
 	 */
-	private RoleDto getFullInfos(RoleDto dto, Integer size, Boolean isSimpleLoading, Locale locale) throws Exception {
+	private SettingDto getFullInfos(SettingDto dto, Integer size, Boolean isSimpleLoading, Locale locale) throws Exception {
 		// put code here
 
 		if (Utilities.isTrue(isSimpleLoading)) {
