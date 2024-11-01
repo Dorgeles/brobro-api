@@ -31,7 +31,11 @@ import com.wdy.brobrosseur.utils.dto.base._ImagesPrestationDto;
 public class ImagesPrestationDto extends _ImagesPrestationDto{
 
     private String    statusLibelle               ;
-    
+	private String fileName;
+	private String fileBase64;
+	private String pathName;
+
+
 	//----------------------------------------------------------------------
     // clone METHOD
     //----------------------------------------------------------------------

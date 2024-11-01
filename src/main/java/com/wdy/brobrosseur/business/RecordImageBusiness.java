@@ -8,6 +8,7 @@
 
 package com.wdy.brobrosseur.business;
 
+import com.wdy.brobrosseur.utils.okhttp.MinioExternalService;
 import lombok.extern.java.Log;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +42,8 @@ BUSINESS for table "record_image"
 
 @Component
 public class RecordImageBusiness implements IBasicBusiness<Request<RecordImageDto>, Response<RecordImageDto>> {
-
+	@Autowired
+	private MinioExternalService minioExternalService;
 	private Response<RecordImageDto> response;
 	@Autowired
 	private RecordImageRepository recordImageRepository;
@@ -111,6 +113,13 @@ public class RecordImageBusiness implements IBasicBusiness<Request<RecordImageDt
 					response.setHasError(true);
 					return response;
 				}
+			}
+			dto.setPathName(existingActivite.getLibelle() + "/" + existingActivite.getId());
+			String imageUrl = null;
+			try {
+				imageUrl = minioExternalService.saveImage(dto);
+				dto.setUrl(imageUrl);
+			} catch (Exception e) {
 			}
 				RecordImage entityToSave = null;
 			entityToSave = RecordImageTransformer.INSTANCE.toEntity(dto, existingActivite);
@@ -196,6 +205,15 @@ public class RecordImageBusiness implements IBasicBusiness<Request<RecordImageDt
 					return response;
 				}
 				entityToSave.setActivite(existingActivite);
+			}
+			if (Utilities.notBlank(dto.getFileBase64())) {
+				dto.setPathName(entityToSave.getActivite().getLibelle() + "/" + entityToSave.getActivite().getId());
+				String imageUrl = null;
+				try {
+					imageUrl = minioExternalService.saveImage(dto);
+					entityToSave.setUrl(imageUrl);
+				} catch (Exception e) {
+				}
 			}
 			if (Utilities.notBlank(dto.getUrl())) {
 				entityToSave.setUrl(dto.getUrl());

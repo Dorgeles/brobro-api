@@ -165,8 +165,8 @@ public class RoleBusiness implements IBasicBusiness<Request<RoleDto>, Response<R
 	}
 
 
-//	public String getMinioTry()  throws Exception {
-//		try {
+	public String getMinioTry()  throws Exception {
+		try {
 //			MinioClient minioClient = minioClientConfig.getMinioClientVIP();
 //			List<Bucket> bList = minioClient.listBuckets();
 //			System.out.println("Connection successful, total buckets : " + bList.size());
@@ -177,11 +177,11 @@ public class RoleBusiness implements IBasicBusiness<Request<RoleDto>, Response<R
 //					.build();
 //
 //			minioClient.putObject(args);
-//		} catch (Exception e) {
-//			throw new RuntimeException(e);
-//		}
-//		return "ok";
-//	}
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+		return "ok";
+	}
 
 	/**
 	 * update Role by using RoleDto as object.

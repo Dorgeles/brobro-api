@@ -8,6 +8,7 @@
 
 package com.wdy.brobrosseur.business;
 
+import com.wdy.brobrosseur.utils.okhttp.MinioExternalService;
 import lombok.extern.java.Log;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +47,8 @@ public class ImagesPrestationBusiness implements IBasicBusiness<Request<ImagesPr
 	@Autowired
 	private ImagesPrestationRepository imagesPrestationRepository;
 	@Autowired
+	private MinioExternalService minioExternalService;
+	@Autowired
 	private PrestationRepository prestationRepository;
 	@Autowired
 	private FunctionalError functionalError;
@@ -82,16 +85,14 @@ public class ImagesPrestationBusiness implements IBasicBusiness<Request<ImagesPr
 			// Definir les parametres obligatoires
 			Map<String, java.lang.Object> fieldsToVerify = new HashMap<String, java.lang.Object>();
 			fieldsToVerify.put("prestationId", dto.getPrestationId());
-			fieldsToVerify.put("url", dto.getUrl());
-			fieldsToVerify.put("description", dto.getDescription());
+			fieldsToVerify.put("imageBase64", dto.getFileBase64());
 			fieldsToVerify.put("ordre", dto.getOrdre());
-			fieldsToVerify.put("statusId", dto.getStatusId());
-			fieldsToVerify.put("deletedAt", dto.getDeletedAt());
 			if (!Validate.RequiredValue(fieldsToVerify).isGood()) {
 				response.setStatus(functionalError.FIELD_EMPTY(Validate.getValidate().getField(), locale));
 				response.setHasError(true);
 				return response;
 			}
+
 
 			// Verify if imagesPrestation to insert do not exist
 			ImagesPrestation existingEntity = null;
@@ -114,7 +115,14 @@ public class ImagesPrestationBusiness implements IBasicBusiness<Request<ImagesPr
 					return response;
 				}
 			}
+			dto.setPathName(existingPrestation.getLibelle() + "/" + existingPrestation.getProjetId());
 				ImagesPrestation entityToSave = null;
+			String imageUrl = null;
+			try {
+				imageUrl = minioExternalService.saveImage(dto);
+				dto.setUrl(imageUrl);
+			} catch (Exception e) {
+			}
 			entityToSave = ImagesPrestationTransformer.INSTANCE.toEntity(dto, existingPrestation);
 			entityToSave.setIsDeleted(false);
 			entityToSave.setCreatedBy(request.getUser());
@@ -199,8 +207,14 @@ public class ImagesPrestationBusiness implements IBasicBusiness<Request<ImagesPr
 				}
 				entityToSave.setPrestation(existingPrestation);
 			}
-			if (Utilities.notBlank(dto.getUrl())) {
-				entityToSave.setUrl(dto.getUrl());
+			if (Utilities.notBlank(dto.getFileBase64())) {
+				dto.setPathName(entityToSave.getPrestation().getLibelle() + "/" + entityToSave.getPrestation().getProjetId());
+				String imageUrl = null;
+				try {
+					imageUrl = minioExternalService.saveImage(dto);
+					entityToSave.setUrl(imageUrl);
+				} catch (Exception e) {
+				}
 			}
 			if (Utilities.notBlank(dto.getDescription())) {
 				entityToSave.setDescription(dto.getDescription());
