@@ -20,7 +20,7 @@ jobs:
           java-version: '8'
 
       - name: Build with Maven
-        run: mvn clean package -DskipTests
+        run: mvn clean install -Dspring.profiles.active=production
 
       - name: Deploy to VPS
         uses: appleboy/scp-action@master
