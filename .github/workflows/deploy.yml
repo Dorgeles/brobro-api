@@ -27,7 +27,7 @@ jobs:
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
-          password: ${{ secrets.VPS_PASSWORD }}  # Alternatively, use SSH keys
+          key: ${{ secrets.VPS_SSH_KEY }}
           source: "target/*.war"
           target: "/path/to/tomcat9/webapps"
 
@@ -36,6 +36,6 @@ jobs:
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
-          password: ${{ secrets.VPS_PASSWORD }}
+          key: ${{ secrets.VPS_SSH_KEY }}
           script: |
-            systemctl restart tomcat9  # Adjust this if using a different service command
+            systemctl restart tomcat9
