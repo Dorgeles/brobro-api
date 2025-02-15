@@ -30,6 +30,7 @@ jobs:
           key: ${{ secrets.VPS_SSH_KEY }}
           source: "target/*.war"
           target: "/opt/tomcat/webapps"
+          debug: true
 
       - name: Restart Tomcat
         uses: appleboy/ssh-action@master
